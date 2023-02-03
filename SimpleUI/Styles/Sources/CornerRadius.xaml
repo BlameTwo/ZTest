@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <CornerRadius x:Key="DefaultCornerRadius">3</CornerRadius>
+    <CornerRadius x:Key="NavigationContentCornerRadius">3</CornerRadius>
+    <CornerRadius x:Key="NavigationMenuItemCornerRadius">0,3,3,0</CornerRadius>
+    <CornerRadius x:Key="ExpanderCornerRadius">3</CornerRadius>
+    <CornerRadius x:Key="ScrollViewerCornerRadius">3</CornerRadius>
+</ResourceDictionary>

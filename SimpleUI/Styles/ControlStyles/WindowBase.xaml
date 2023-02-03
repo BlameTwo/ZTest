@@ -1,0 +1,170 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="clr-namespace:SimpleUI.Controls">
+
+    <Style x:Key="DefaultWindowBaseStyle" TargetType="{x:Type ui:WindowBase}">
+        <Setter Property="WindowChrome.WindowChrome">
+            <Setter.Value>
+                <WindowChrome
+                    CaptionHeight="36"
+                    GlassFrameThickness="1"
+                    ResizeBorderThickness="5" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="{DynamicResource DefaultAppFillBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ui:WindowBase}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid Background="Transparent">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid
+                                x:Name="border"
+                                Height="30"
+                                HorizontalAlignment="Stretch"
+                                Panel.ZIndex="2"
+                                Background="Transparent"
+                                FocusVisualStyle="{x:Null}">
+                                <StackPanel
+                                    Margin="15,10,0,0"
+                                    HorizontalAlignment="Left"
+                                    Background="Transparent"
+                                    Orientation="Horizontal">
+                                    <Image
+                                        RenderOptions.BitmapScalingMode="HighQuality"
+                                        Source="{TemplateBinding Icon}"
+                                        Stretch="Uniform"
+                                        WindowChrome.IsHitTestVisibleInChrome="True" />
+                                    <TextBlock
+                                        x:Name="MyTitle"
+                                        Margin="8,0,0,0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        FocusVisualStyle="{x:Null}"
+                                        Text="{TemplateBinding Title}"
+                                        WindowChrome.IsHitTestVisibleInChrome="True"
+                                        WindowChrome.ResizeGripDirection="Left" />
+                                </StackPanel>
+                                <StackPanel
+                                    HorizontalAlignment="Right"
+                                    Background="Transparent"
+                                    Orientation="Horizontal">
+                                    <Button
+                                        x:Name="MinBth"
+                                        Width="50"
+                                        Height="{Binding ElementName=border, Path=ActualHeight}"
+                                        Margin="0,-2,0,0"
+                                        VerticalAlignment="Center"
+                                        Background="{DynamicResource Default.Control.Background.Brush}"
+                                        Content="&#xE921;"
+                                        FontFamily="Segoe Fluent Icons"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        Style="{DynamicResource TitleBarDefaultButtonStyle}"
+                                        WindowChrome.IsHitTestVisibleInChrome="True" />
+                                    <Button
+                                        x:Name="MaxBth"
+                                        Width="50"
+                                        Height="{Binding ElementName=border, Path=ActualHeight}"
+                                        Margin="0,-2,0,0"
+                                        VerticalAlignment="Center"
+                                        Background="{DynamicResource Default.Control.Background.Brush}"
+                                        Content="{TemplateBinding MaxContent}"
+                                        FontFamily="Segoe Fluent Icons"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        Style="{DynamicResource TitleBarDefaultButtonStyle}"
+                                        WindowChrome.IsHitTestVisibleInChrome="True" />
+                                    <Button
+                                        x:Name="ExitBth"
+                                        Width="50"
+                                        Height="{Binding ElementName=border, Path=ActualHeight}"
+                                        Margin="0,-2,0,0"
+                                        VerticalAlignment="Center"
+                                        Background="{DynamicResource WindowChromeExit}"
+                                        Content="&#xE8BB;"
+                                        FontFamily="Segoe Fluent Icons"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        Style="{DynamicResource TitleBarDefaultButtonStyle}"
+                                        WindowChrome.IsHitTestVisibleInChrome="True" />
+                                </StackPanel>
+                            </Grid>
+                            <AdornerDecorator Grid.Row="1" Panel.ZIndex="-1">
+                                <ContentPresenter x:Name="win_content" />
+                            </AdornerDecorator>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TitleBarDefaultButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Border
+                            x:Name="border"
+                            Margin="{TemplateBinding Margin}"
+                            Background="{TemplateBinding Background}"
+                            Opacity="0" />
+                        <ContentControl
+                            x:Name="content"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}"
+                            FontSize="{TemplateBinding FontSize}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="border"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="1"
+                                            Duration="0:0:0:0.5" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="border"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="0"
+                                            Duration="0:0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <!--  变成灰色  -->
+                            <Setter TargetName="content" Property="Foreground">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="Gray" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

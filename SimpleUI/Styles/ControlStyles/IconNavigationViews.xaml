@@ -1,0 +1,156 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:SimpleUI.Styles.Converter"
+    xmlns:ui="clr-namespace:SimpleUI.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/Sources/Thickess.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/Sources/CornerRadius.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/Sources/FontSize.xaml" />
+
+    </ResourceDictionary.MergedDictionaries>
+    <Style x:Key="IconNavigationViewStyle" TargetType="{x:Type ui:NavigationView}">
+        <Setter Property="ItemContainerStyle" Value="{DynamicResource IconItemStyle}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ui:NavigationView}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <ItemsControl
+                                VerticalAlignment="Top"
+                                ItemContainerStyle="{TemplateBinding ItemContainerStyle}"
+                                ItemsSource="{TemplateBinding MenuItems}"
+                                ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                                ScrollViewer.VerticalScrollBarVisibility="Hidden" />
+
+                            <ItemsControl
+                                Grid.Row="1"
+                                VerticalAlignment="Bottom"
+                                ItemContainerStyle="{TemplateBinding ItemContainerStyle}"
+                                ItemsSource="{TemplateBinding FooterMenuItems}"
+                                ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                                ScrollViewer.VerticalScrollBarVisibility="Hidden" />
+                        </Grid>
+                        <Border
+                            x:Name="MenuDockPanel"
+                            Grid.Column="1"
+                            Margin="10,10,10,10"
+                            Padding="5"
+                            Background="{TemplateBinding ContentBackground}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Visibility="Visible">
+                            <ContentPresenter Content="{TemplateBinding Content}" SnapsToDevicePixels="True" />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="IconItemStyle" TargetType="{x:Type ui:NavigationViewItem}">
+        <Style.Resources>
+            <Storyboard x:Key="MouseOvertrue">
+                <DoubleAnimation
+                    Storyboard.TargetName="backcolor"
+                    Storyboard.TargetProperty="Opacity"
+                    To="0.5"
+                    Duration="0:0:0.2" />
+            </Storyboard>
+            <Storyboard x:Key="MouseOverfalse">
+                <DoubleAnimation
+                    Storyboard.TargetName="backcolor"
+                    Storyboard.TargetProperty="Opacity"
+                    To="0"
+                    Duration="0:0:0.2" />
+            </Storyboard>
+            <Storyboard x:Key="Ispressedtrue">
+                <DoubleAnimation
+                    Storyboard.TargetName="backcolor"
+                    Storyboard.TargetProperty="Opacity"
+                    To="0.8"
+                    Duration="0:0:0.2" />
+            </Storyboard>
+            <Storyboard x:Key="Ispressedfalse">
+                <DoubleAnimation
+                    Storyboard.TargetName="backcolor"
+                    Storyboard.TargetProperty="Opacity"
+                    Duration="0:0:0.2" />
+            </Storyboard>
+        </Style.Resources>
+        <Setter Property="Padding" Value="30" />
+        <Setter Property="CornerRadius" Value="{DynamicResource NavigationContentCornerRadius}" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ui:NavigationViewItem}">
+                    <Viewbox
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        MinWidth="{TemplateBinding MinWidth}"
+                        MinHeight="{TemplateBinding MinHeight}"
+                        MaxWidth="{TemplateBinding MaxWidth}"
+                        MaxHeight="{TemplateBinding MaxHeight}"
+                        Margin="3">
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Border
+                                x:Name="backcolor"
+                                Grid.RowSpan="2"
+                                Padding="{TemplateBinding Padding}"
+                                Background="{DynamicResource NavigationItem.Background}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                Opacity="0" />
+                            <StackPanel
+                                Grid.RowSpan="2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                                <ui:FontIcon
+                                    Grid.Row="0"
+                                    HorizontalAlignment="Center"
+                                    FontSize="{DynamicResource IconNavigationIconFontSize}"
+                                    Glyph="{TemplateBinding Icon,
+                                                            Converter={x:Static converter:IconConverter.Instance}}" />
+                                <ContentPresenter
+                                    x:Name="control"
+                                    Grid.Row="1"
+                                    Margin="0,3,0,0"
+                                    HorizontalAlignment="Center"
+                                    Content="{TemplateBinding Content}" />
+                            </StackPanel>
+                        </Grid>
+                    </Viewbox>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource MouseOvertrue}" />
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource MouseOverfalse}" />
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsActive" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource Default.Accent.Brush}"/>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Ispressedtrue}" />
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource Ispressedfalse}" />
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,60 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="clr-namespace:SimpleUI.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/Buttons.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/WindowBase.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/TreeViewItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/NavigationViewItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/NavigationView.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/ProgressRing.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/Card.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/ActionCard.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/PersonPicture.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/Expander.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/ScrollViewer.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/ListBoxs.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/DialogHost.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/ProgressBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/TextBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/IconNavigationViews.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style BasedOn="{StaticResource DefaultTreeViewItem}" TargetType="ui:TreeViewItem" />
+
+    <Style TargetType="{x:Type ui:FontIcon}">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ui:FontIcon}">
+                    <Border
+                        Margin="{TemplateBinding Margin}"
+                        Padding="{TemplateBinding Padding}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                        Background="Transparent">
+                        <TextBlock
+                            FontFamily="{TemplateBinding FontFamily}"
+                            FontSize="{TemplateBinding FontSize}"
+                            FontWeight="{TemplateBinding FontWeight}"
+                            Text="{TemplateBinding Glyph}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type ItemsControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ItemsControl}">
+                    <ScrollViewer x:Name="ScrollViewer">
+                        <ItemsPresenter />
+                    </ScrollViewer>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,11 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:Double x:Key="NavigationIconFontSize">15</sys:Double>
+    <sys:Double x:Key="IconNavigationIconFontSize">18</sys:Double>
+    <sys:Double x:Key="NavigationHeaderTitleFontSize">15</sys:Double>
+
+    <sys:Double x:Key="TitleFontSize">16</sys:Double>
+    <sys:Double x:Key="SubTitleFontSize">15</sys:Double>
+</ResourceDictionary>
