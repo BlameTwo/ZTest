@@ -11,6 +11,8 @@ namespace AdbShell.Interfaces;
 public interface IAdbManager
 {
 
+    //./aapt d badging bili.apk
+
     /// <summary>
     /// 进行链接
     /// </summary>

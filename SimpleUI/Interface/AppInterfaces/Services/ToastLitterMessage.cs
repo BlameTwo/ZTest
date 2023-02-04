@@ -11,9 +11,9 @@ public class ToastLitterMessage: IToastLitterMessage
     public TimeSpan ShowTime { get; set; }
 
     [STAThread]
-    public void Show(string message)
+    public async void Show(string message)
     {
-        ShowOwner.Dispatcher.Invoke(new Action(() =>
+        await ShowOwner.Dispatcher.InvokeAsync(new Action(() =>
         {
             IToastService control = new ToastControl();
             control.OwnerPanel = ShowOwner;
