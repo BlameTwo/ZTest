@@ -19,6 +19,7 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/ProgressBar.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/TextBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/IconNavigationViews.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/Toast.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style BasedOn="{StaticResource DefaultTreeViewItem}" TargetType="ui:TreeViewItem" />
