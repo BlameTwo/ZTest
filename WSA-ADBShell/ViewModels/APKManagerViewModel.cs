@@ -33,8 +33,7 @@ public partial class APKManagerViewModel:ObservableObject
                 //显示安装信息
                 ToastLitterMessage.Show(s);
             });
-
-            if (result.Success)
+            if (result != null && result.Success)
             {
                 //显示安装信息
                 ToastLitterMessage.Show("安装完成，请前往开始菜单查看该应用");

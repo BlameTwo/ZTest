@@ -12,6 +12,7 @@
         <Setter Property="Background" Value="{DynamicResource Default.Control.Background.Brush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource Default.Control.Border.Brush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource ButtonBase.Thickness}" />
+        <Setter Property="Foreground" Value="{DynamicResource DefaultAppFillBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
@@ -108,4 +109,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+
 </ResourceDictionary>

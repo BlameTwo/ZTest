@@ -56,6 +56,7 @@
                                     HorizontalAlignment="Right"
                                     Background="Transparent"
                                     Orientation="Horizontal">
+                                    <ContentControl Content="{TemplateBinding TitleBarRightContent}" WindowChrome.IsHitTestVisibleInChrome="True" />
                                     <Button
                                         x:Name="MinBth"
                                         Width="50"

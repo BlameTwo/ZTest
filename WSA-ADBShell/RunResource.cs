@@ -19,6 +19,7 @@ public static class RunResource
         {
             service.AddSingleton<MainWindow>();
             service.AddSingleton<APKManagerPage>();
+            service.AddSingleton<DevicesPage>();
         });
         return hostBuilder; 
     }
@@ -30,6 +31,7 @@ public static class RunResource
         {
             service.AddSingleton<MainViewModel>();
             service.AddSingleton<APKManagerViewModel>();
+            service.AddSingleton<DevicesViewModel>();
         });
         return hostBuilder;
     }
@@ -38,11 +40,6 @@ public static class RunResource
     {
         hostBuilder.ConfigureServices((content, service) =>
         {
-            //对话框
-            service.AddSingleton<IShowDialogService,ShowDialogService>();
-
-            //小弹窗服务
-            service.AddSingleton<IToastLitterMessage,ToastLitterMessage>();
 
             //进程服务
             service.AddSingleton<ProcessManager>();
@@ -57,7 +54,14 @@ public static class RunResource
     {
         hostBuilder.ConfigureServices((content, service) =>
         {
+            //导航服务
             service.AddSingleton<IAppNavigationViewService, AppNavigationViewService>();
+
+            //对话框
+            service.AddSingleton<IShowDialogService, ShowDialogService>();
+
+            //小弹窗服务
+            service.AddSingleton<IToastLitterMessage, ToastLitterMessage>();
         });
         return hostBuilder;
     }

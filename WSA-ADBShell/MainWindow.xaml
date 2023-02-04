@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:page="clr-namespace:WSA_ADBShell.Views"
     xmlns:ui="clr-namespace:SimpleUI.Controls;assembly=SimpleUI"
+    xmlns:ut="clr-namespace:SimpleUI.Utils.Controls;assembly=SimpleUI"
     xmlns:viewmodels="clr-namespace:WSA_ADBShell.ViewModels"
     Title="MainWindow"
     Width="800"
@@ -29,7 +30,10 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <ui:NavigationView.MenuItems>
-                <ui:NavigationViewItem Content="命令" Icon="CommandPrompt" />
+                <ui:NavigationViewItem
+                    Content="设备"
+                    Icon="Devices"
+                    TypeUri="{x:Type page:DevicesPage}" />
                 <ui:NavigationViewItem Content="扩展" Icon="Next" />
                 <ui:NavigationViewItem
                     Content="管理"
@@ -39,7 +43,7 @@
             <ui:NavigationView.FooterMenuItems>
                 <ui:NavigationViewItem Content="设置" Icon="Settings" />
             </ui:NavigationView.FooterMenuItems>
-            <Frame x:Name="_frame" />
+            <Frame x:Name="_frame" NavigationUIVisibility="Hidden" />
         </ui:NavigationView>
     </Grid>
 </ui:WindowBase>

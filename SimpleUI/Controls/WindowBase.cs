@@ -58,6 +58,21 @@ namespace SimpleUI.Controls
             };
         }
 
+
+
+        public object TitleBarRightContent
+        {
+            get { return (object)GetValue(TitleBarRightContentProperty); }
+            set { SetValue(TitleBarRightContentProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TitleBarRightContent.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TitleBarRightContentProperty =
+            DependencyProperty.Register("TitleBarRightContent", typeof(object), typeof(WindowBase), new  FrameworkPropertyMetadata(null));
+
+
+
+
         public string MaxContent
         {
             get { return (string)GetValue(MaxContentProperty); }

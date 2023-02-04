@@ -9,7 +9,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <!--  选择主题颜色，此属性支持热重载  -->
-                <theme:Theme Type="Dark" />
+                <theme:Theme Type="Light" />
                 <!--  默认主题样式，此属性支持热重载  -->
                 <style:SimpleStyle Type="Default" />
             </ResourceDictionary.MergedDictionaries>

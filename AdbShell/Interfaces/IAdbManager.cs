@@ -36,6 +36,8 @@ public interface IAdbManager
     public Task<AdbCommandResult> InstallAsync(string apkpath, Action<string> MessageCallBack,string parame=null);
 
 
+    public Task<AdbDataResult<List<DeviceStateData>>> GetDevicesList();
+
     /// <summary>
     /// 停止全部操作
     /// </summary>

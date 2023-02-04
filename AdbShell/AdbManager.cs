@@ -13,7 +13,7 @@ namespace AdbShell;
 /// 这是一个ADBManager管理器
 /// 前往<see cref="IAdbManager"/>查看接口
 /// </summary>
-public class AdbManager: IAdbManager
+public partial class AdbManager: IAdbManager
 {
     const string ADBServer = "127.0.0.1:58526";
 
@@ -113,7 +113,9 @@ public class AdbManager: IAdbManager
                 return new AdbCommandResult() { Success = true, Message = "安装完毕" };
             }
         }
-        return null;
+        result.WaitForExit();
+        return new AdbCommandResult() { Success = true, Message = "命令通道通过" };
+        
     }
 
     public async Task<AdbCommandResult> InstallAsync(string apkpath, Action<string> MessageCallBack, string parame = null)
