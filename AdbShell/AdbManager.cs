@@ -32,7 +32,13 @@ public partial class AdbManager: IAdbManager
     public AdbManager(ProcessManager processManager)
     {
         ProcessManager = processManager;
+
+        //DevicesInit();
+
+        timer = new Timer(refershdevicecount,null,1000,1000);
     }
+
+    
 
     public ProcessManager ProcessManager { get; }
 

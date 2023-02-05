@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using static AdbShell.AdbManager;
 
 namespace AdbShell.Interfaces;
 
@@ -35,7 +36,10 @@ public interface IAdbManager
 
     public Task<AdbCommandResult> InstallAsync(string apkpath, Action<string> MessageCallBack,string parame=null);
 
-
+    /// <summary>
+    /// 设备数量更改
+    /// </summary>
+    public event DevicesChanged DevicesCountChanged;
     public Task<AdbDataResult<List<DeviceStateData>>> GetDevicesList();
 
     /// <summary>

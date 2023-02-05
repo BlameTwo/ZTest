@@ -23,6 +23,8 @@ public partial class App : Application
         base.OnStartup(e);
     }
 
+
+    public static void DispatcherChanged(Action action) => App.MAINWINDOW.Dispatcher.Invoke(action);
     public App()
     {
         this.Host = 
