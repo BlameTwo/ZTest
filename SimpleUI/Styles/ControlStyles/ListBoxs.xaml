@@ -42,7 +42,6 @@
                             Opacity="0" />
                         <Grid Margin="8">
                             <ContentPresenter
-                                Content="{TemplateBinding Content}"
                                 ContentTemplate="{TemplateBinding ContentTemplate}"
                                 FocusVisualStyle="{x:Null}"
                                 SnapsToDevicePixels="True" />

@@ -5,6 +5,7 @@ using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using WSA_ADBShell.ViewModels.ItemsViewModels;
 
 namespace WSA_ADBShell.ViewModels;
 
@@ -23,7 +24,7 @@ public partial class DevicesViewModel:ObservableObject
         switch (deviceStateData.State)
         {
             case AdbShell.DevicesChangedEnum.Add:
-                deviceStateData.Data.ForEach((val) => App.DispatcherChanged(()=>DeviceStatesList.Add(val)));
+                deviceStateData.Data.ForEach((val) => App.DispatcherChanged(()=>DeviceStatesList.Add(val.ChildConvert<DeviceStateData, ADBManagerDevicesItemVM>())));
                 break;
             case AdbShell.DevicesChangedEnum.Remove:
                 deviceStateData.Data.ForEach((val) => 
@@ -32,7 +33,7 @@ public partial class DevicesViewModel:ObservableObject
                     {
                         foreach (var item in DeviceStatesList.ToArray())
                         {
-                            if (val.DeviceName == item.DeviceName) DeviceStatesList.Remove(item);
+                            if (val.DeviceName == item.DeviceName) DeviceStatesList.Remove(val.ChildConvert<DeviceStateData, ADBManagerDevicesItemVM>());
                         }
                     });
                 });
@@ -46,7 +47,7 @@ public partial class DevicesViewModel:ObservableObject
                         {
                             if (item.DeviceName != val.DeviceName) continue;
                             DeviceStatesList.Remove(item);
-                            DeviceStatesList.Add(val);
+                            DeviceStatesList.Add(val.ChildConvert<DeviceStateData, ADBManagerDevicesItemVM>());
                         }
                     });
                 });
@@ -60,8 +61,14 @@ public partial class DevicesViewModel:ObservableObject
     [RelayCommand]
     async void RefreshDevice()
     {
+        DeviceStatesList.Clear();
         var list = await AdbManager.GetDevicesList();
-        this.DeviceStatesList = list.Data.ToObservable();
+        foreach (var item in list.Data)
+        {
+            ADBManagerDevicesItemVM vm
+                = item.ChildConvert<DeviceStateData, ADBManagerDevicesItemVM>();
+            DeviceStatesList.Add(vm);
+        }
     }
 
     [RelayCommand]
@@ -72,7 +79,7 @@ public partial class DevicesViewModel:ObservableObject
 
 
     [ObservableProperty]
-    ObservableCollection<DeviceStateData> _DeviceStatesList;
+    ObservableCollection<ADBManagerDevicesItemVM> _DeviceStatesList;
 
     public IAdbManager AdbManager { get; }
 }

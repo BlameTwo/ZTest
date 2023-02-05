@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFrameworks>net6.0-windows;net47</TargetFrameworks>
+    <TargetFrameworks>net6.0-windows;net47;</TargetFrameworks>
     <RootNamespace>WSA_ADBShell</RootNamespace>
 	  <LangVersion>11</LangVersion>
     <Nullable>enable</Nullable>
@@ -22,6 +22,10 @@
     <PackageReference Include="AndroidXml" Version="1.1.24" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ControlsConverter\" />
   </ItemGroup>
 
 </Project>

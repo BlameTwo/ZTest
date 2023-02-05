@@ -17,10 +17,10 @@ public partial class AdbManager
         return await Task.Run(async () =>
         {
             AdbDataResult<List<DeviceStateData>> listData = new() { Data = new() };
-            var process = ProcessManager.GetProcess("devices");
+            var process = ProcessManager.GetProcess("devices", ProcessType.Adb);
             process.Start();
             process.WaitForExit();
-            while (!process.StandardOutput.EndOfStream)
+            while (process.StandardOutput.Peek() > -1)
             {
                 DeviceStateData data = new();
                 var str = await process.StandardOutput.ReadLineAsync();

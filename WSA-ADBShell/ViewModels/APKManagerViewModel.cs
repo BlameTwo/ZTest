@@ -13,11 +13,19 @@ namespace WSA_ADBShell.ViewModels;
 
 public partial class APKManagerViewModel:ObservableObject
 {
-	public APKManagerViewModel(IAdbManager adbManager,IToastLitterMessage toastLitterMessage)
+	public APKManagerViewModel(IAdbManager adbManager,IPackageManager packageManager,IToastLitterMessage toastLitterMessage)
 	{
         AdbManager = adbManager;
+        PackageManager = packageManager;
         ToastLitterMessage = toastLitterMessage;
     }
+
+    [RelayCommand]
+    async void Loaded()
+    {
+        var result = await  PackageManager.ParsePackage("D:\\jd.apk");
+    }
+
 
     [RelayCommand]
     async void OpenApkInstall()
@@ -41,5 +49,6 @@ public partial class APKManagerViewModel:ObservableObject
         }
     }
     public IAdbManager AdbManager { get; }
+    public IPackageManager PackageManager { get; }
     public IToastLitterMessage ToastLitterMessage { get; }
 }

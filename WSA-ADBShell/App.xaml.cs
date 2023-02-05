@@ -1,4 +1,5 @@
 ﻿using AdbShell;
+using AdbShell.Interfaces;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Runtime.CompilerServices;
@@ -16,6 +17,7 @@ public partial class App : Application
     {
         var processman = GetService<ProcessManager>();
         processman.Adbpath = "D:\\platform-tools\\adb.exe";
+        processman.Aaptpath = "D:\\platform-tools\\aapt.exe";
         var main = GetService<MainWindow>();
         this.MainWindow = main;
         App.MAINWINDOW = main;

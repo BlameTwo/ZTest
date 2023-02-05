@@ -6,7 +6,6 @@
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:local="clr-namespace:WSA_ADBShell.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="clr-namespace:AdbShell.Models;assembly=AdbShell"
     xmlns:ui="clr-namespace:SimpleUI.Controls;assembly=SimpleUI"
     xmlns:viewmodels="clr-namespace:WSA_ADBShell.ViewModels"
     Title="DevicesPage"
@@ -37,19 +36,9 @@
                 Content="刷新"
                 Icon="Refresh" />
         </StackPanel>
-        <ListBox Grid.Row="1" ItemsSource="{Binding DeviceStatesList}">
-            <ListBox.ItemTemplate>
-                <DataTemplate DataType="{x:Type models:DeviceStateData}">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock HorizontalAlignment="Left" Text="{Binding DeviceName}" />
-                        <TextBlock HorizontalAlignment="Right" Text="{Binding State}" />
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <ListBox
+            Grid.Row="1"
+            ItemTemplate="{DynamicResource DefaultAdbManagerItemvm}"
+            ItemsSource="{Binding DeviceStatesList}" />
     </Grid>
 </Page>

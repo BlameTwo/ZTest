@@ -46,6 +46,8 @@ public static class RunResource
 
             //ADB管理器
             service.AddSingleton<IAdbManager,AdbManager>();
+
+            service.AddSingleton<IPackageManager, PackageManager>();
         });
         return hostBuilder;
     }
