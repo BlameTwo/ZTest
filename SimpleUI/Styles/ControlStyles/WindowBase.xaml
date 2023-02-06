@@ -100,7 +100,12 @@
                             </AdornerDecorator>
                         </Grid>
                     </Border>
-                    <ControlTemplate.Triggers />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ResizeMode" Value="NoResize">
+                            <Setter TargetName="MinBth" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="MaxBth" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

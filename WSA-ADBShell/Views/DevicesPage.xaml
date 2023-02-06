@@ -35,10 +35,25 @@
                 Command="{Binding RefreshDeviceCommand}"
                 Content="刷新"
                 Icon="Refresh" />
+            <ui:Button
+                Margin="5,0,0,0"
+                Content="启动ADB服务"
+                Icon="Play" />
+            <ui:Button
+                Margin="5,0,0,0"
+                Content="关停ADB服务"
+                Icon="Stop" />
         </StackPanel>
         <ListBox
+            x:Name="devicelist"
             Grid.Row="1"
             ItemTemplate="{DynamicResource DefaultAdbManagerItemvm}"
-            ItemsSource="{Binding DeviceStatesList}" />
+            ItemsSource="{Binding DeviceStatesList}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectDeviceCommand}" CommandParameter="{Binding ElementName=devicelist, Path=SelectedItem, Mode=OneWay}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ListBox>
     </Grid>
 </Page>

@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AAPTForNet\AAPTForNet.csproj" />
     <ProjectReference Include="..\AdbShell\AdbShell.csproj" />
     <ProjectReference Include="..\SimpleUI\SimpleUI.csproj" />
   </ItemGroup>
@@ -19,13 +20,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AndroidXml" Version="1.1.24" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="ControlsConverter\" />
+    <Folder Include="Views\Windows\" />
   </ItemGroup>
 
 </Project>

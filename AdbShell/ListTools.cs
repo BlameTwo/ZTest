@@ -28,4 +28,18 @@ public static class ListTools
         else
             return false;
     }
+
+
+    public static Dictionary<string, string> GetDefaultUsePermissons(this Dictionary<string,string> dict)
+    {
+        dict.Add("android.permission.ACCESS_CHECKIN_PROPERTIES", "允许读写访问”properties");
+        dict.Add("android.permission.ACCESS_COARSE_LOCATION", "允许一个程序访问CellID或WiFi热点来获取粗略的位置");
+        dict.Add("android.permission.ACCESS_FINE_LOCATION", "允许一个程序访问精良位置(如GPS) ");
+        dict.Add("android.permission.ACCESS_LOCATION_EXTRA_COMMANDS", "允许应用程序访问额外的位置提供命令");
+        dict.Add("android.permission.ACCESS_MOCK_LOCATION", "允许程序创建模拟位置提供用于测试");
+        dict.Add("android.permission.ACCESS_NETWORK_STATE", "允许程序访问有关GSM网络信息");
+        dict.Add("android.permission.ACCESS_SURFACE_FLINGER", "允许程序使用SurfaceFlinger底层特性");
+        return dict;
+
+    }
 }

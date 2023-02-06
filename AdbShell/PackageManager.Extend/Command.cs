@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AdbShell;
@@ -14,7 +15,7 @@ public partial class PackageManager
     {
         if (result == null) return null;
         result.Start();
-        ApkCoreData data = new();
+        ApkCoreData data = new() { Permissons = new() };
         while (result.StandardOutput.Peek() > -1)
         {
            string line = await result.StandardOutput.ReadLineAsync();
@@ -25,9 +26,27 @@ public partial class PackageManager
                 || line.StartsWith("targetSdkVersion"))
             {
                 data.Package = parsepackagesdkversion(line, data.Package);
+            }else if (line.StartsWith("application:"))
+            {
+                var applicationlist =  line.Substring(line.IndexOf(":") + 1).Split(' ');
+                foreach (var item in applicationlist)
+                {
+                    if(string.IsNullOrWhiteSpace(item)) continue;
+                    if (line.StartsWith("label")) data.AppName = rxone.Match(item).Value;
+                }
+            }else if (line.StartsWith("uses-permission:"))
+            {
+
             }
         }
         result.WaitForExit();
+        return data;
+    }
+
+    private ApkCoreData parsePackagepermissons(string line, ApkCoreData data)
+    {
+        //加权限原名
+        data.Permissons.Add(rxone.Match(line).Value);
         return data;
     }
 
@@ -73,5 +92,30 @@ public partial class PackageManager
             }
         }
         return data;
+    }
+
+
+    private async Task<AdbCommandResult> install(Process result, CancellationToken token, Action<string> action)
+    {
+        if (token.IsCancellationRequested) return new AdbCommandResult() { Success = false, Message = "已经取消操作" };
+        if (result == null) return new AdbCommandResult() { Success = false, Message = "进程对象为空" };
+        result.Start();
+        while (result.StandardOutput.Peek() > -1)
+        {
+            if (token.IsCancellationRequested) return new() { Success = false, Message = "已经取消操作" };
+            var line = await result.StandardOutput.ReadLineAsync();
+            if (line.StartsWith("Performing Streamed Install"))
+            {
+                action.Invoke("正在安装…………");
+            }
+            else if (line.StartsWith("Success"))
+            {
+                action.Invoke("安装完毕");
+                return new AdbCommandResult() { Success = true, Message = "安装完毕" };
+            }
+        }
+        result.WaitForExit();
+        return new AdbCommandResult() { Success = true, Message = "命令通道通过" };
+
     }
 }

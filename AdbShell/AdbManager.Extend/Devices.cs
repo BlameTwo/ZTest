@@ -139,6 +139,12 @@ public partial class AdbManager
         add { DevicesChangedHandle += value; }
         remove { DevicesChangedHandle -= value; }
     }
+    private DeviceStateData _hotdevice;
+    public DeviceStateData HotDevice
+    {
+        get=>_hotdevice; 
+        set => _hotdevice = value;
+    }
 }
 
 public class DevicesChangedArg:EventArgs

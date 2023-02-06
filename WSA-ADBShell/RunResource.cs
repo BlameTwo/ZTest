@@ -7,7 +7,9 @@ using SimpleUI.Interface.AppInterfaces.Services;
 using SimpleUI.Services;
 using SimpleUI.Utils;
 using WSA_ADBShell.ViewModels;
+using WSA_ADBShell.ViewModels.WindowsViewModels;
 using WSA_ADBShell.Views;
+using WSA_ADBShell.Views.Dialogs;
 
 namespace WSA_ADBShell;
 
@@ -20,6 +22,7 @@ public static class RunResource
             service.AddSingleton<MainWindow>();
             service.AddSingleton<APKManagerPage>();
             service.AddSingleton<DevicesPage>();
+            service.AddTransient<InstallApkDialog>();
         });
         return hostBuilder; 
     }
@@ -32,6 +35,7 @@ public static class RunResource
             service.AddSingleton<MainViewModel>();
             service.AddSingleton<APKManagerViewModel>();
             service.AddSingleton<DevicesViewModel>();
+            service.AddScoped<InstallApkViewModel>();
         });
         return hostBuilder;
     }

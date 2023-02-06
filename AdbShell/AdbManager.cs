@@ -56,6 +56,7 @@ public partial class AdbManager: IAdbManager
         throw new NotImplementedException();
     }
 
+
     public Task<AdbCommandResult> Refersh(bool flage, string address = null)
     {
         throw new NotImplementedException();
@@ -66,15 +67,50 @@ public partial class AdbManager: IAdbManager
         tokensource.Cancel();
     }
 
-    
-
-    public async Task<AdbCommandResult> InstallAsync(string apkpath, Action<string> MessageCallBack, string parame = null)
+    public async Task<bool> StartAdb(Action<string> message)
     {
-        string arg = $"-s {_connectname} install \"{apkpath}\" {parame}";
-        var result = ProcessManager.GetProcess(arg,ProcessType.Adb);
+        var pro = ProcessManager.GetProcess("start-server", ProcessType.Adb);
         return await Task.Run(async () =>
         {
-            return await install(result, tokensource.Token, MessageCallBack);
+            pro.Start();
+            while (pro.StandardOutput.Peek()>-1)
+            {
+                var line = await pro.StandardOutput.ReadLineAsync();
+                if(line.StartsWith("* daemon not running"))
+                {
+                    message.Invoke("ADB正在启动");
+                }
+                else if (line.StartsWith("* daemon started successfully"))
+                {
+                    message.Invoke("ADB启动成功!");
+                    await Task.Delay(500);
+                    return true;
+                }
+            }
+            pro.WaitForExit();
+            return false;
         });
     }
+
+
+    public async Task<bool> KillAdb()
+    {
+        var pro = ProcessManager.GetProcess("kill-server", ProcessType.Adb);
+        return await Task.Run(async () =>
+        {
+            pro.Start();
+            var text = await pro.StandardOutput.ReadToEndAsync();
+            pro.WaitForExit();
+            //无输出后才是正常杀死adb进程
+            if (string.IsNullOrWhiteSpace(text))
+                return true;
+            return false;
+        });
+    }
+
+    
+
+    
+
+    
 }

@@ -34,7 +34,6 @@ public interface IAdbManager
     /// <returns></returns>
     public Task<bool> GetDevices();
 
-    public Task<AdbCommandResult> InstallAsync(string apkpath, Action<string> MessageCallBack,string parame=null);
 
     /// <summary>
     /// 设备数量更改
@@ -47,4 +46,9 @@ public interface IAdbManager
     /// </summary>
     /// <returns></returns>
     public void Stop();
+
+    public DeviceStateData HotDevice { get; set; }
+
+    public Task<bool> KillAdb();
+    public Task<bool> StartAdb(Action<string> message);
 }

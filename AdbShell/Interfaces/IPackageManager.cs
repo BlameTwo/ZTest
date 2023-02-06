@@ -1,4 +1,6 @@
 ﻿using AdbShell.Models;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AdbShell.Interfaces;
@@ -15,4 +17,13 @@ public interface IPackageManager
     /// <param name="path"></param>
     /// <returns></returns>
     public Task<ApkCoreData> ParsePackage(string path);
+
+
+
+    public Task<AdbCommandResult> InstallAsync(string apkpath, Action<string> MessageCallBack, DeviceStateData state, string parame = null);
+
+    /// <summary>
+    /// 权限列表
+    /// </summary>
+    public Dictionary<string,string> Use_Permissons { get; set; }
 }

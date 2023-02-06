@@ -18,6 +18,7 @@ public partial class DevicesViewModel:ObservableObject
         AdbManager.DevicesCountChanged += AdbManager_DevicesCountChanged;
     }
 
+    
 
     private void AdbManager_DevicesCountChanged(AdbShell.AdbManager adbManager, AdbShell.DevicesChangedArg deviceStateData)
     {
@@ -33,7 +34,8 @@ public partial class DevicesViewModel:ObservableObject
                     {
                         foreach (var item in DeviceStatesList.ToArray())
                         {
-                            if (val.DeviceName == item.DeviceName) DeviceStatesList.Remove(val.ChildConvert<DeviceStateData, ADBManagerDevicesItemVM>());
+                            if(val.DeviceName == item.DeviceName)
+                                DeviceStatesList.Remove(item);
                         }
                     });
                 });
@@ -70,6 +72,15 @@ public partial class DevicesViewModel:ObservableObject
             DeviceStatesList.Add(vm);
         }
     }
+
+
+    [RelayCommand]
+    void SelectDevice(DeviceStateData deviceStateData)
+    {
+        if(deviceStateData == null) return;
+        AdbManager.HotDevice = deviceStateData;
+    }
+
 
     [RelayCommand]
     async void Loaded()
