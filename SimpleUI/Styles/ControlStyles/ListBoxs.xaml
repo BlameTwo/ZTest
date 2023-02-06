@@ -1,6 +1,4 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
-
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/Sources/Thickess.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/Sources/CornerRadius.xaml" />
@@ -15,7 +13,7 @@
                             Background="Transparent"
                             BorderBrush="Transparent"
                             BorderThickness="0">
-                            <ScrollViewer>
+                            <ScrollViewer FontSize="{TemplateBinding FontSize}">
                                 <ItemsPresenter />
                             </ScrollViewer>
                         </Border>

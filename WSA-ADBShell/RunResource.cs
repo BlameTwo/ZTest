@@ -6,8 +6,10 @@ using SimpleUI.Interface.AppInterfaces;
 using SimpleUI.Interface.AppInterfaces.Services;
 using SimpleUI.Services;
 using SimpleUI.Utils;
+using WSA_ADBShell.Services;
+using WSA_ADBShell.Services.Interfaces;
 using WSA_ADBShell.ViewModels;
-using WSA_ADBShell.ViewModels.WindowsViewModels;
+using WSA_ADBShell.ViewModels.DialogViewModels;
 using WSA_ADBShell.Views;
 using WSA_ADBShell.Views.Dialogs;
 
@@ -68,9 +70,16 @@ public static class RunResource
 
             //小弹窗服务
             service.AddSingleton<IToastLitterMessage, ToastLitterMessage>();
+
+            service.AddSingleton<IWindowManager, WindowManager>();
         });
         return hostBuilder;
     }
+
+
+    public static string GetAppName() => "ADBShell-Toolkit";
+
+
 }
 
 

@@ -35,7 +35,7 @@ namespace AAPTForNet {
             }
 
             var largestIcon = ExtractLargestIcon(iconTable);
-            largestIcon.RealPath = ExtractIconImage(path, largestIcon);
+            //largestIcon.RealPath = ExtractIconImage(path, largestIcon);
 
             return largestIcon;
         }

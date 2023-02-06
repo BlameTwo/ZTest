@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using WSA_ADBShell.Services.Interfaces;
 
 namespace WSA_ADBShell;
 
@@ -12,7 +13,6 @@ public partial class App : Application
 {
     public IHost Host { get; }
 
-    public static Window MAINWINDOW { get; set; } = null;
 
     protected override void OnStartup(StartupEventArgs e)
     {
@@ -21,14 +21,13 @@ public partial class App : Application
         processman.Aaptpath = "D:\\platform-tools\\aapt.exe";
         AAPTool.AAPTpath = "D:\\platform-tools\\aapt.exe";
         var main = GetService<MainWindow>();
+        GetService<IWindowManager>().Window = main;
         this.MainWindow = main;
-        App.MAINWINDOW = main;
         main.Show();
         base.OnStartup(e);
     }
 
 
-    public static void DispatcherChanged(Action action) => App.MAINWINDOW.Dispatcher.Invoke(action);
     public App()
     {
         this.Host = 

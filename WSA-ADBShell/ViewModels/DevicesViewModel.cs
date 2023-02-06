@@ -5,15 +5,17 @@ using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using WSA_ADBShell.Services.Interfaces;
 using WSA_ADBShell.ViewModels.ItemsViewModels;
 
 namespace WSA_ADBShell.ViewModels;
 
 public partial class DevicesViewModel:ObservableObject
 {
-	public DevicesViewModel(IAdbManager adbManager)
+	public DevicesViewModel(IAdbManager adbManager,IWindowManager windowManager)
     {
         AdbManager = adbManager;
+        WindowManager = windowManager;
         this.DeviceStatesList = new();
         AdbManager.DevicesCountChanged += AdbManager_DevicesCountChanged;
     }
@@ -25,12 +27,18 @@ public partial class DevicesViewModel:ObservableObject
         switch (deviceStateData.State)
         {
             case AdbShell.DevicesChangedEnum.Add:
-                deviceStateData.Data.ForEach((val) => App.DispatcherChanged(()=>DeviceStatesList.Add(val.ChildConvert<DeviceStateData, ADBManagerDevicesItemVM>())));
+                deviceStateData.Data.ForEach((val) =>
+                {
+                    WindowManager.DispatcherChanged(() =>
+                    {
+                        this.DeviceStatesList.Add(val.ChildConvert<DeviceStateData, ADBManagerDevicesItemVM>());
+                    });
+                });
                 break;
             case AdbShell.DevicesChangedEnum.Remove:
                 deviceStateData.Data.ForEach((val) => 
                 {
-                    App.DispatcherChanged(() =>
+                    WindowManager.DispatcherChanged(() =>
                     {
                         foreach (var item in DeviceStatesList.ToArray())
                         {
@@ -43,7 +51,7 @@ public partial class DevicesViewModel:ObservableObject
             case AdbShell.DevicesChangedEnum.Changed:
                 deviceStateData.Data.ForEach((val) =>
                 {
-                    App.DispatcherChanged(() =>
+                    WindowManager.DispatcherChanged(() =>
                     {
                         foreach (var item in DeviceStatesList.ToArray())
                         {
@@ -55,7 +63,7 @@ public partial class DevicesViewModel:ObservableObject
                 });
                 break;
             case AdbShell.DevicesChangedEnum.ClearAll:
-                App.DispatcherChanged(() => DeviceStatesList.Clear());
+                WindowManager.DispatcherChanged(() => DeviceStatesList.Clear());
                 break;
         }
     }
@@ -79,6 +87,7 @@ public partial class DevicesViewModel:ObservableObject
     {
         if(deviceStateData == null) return;
         AdbManager.HotDevice = deviceStateData;
+        WindowManager.SetTitleBarText(RunResource.GetAppName() + $"  [调试：{deviceStateData.DeviceName}]");
     }
 
 
@@ -93,4 +102,5 @@ public partial class DevicesViewModel:ObservableObject
     ObservableCollection<ADBManagerDevicesItemVM> _DeviceStatesList;
 
     public IAdbManager AdbManager { get; }
+    public IWindowManager WindowManager { get; }
 }

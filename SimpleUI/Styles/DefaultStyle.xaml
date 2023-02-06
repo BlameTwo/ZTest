@@ -51,9 +51,18 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ItemsControl}">
-                    <ScrollViewer x:Name="ScrollViewer">
-                        <ItemsPresenter />
-                    </ScrollViewer>
+                    <Border
+                        Padding="3"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5"
+                        FocusVisualStyle="{x:Null}">
+                        <ScrollViewer x:Name="ScrollViewer" Margin="{TemplateBinding Padding}">
+                            <ItemsPresenter />
+                        </ScrollViewer>
+
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

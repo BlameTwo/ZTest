@@ -51,7 +51,7 @@ namespace AAPTForNet.Models {
         /// markup file (actually it's image, but packed to xml)
         /// or reference to another
         /// </summary>
-        internal string IconName { get; set; }
+        public string IconName { get; set; }
 
         internal Icon() => throw new NotImplementedException();
 

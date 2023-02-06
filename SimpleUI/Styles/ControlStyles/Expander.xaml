@@ -17,6 +17,8 @@
                         x:Name="border"
                         Width="{TemplateBinding Width}"
                         Height="{TemplateBinding Height}"
+                        MinHeight="{TemplateBinding MinHeight}"
+                        MaxHeight="{TemplateBinding MaxHeight}"
                         Margin="{TemplateBinding Margin}"
                         HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                         VerticalAlignment="{TemplateBinding VerticalAlignment}">

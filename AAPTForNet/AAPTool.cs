@@ -122,7 +122,6 @@ public class AAPTool : System.Diagnostics.Process {
 
         if (apk.Icon.IsImage) {
             // Included icon in manifest, extract it from apk
-            apk.Icon.RealPath = ApkExtractor.ExtractIconImage(path, apk.Icon);
             if (apk.Icon.IsHighDensity)
                 return apk;
         }
