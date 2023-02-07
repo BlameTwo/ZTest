@@ -48,9 +48,6 @@ public partial class AdbManager: IAdbManager
     }
 
 
-    
-
-
     public Task<bool> GetDevices()
     {
         throw new NotImplementedException();
@@ -67,12 +64,16 @@ public partial class AdbManager: IAdbManager
         tokensource.Cancel();
     }
 
-    public async Task<bool> StartAdb(Action<string> message)
+    public async Task<bool> StartAdb(Action<string> message,string port = null)
     {
-        var pro = ProcessManager.GetProcess("start-server", ProcessType.Adb);
+        var list = await GetDevicesList();
+        if (list.Data.Count > 0) return false;
+        string arg = port == null ? "-P 5555 start-server":$"-P {port} start-server";
+        var pro = ProcessManager.GetProcess(arg, ProcessType.Adb);
+        var str = pro.StartInfo.Arguments;
+        pro.Start();
         return await Task.Run(async () =>
         {
-            pro.Start();
             while (pro.StandardOutput.Peek()>-1)
             {
                 var line = await pro.StandardOutput.ReadLineAsync();
@@ -108,9 +109,4 @@ public partial class AdbManager: IAdbManager
         });
     }
 
-    
-
-    
-
-    
 }

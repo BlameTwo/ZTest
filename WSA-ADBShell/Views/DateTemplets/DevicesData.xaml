@@ -5,6 +5,17 @@
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <DataTemplate x:Key="DefaultAdbManagerItemvm" DataType="{x:Type data:ADBManagerDevicesItemVM}">
         <Grid>
+            <Grid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="投屏（scrcpy）" Icon="&#xE81E;">
+                        <MenuItem
+                            Command="{Binding ShowScropyCommand}"
+                            Header="开始投屏"
+                            Icon="&#xE846;" />
+                        <MenuItem Header="编辑配置文件" Icon="&#xE104;" />
+                    </MenuItem>
+                </ContextMenu>
+            </Grid.ContextMenu>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />

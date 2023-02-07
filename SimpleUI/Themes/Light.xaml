@@ -53,4 +53,11 @@
 
     <SolidColorBrush x:Key="Default.Dialog.BorderBrush.Brush" Color="{DynamicResource Default.Dialog.BorderBrush.Color}" />
     <Color x:Key="Default.Dialog.BorderBrush.Color">#232323</Color>
+
+    <SolidColorBrush x:Key="Default.ContextMenu.BorderBrush.Brush" Color="{DynamicResource Default.ContextMenu.BorderBrush.Color}" />
+    <Color x:Key="Default.ContextMenu.BorderBrush.Color">#FFC9C9C9</Color>
+
+    <SolidColorBrush x:Key="Default.ContextMenu.Background.Brush" Color="{DynamicResource Default.ContextMenu.Background.Color}" />
+    <Color x:Key="Default.ContextMenu.Background.Color">white</Color>
+
 </ResourceDictionary>

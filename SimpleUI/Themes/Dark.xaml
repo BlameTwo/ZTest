@@ -59,4 +59,10 @@
     <Color x:Key="Default.Dialog.BorderBrush.Color">#EBEBEB</Color>
 
 
+    <SolidColorBrush x:Key="Default.ContextMenu.BorderBrush.Brush" Color="{DynamicResource Default.ContextMenu.BorderBrush.Color}" />
+    <Color x:Key="Default.ContextMenu.BorderBrush.Color">#BFBFBF</Color>
+
+    <SolidColorBrush x:Key="Default.ContextMenu.Background.Brush" Color="{DynamicResource Default.ContextMenu.Background.Color}" />
+    <Color x:Key="Default.ContextMenu.Background.Color">#5F5F5F</Color>
+
 </ResourceDictionary>

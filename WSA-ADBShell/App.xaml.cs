@@ -19,6 +19,7 @@ public partial class App : Application
         var processman = GetService<ProcessManager>();
         processman.Adbpath = "D:\\platform-tools\\adb.exe";
         processman.Aaptpath = "D:\\platform-tools\\aapt.exe";
+        processman.ScropyPath = "D:\\platform-tools\\Scrcpy\\scrcpy.exe";
         AAPTool.AAPTpath = "D:\\platform-tools\\aapt.exe";
         var main = GetService<MainWindow>();
         GetService<IWindowManager>().Window = main;

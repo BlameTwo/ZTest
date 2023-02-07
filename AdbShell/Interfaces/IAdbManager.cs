@@ -1,6 +1,7 @@
 ﻿using AdbShell.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using static AdbShell.AdbManager;
 
@@ -20,6 +21,11 @@ public interface IAdbManager
     /// <param name="address"></param>
     /// <returns></returns>
     public Task<AdbCommandResult> Connect(string address=null);
+
+
+
+
+
     /// <summary>
     /// 刷新状态
     /// </summary>
@@ -50,5 +56,5 @@ public interface IAdbManager
     public DeviceStateData HotDevice { get; set; }
 
     public Task<bool> KillAdb();
-    public Task<bool> StartAdb(Action<string> message);
+    public Task<bool> StartAdb(Action<string> message, string port = null);
 }

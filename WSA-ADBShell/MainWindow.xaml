@@ -17,11 +17,6 @@
     Background="{DynamicResource ResourceKey=DefaultAppBackgroundBrush}"
     Style="{DynamicResource DefaultWindowBaseStyle}"
     mc:Ignorable="d">
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="MouseDoubleClick">
-            <i:InvokeCommandAction Command="{Binding ConnectCommand}" />
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
     <Grid x:Name="grid">
         <ui:NavigationView x:Name="navigation" Style="{DynamicResource IconNavigationViewStyle}">
             <i:Interaction.Triggers>

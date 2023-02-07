@@ -19,13 +19,6 @@ public partial class MainViewModel:ObservableObject
     }
 
 
-    [RelayCommand]
-    async void Connect()
-    {
-        var result =  await AdbManager.Connect();
-        ToastLitterMessage.Show($"状态：{result.Success}  {result.Message}");
-    }
-
 
     [RelayCommand]
     void Nav(object type)

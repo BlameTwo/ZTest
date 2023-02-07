@@ -3,12 +3,13 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
+using System.Reflection;
 
 namespace AdbShell;
 
 public partial class AdbManager
 {
-    
+    Process wifiprocess=null;
 
     private async Task<AdbCommandResult> connect(Process process, CancellationToken token, string connectname)
     {
@@ -42,4 +43,5 @@ public partial class AdbManager
             return new() { Success = false, Message = $"Error:   {errormessage}" };
         });
     }
+
 }
