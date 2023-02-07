@@ -1,7 +1,9 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.Input;
+using System;
 using System.Diagnostics;
 using System.Threading;
 using WSA_AdbShell.Events;
+using WSA_ADBShell.Services.Interfaces;
 
 namespace WSA_AdbShell.Models;
 
@@ -21,6 +23,15 @@ public class TaskManagerData
     }
 
     public Process process { get; set; }
+
+    public ITaskManager TaskManager { get; set; }
+
+    /// <summary>
+    /// 任务分类
+    /// </summary>
+    public TaskManagerType TaskType { get; set; }
+
+
 
     /// <summary>
     /// 进行输出
@@ -99,4 +110,13 @@ public class TaskManagerData
     /// 副标题
     /// </summary>
     public string SubTitle { get; set; }
+}
+
+
+public enum TaskManagerType
+{
+    /// <summary>
+    /// 屏幕任务
+    /// </summary>
+    Screen
 }

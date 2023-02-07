@@ -5,11 +5,21 @@
     xmlns:vm="clr-namespace:WSA_ADBShell.ViewModels.ItemsViewModels">
     <DataTemplate x:Key="DefaultTaskItemTemplate" DataType="{x:Type vm:TaskManagerItemVM}">
         <Border
+            Margin="3"
             Padding="5"
             Background="{DynamicResource Default.ContextMenu.Background.Brush}"
             BorderBrush="{DynamicResource Default.ContextMenu.BorderBrush.Brush}"
             BorderThickness="1"
-            CornerRadius="5">
+            CornerRadius="5"
+            IsEnabled="{Binding IsRun}">
+            <Border.ContextMenu>
+                <ContextMenu>
+                    <MenuItem
+                        Command="{Binding RemoveMeCommand}"
+                        Header="移除任务"
+                        Icon="&#xE160;" />
+                </ContextMenu>
+            </Border.ContextMenu>
             <Grid ToolTipService.ToolTip="{Binding NowOutput, Mode=OneWay}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -25,8 +35,7 @@
                     HorizontalAlignment="Right"
                     Command="{Binding StartCommand}"
                     Content="{Binding StringState}"
-                    Icon="Play"
-                    IsEnabled="{Binding IsRun}" />
+                    Icon="Play" />
             </Grid>
         </Border>
     </DataTemplate>
