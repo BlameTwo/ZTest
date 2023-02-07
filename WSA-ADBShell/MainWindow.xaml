@@ -29,11 +29,14 @@
                     Content="设备"
                     Icon="Devices"
                     TypeUri="{x:Type page:DevicesPage}" />
-                <ui:NavigationViewItem Content="扩展" Icon="Next" />
+                <ui:NavigationViewItem
+                    Content="设备管理"
+                    Icon="SwitchApps"
+                    TypeUri="{x:Type page:APKManagerPage}" />
                 <ui:NavigationViewItem
                     Content="管理"
                     Icon="Manage"
-                    TypeUri="{x:Type page:APKManagerPage}" />
+                    TypeUri="{x:Type page:ManagerPage}" />
             </ui:NavigationView.MenuItems>
             <ui:NavigationView.FooterMenuItems>
                 <ui:NavigationViewItem Content="设置" Icon="Settings" />

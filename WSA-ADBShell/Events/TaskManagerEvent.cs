@@ -2,8 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WSA_ADBShell.Services.Interfaces;
 
-namespace AdbShell.Events;
+namespace WSA_AdbShell.Events;
 
 public delegate void TaskManagerDelegate(TaskManagerEvent taskManagerEvent);
 
@@ -30,7 +31,7 @@ public class TaskManagerEventArg
     /// <summary>
     /// 是否退出
     /// </summary>
-    public string IsExit { get; set; }
+    public bool IsExit { get; set; }
     
     /// <summary>
     /// Task管理器

@@ -10,7 +10,7 @@
                     <MenuItem Header="投屏（scrcpy）" Icon="&#xE81E;">
                         <MenuItem
                             Command="{Binding ShowScropyCommand}"
-                            Header="开始投屏"
+                            Header="增加任务"
                             Icon="&#xE846;" />
                         <MenuItem Header="编辑配置文件" Icon="&#xE104;" />
                     </MenuItem>

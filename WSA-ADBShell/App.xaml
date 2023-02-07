@@ -13,6 +13,7 @@
                 <!--  默认主题样式，此属性支持热重载  -->
                 <style:SimpleStyle Type="Default" />
                 <ResourceDictionary Source="pack://application:,,,/WSA-ADBShell;component/Views/DateTemplets/DevicesData.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WSA-ADBShell;component/Views/DateTemplets/TaskManagerItem.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -25,7 +25,7 @@ public static class RunResource
             service.AddSingleton<APKManagerPage>();
             service.AddSingleton<DevicesPage>();
             service.AddTransient<InstallApkDialog>();
-
+            service.AddSingleton<ManagerPage>();
         });
         return hostBuilder; 
     }
@@ -36,9 +36,10 @@ public static class RunResource
         hostBuilder.ConfigureServices((content, service) =>
         {
             service.AddSingleton<MainViewModel>();
+            service.AddSingleton<ManagerViewModel>();
             service.AddSingleton<APKManagerViewModel>();
             service.AddSingleton<DevicesViewModel>();
-            service.AddScoped<InstallApkViewModel>();
+            service.AddTransient<InstallApkViewModel>();
         });
         return hostBuilder;
     }
@@ -53,6 +54,7 @@ public static class RunResource
 
             //ADB管理器
             service.AddSingleton<IAdbManager,AdbManager>();
+            service.AddSingleton<ITaskManager,TaskManager>();
 
             //包管理服务
             service.AddSingleton<IPackageManager, PackageManager>();

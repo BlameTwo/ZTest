@@ -2,8 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WSA_AdbShell.Models;
 
-namespace AdbShell.Interfaces;
+namespace WSA_ADBShell.Services.Interfaces;
 
 public interface ITaskManager
 {
