@@ -9,7 +9,6 @@
     </ResourceDictionary.MergedDictionaries>
     <Style TargetType="{x:Type ui:Expander}">
         <Setter Property="Margin" Value="5" />
-        <Setter Property="Foreground" Value="{DynamicResource DefaultAppFillBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ui:Expander}">
@@ -49,6 +48,7 @@
                                 CornerRadius="{TemplateBinding CornerRadius}"
                                 Cursor="Hand"
                                 FocusVisualStyle="{x:Null}"
+                                Foreground="{TemplateBinding Foreground}"
                                 IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                 Template="{DynamicResource ResourceKey=ExpanderUIToggleButton}">
                                 <Grid HorizontalAlignment="Left">

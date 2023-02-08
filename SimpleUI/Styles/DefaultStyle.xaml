@@ -21,6 +21,7 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/IconNavigationViews.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/Toast.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/ContextMenu.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/ComboBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style BasedOn="{StaticResource DefaultTreeViewItem}" TargetType="ui:TreeViewItem" />

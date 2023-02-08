@@ -54,6 +54,7 @@ public static class RunResource
 
             //ADB管理器
             service.AddSingleton<IAdbManager,AdbManager>();
+
             service.AddSingleton<ITaskManager,TaskManager>();
 
             //包管理服务
@@ -75,6 +76,7 @@ public static class RunResource
 
             //小弹窗服务
             service.AddSingleton<IToastLitterMessage, ToastLitterMessage>();
+
 
             service.AddSingleton<IWindowManager, WindowManager>();
         });
