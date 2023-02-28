@@ -80,6 +80,7 @@
                                         FontFamily="Segoe Fluent Icons"
                                         Foreground="{TemplateBinding Foreground}"
                                         Style="{DynamicResource TitleBarDefaultButtonStyle}"
+                                        Visibility="{TemplateBinding MaxButtonVisibility}"
                                         WindowChrome.IsHitTestVisibleInChrome="True" />
                                     <Button
                                         x:Name="ExitBth"

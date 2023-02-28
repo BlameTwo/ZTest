@@ -3,22 +3,147 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="clr-namespace:SimpleUI.Controls">
     <Style TargetType="{x:Type ComboBox}">
+        <Setter Property="Foreground" Value="{DynamicResource DefaultAppFillBrush}" />
+        <Setter Property="Background" Value="{DynamicResource Default.Control.Background.Brush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Default.Control.Border.Brush}" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
-                    <Grid>
-                        <Border Background="{DynamicResource Default.Control.Background.Brush}" CornerRadius="5">
-                            <ui:ToggleButton Foreground="{TemplateBinding Foreground}" Template="{DynamicResource ExpanderUIToggleButton}">
-                                <Grid HorizontalAlignment="Left">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-
-                                </Grid>
-                            </ui:ToggleButton>
-                        </Border>
+                    <Grid x:Name="templateRoot" Cursor="Hand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Border Grid.RowSpan="2" CornerRadius="5" />
+                        <ui:ToggleButton
+                            HorizontalContentAlignment="Left"
+                            VerticalContentAlignment="Center"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Foreground="{TemplateBinding Foreground}"
+                            IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                            Template="{DynamicResource ExpanderUIToggleButton}">
+                            <ContentPresenter
+                                x:Name="contentPresenter"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding SelectionBoxItem}"
+                                ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
+                                ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                IsHitTestVisible="false"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </ui:ToggleButton>
+                        <Popup
+                            x:Name="PAPR_Popup"
+                            MinWidth="{Binding ActualWidth, ElementName=templateRoot}"
+                            AllowsTransparency="true"
+                            IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                            Placement="Bottom"
+                            PopupAnimation="Fade">
+                            <Grid MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                <Border
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    CornerRadius="5">
+                                    <Grid
+                                        x:Name="grid"
+                                        Margin="5"
+                                        RenderOptions.ClearTypeHint="Enabled">
+                                        <ItemsPresenter
+                                            x:Name="ItemsPresenter"
+                                            KeyboardNavigation.DirectionalNavigation="Contained"
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Popup>
                     </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style TargetType="{x:Type ComboBoxItem}">
+
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                    <Grid Margin="{TemplateBinding Margin}">
+                        <!--  移动到边上的线框  -->
+                        <Border
+                            x:Name="border1"
+                            BorderBrush="{DynamicResource Default.Accent.Brush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="3"
+                            Opacity="0" />
+                        <!--  内容控件，变色为强调色  -->
+                        <Border
+                            x:Name="border"
+                            Background="{DynamicResource Default.Accent.Brush}"
+                            CornerRadius="3"
+                            Opacity="0" />
+                        <ContentPresenter x:Name="PRPA_Content" Margin="{TemplateBinding Padding}" />
+
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="border1"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="1"
+                                            Duration="0:0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="border1"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="0"
+                                            Duration="0:0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+
+                        <Trigger Property="IsSelected" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="border"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="1"
+                                            Duration="0:0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="border"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="0"
+                                            Duration="0:0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

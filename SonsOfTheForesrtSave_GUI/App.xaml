@@ -1,0 +1,16 @@
+﻿<Application
+    x:Class="SonsOfTheForesrtSave_GUI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:SonsOfTheForesrtSave_GUI"
+    xmlns:style="clr-namespace:SimpleUI.Styles;assembly=SimpleUI"
+    xmlns:theme="clr-namespace:SimpleUI.Themes;assembly=SimpleUI">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <theme:Theme Type="Light" />
+                <style:SimpleStyle Type="Default" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -45,6 +45,8 @@
                             Margin="10,10,10,10"
                             Padding="5"
                             Background="{TemplateBinding ContentBackground}"
+                            BorderBrush="{DynamicResource Navigation.LineBrush}"
+                            BorderThickness="0.2,0,0,0"
                             CornerRadius="{TemplateBinding CornerRadius}"
                             Visibility="Visible">
                             <ContentPresenter Content="{TemplateBinding Content}" SnapsToDevicePixels="True" />
@@ -140,7 +142,7 @@
                             </Trigger.ExitActions>
                         </Trigger>
                         <Trigger Property="IsActive" Value="True">
-                            <Setter Property="Foreground" Value="{DynamicResource Default.Accent.Brush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource Default.Accent.Brush}" />
                             <Trigger.EnterActions>
                                 <BeginStoryboard Storyboard="{StaticResource Ispressedtrue}" />
                             </Trigger.EnterActions>
