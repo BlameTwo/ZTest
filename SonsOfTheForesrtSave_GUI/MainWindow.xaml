@@ -24,6 +24,7 @@
             <ui:NavigationViewItem Content="背包" Icon="HomeGroup" />
             <ui:NavigationViewItem Content="环境" Icon="World" />
             <ui:NavigationViewItem Content="设定" Icon="Settings" />
+            <ui:NavigationViewItem Content="更新" Icon="InsiderHubApp" />
         </ui:NavigationView.MenuItems>
     </ui:NavigationView>
 </ui:WindowBase>
