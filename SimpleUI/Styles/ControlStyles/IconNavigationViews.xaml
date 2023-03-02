@@ -21,10 +21,13 @@
                         </Grid.ColumnDefinitions>
                         <Grid>
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
                                 <RowDefinition />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
+                            <ContentControl Content="{TemplateBinding NavigationHeader}" SnapsToDevicePixels="True" />
                             <ItemsControl
+                                Grid.Row="1"
                                 VerticalAlignment="Top"
                                 ItemContainerStyle="{TemplateBinding ItemContainerStyle}"
                                 ItemsSource="{TemplateBinding MenuItems}"
@@ -32,7 +35,7 @@
                                 ScrollViewer.VerticalScrollBarVisibility="Hidden" />
 
                             <ItemsControl
-                                Grid.Row="1"
+                                Grid.Row="2"
                                 VerticalAlignment="Bottom"
                                 ItemContainerStyle="{TemplateBinding ItemContainerStyle}"
                                 ItemsSource="{TemplateBinding FooterMenuItems}"

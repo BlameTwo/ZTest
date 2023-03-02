@@ -14,25 +14,6 @@ public class PlayerStateDataModel
 
 public class PlayerStateDataEntries
 {
-    [JsonPropertyName("_entries")]public List<DataBaseModel> Data { get; set; }
+    [JsonPropertyName("_entries")]public List<PlayerStateDataItem> Data { get; set; }
 }
 
-public class PlayerStateConverter : JsonConverter<List<DataBaseModel>>
-{
-    public override List<DataBaseModel> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-    {
-        List<DataBaseModel> list = new();
-        var json = JsonObject.Parse(ref reader).AsArray();
-        foreach (var item in json)
-        {
-            var it =   JsonSerializer.Deserialize<DataBaseModel>(item);
-            list.Add(it);
-        }
-        return list;
-    }
-
-    public override void Write(Utf8JsonWriter writer, List<DataBaseModel> value, JsonSerializerOptions options)
-    {
-
-    }
-}

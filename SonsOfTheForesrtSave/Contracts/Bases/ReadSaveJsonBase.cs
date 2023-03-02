@@ -8,10 +8,6 @@ namespace SonsOfTheForesrtSaveLib.Contracts.Bases;
 
 public class ReadSaveJsonBase
 {
-    public virtual async Task<ModelBase<PlayerStateDataModel>> ReadSave()
-    {
-        var str =new FileStream("PlayerStateSaveData.json",FileMode.Open,FileAccess.Read);
-        return await JsonSerializer.DeserializeAsync<ModelBase<PlayerStateDataModel>>(str);
-    }
+   
 
 }

@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace SonsOfTheForesrtSaveLib.Models
 {
-    public class DataBaseModel
+    public class PlayerStateDataItem
     {
         [JsonPropertyName("Name")]public string Name { get; set; }
 

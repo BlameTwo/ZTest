@@ -5,6 +5,7 @@ using SimpleUI.Interface.AppInterfaces;
 using SimpleUI.Interface.AppInterfaces.Services;
 using SonsOfTheForesrtSave_GUI.Services;
 using SonsOfTheForesrtSave_GUI.ViewModels;
+using SonsOfTheForesrtSave_GUI.Views;
 using System;
 
 namespace SonsOfTheForesrtSave_GUI;
@@ -16,7 +17,10 @@ public static class HostResgister
         builder.ConfigureServices(services =>
         {
             services.AddTransient<MainWindow>();
+            services.AddTransient<StateSavePage>();
             services.AddTransient<FirstSteamConfig>();
+            services.AddTransient<UpdateView>();
+            services.AddTransient<WorldSaveStatePage>();
         });
         return builder;
     }
@@ -27,6 +31,7 @@ public static class HostResgister
         {
             services.AddSingleton<IAppNavigationViewService, AppNavigationViewService>();
             services.AddSingleton<IWindowManager, WindowManager>();
+            services.AddSingleton<IToastLitterMessage, ToastLitterMessage>();
         });
         return builder;
     }
@@ -36,6 +41,9 @@ public static class HostResgister
         builder.ConfigureServices(services =>
         {
             services.AddTransient<FirstSteamConfigViewModel>();
+            services.AddTransient<StateSaveViewModel>();
+            services.AddTransient<MainViewModel>();
+            services.AddTransient<WorldSaveStateViewModel>();
         });
         return builder;
     }

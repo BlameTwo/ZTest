@@ -7,12 +7,14 @@ using System.Windows;
 using SimpleUI.Helper;
 using Microsoft.Xaml.Behaviors.Layout;
 using SimpleUI.Interface;
+using System.Windows.Markup;
 
 namespace SimpleUI.Controls;
 
 /// <summary>
 /// 简单对话框服务
 /// </summary>
+[ContentProperty(name: "Content")]
 public class DialogHost : ContentControl, IDialogHost,IDisposable
 {
     //本文档来自于这里：https://github.com/BlameTwo/ZUDesignControl.git，经过一定的修改，虽然已经私有
@@ -64,7 +66,7 @@ public class DialogHost : ContentControl, IDialogHost,IDisposable
                         Console.WriteLine("未获得父控件");
 #endif
                     }
-                    mask.Child = ((UIElement)Content);
+                    mask.Child = ((UIElement)this);
                     _container.Child = mask;
                     mask.DataContext = VM;
                     layer.Add(_container);
@@ -190,6 +192,7 @@ public class DialogHost : ContentControl, IDialogHost,IDisposable
     /// <summary>
     /// 此内容为弹出框的全部内容，如果只需要一段文字，请使用ContentDialog.HostContent
     /// </summary>
+    
     public object Content
     {
         get { return (object)GetValue(ContentProperty); }

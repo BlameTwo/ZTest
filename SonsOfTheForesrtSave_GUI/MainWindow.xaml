@@ -4,27 +4,49 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:appsetting="clr-namespace:SonsOfTheForesrtSave_GUI.Resources"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:page="clr-namespace:SonsOfTheForesrtSave_GUI.Views"
     xmlns:ui="clr-namespace:SimpleUI.Controls;assembly=SimpleUI"
+    xmlns:vm="clr-namespace:SonsOfTheForesrtSave_GUI.ViewModels"
     Title="{x:Static appsetting:AppConfig.AppName}"
     Width="800"
     Height="450"
     MinWidth="250"
     MinHeight="250"
+    d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
     Background="{DynamicResource ResourceKey=DefaultAppBackgroundBrush}"
     Style="{DynamicResource DefaultWindowBaseStyle}"
     mc:Ignorable="d">
-    <ui:NavigationView Style="{DynamicResource IconNavigationViewStyle}">
-        <ui:NavigationView.MenuItems>
-            <ui:NavigationViewItem
-                x:Name="cd"
-                Content="状态"
-                Icon="TwoBars" />
-            <ui:NavigationViewItem Content="实体" Icon="Family" />
-            <ui:NavigationViewItem Content="背包" Icon="HomeGroup" />
-            <ui:NavigationViewItem Content="环境" Icon="World" />
-            <ui:NavigationViewItem Content="设定" Icon="Settings" />
-            <ui:NavigationViewItem Content="更新" Icon="InsiderHubApp" />
-        </ui:NavigationView.MenuItems>
-    </ui:NavigationView>
+    <Grid x:Name="grid">
+        <ui:NavigationView x:Name="navcontrol" Style="{DynamicResource IconNavigationViewStyle}">
+
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding NavigationCommand}" CommandParameter="{Binding ElementName=navcontrol, Path=SelectionItem.TypeUri, Mode=TwoWay}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <ui:NavigationView.MenuItems>
+                <ui:NavigationViewItem
+                    Content="信息"
+                    Icon="World"
+                    TypeUri="{x:Type page:WorldSaveStatePage}" />
+                <ui:NavigationViewItem
+                    x:Name="cd"
+                    Content="状态"
+                    Icon="TwoBars"
+                    TypeUri="{x:Type page:StateSavePage}" />
+                <ui:NavigationViewItem Content="实体" Icon="Family" />
+                <ui:NavigationViewItem Content="背包" Icon="HomeGroup" />
+                <ui:NavigationViewItem Content="设定" Icon="Settings" />
+                <ui:NavigationViewItem
+                    Content="更新"
+                    Icon="InsiderHubApp"
+                    TypeUri="{x:Type page:UpdateView}" />
+            </ui:NavigationView.MenuItems>
+            <ui:NavigationView.Content>
+                <Frame x:Name="framebase" NavigationUIVisibility="Hidden" />
+            </ui:NavigationView.Content>
+        </ui:NavigationView>
+    </Grid>
 </ui:WindowBase>

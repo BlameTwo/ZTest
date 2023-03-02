@@ -8,16 +8,19 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBox}">
-                    <Grid>
-                        <Border
-                            Background="Transparent"
-                            BorderBrush="Transparent"
-                            BorderThickness="0">
-                            <ScrollViewer FontSize="{TemplateBinding FontSize}">
-                                <ItemsPresenter />
-                            </ScrollViewer>
-                        </Border>
-                    </Grid>
+                    <Border
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        MaxWidth="{TemplateBinding MaxWidth}"
+                        MaxHeight="{TemplateBinding MaxHeight}"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        BorderThickness="0"
+                        SnapsToDevicePixels="True">
+                        <ScrollViewer FontSize="{TemplateBinding FontSize}">
+                            <ItemsPresenter SnapsToDevicePixels="True" />
+                        </ScrollViewer>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

@@ -60,4 +60,11 @@
     <SolidColorBrush x:Key="Default.ContextMenu.Background.Brush" Color="{DynamicResource Default.ContextMenu.Background.Color}" />
     <Color x:Key="Default.ContextMenu.Background.Color">white</Color>
 
+    <SolidColorBrush x:Key="Default.NumberBox.IsNumber.Brush" Color="{DynamicResource Default.Number.IsNumber.Color}" />
+    <Color x:Key="Default.Number.IsNumber.Color">red</Color>
+
+
+    <SolidColorBrush x:Key="TipCard.Sucess.Brush">#71F791</SolidColorBrush>
+    <SolidColorBrush x:Key="TipCard.Warning.Brush">#F9FF6C</SolidColorBrush>
+    <SolidColorBrush x:Key="TipCard.Error.Brush">#F48888</SolidColorBrush>
 </ResourceDictionary>

@@ -22,6 +22,10 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/Toast.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/ContextMenu.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/ComboBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/NumberBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/RadioButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/CheckButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/ControlStyles/TipCard.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style BasedOn="{StaticResource DefaultTreeViewItem}" TargetType="ui:TreeViewItem" />

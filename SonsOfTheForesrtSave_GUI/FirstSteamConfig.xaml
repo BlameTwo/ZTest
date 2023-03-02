@@ -74,6 +74,7 @@
             VerticalAlignment="Center"
             Command="{Binding GoGameCommand}"
             Content="开始"
+            Cursor="Hand"
             Icon="Go" />
     </Grid>
 </ui:WindowBase>

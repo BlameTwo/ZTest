@@ -11,12 +11,14 @@ namespace SonsOfTheForesrtSaveLib.SinglePlayer;
 /// <summary>
 /// 此类主要操作和转换：PlayerStateSaveData.json
 /// </summary>
-public class PlayerStateData:ReadSaveJsonBase
+public class PlayerStateData
 {
-    public override Task<ModelBase<SonsOfTheForesrtSaveLib.Models.SinglePlayer.PlayerStateDataModel>> ReadSave()
-    {
-        return base.ReadSave();
+
+    public async Task<ModelBase<PlayerStateDataModel>> ReadSave() {
+        var str = new FileStream(Path.Combine(SaveConfig.DirPath, PlayerStateFileName), FileMode.Open, FileAccess.Read);
+        return await JsonSerializer.DeserializeAsync<ModelBase<PlayerStateDataModel>>(str);
     }
+
 
     public PlayerStateDataEntries FormatData(ModelBase<Models.SinglePlayer.PlayerStateDataModel> data)
     {
@@ -25,6 +27,7 @@ public class PlayerStateData:ReadSaveJsonBase
         return jo;
     }
 
+    internal string PlayerStateFileName = "PlayerStateSaveData.json";
 
     public void WriteSave(ModelBase<PlayerStateDataModel> database, PlayerStateDataEntries playerStateDataEntries)
     {
@@ -33,6 +36,7 @@ public class PlayerStateData:ReadSaveJsonBase
         ModelBase<PlayerStateDataModel> model = database;
         model.Data.StateData = str;
         var result = JsonSerializer.Serialize(database,typeof(ModelBase<PlayerStateDataModel>));
-        File.WriteAllText("D:\\Test.json", Regex.Unescape(result));
+
+        File.WriteAllText(Path.Combine(SaveConfig.DirPath, PlayerStateFileName), Regex.Unescape(result));
     }
 }

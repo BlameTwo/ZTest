@@ -2,9 +2,9 @@
 
 public class AppConfig
 {
-    public static readonly string AppName  = "森林之子存档编辑器";
+    public static readonly string AppName  = "森林之子存档修改器（抢先版";
 
     public static readonly string Version = "V1.0";
 
-    public static readonly string By = "怪、Akk";
+    public static readonly string By = "Blame、Akk";
 }
