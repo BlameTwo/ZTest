@@ -21,6 +21,7 @@ public static class HostResgister
             services.AddTransient<FirstSteamConfig>();
             services.AddTransient<UpdateView>();
             services.AddTransient<WorldSaveStatePage>();
+            services.AddTransient<PackagePage>();
         });
         return builder;
     }
@@ -44,6 +45,7 @@ public static class HostResgister
             services.AddTransient<StateSaveViewModel>();
             services.AddTransient<MainViewModel>();
             services.AddTransient<WorldSaveStateViewModel>();
+            services.AddTransient<PackageViewModel>();
         });
         return builder;
     }

@@ -11,7 +11,8 @@
     <SolidColorBrush x:Key="Card.Background.Brush" Color="{DynamicResource Card.Background.Color}" />
 
     <!--  应用程序点缀颜色  -->
-    <Color x:Key="Default.Accent.Color">#8D00FC</Color>
+    <Color x:Key="Default.Accent.Color">#3D7CFF</Color>
+    <Color x:Key="Default.Accent.Second.Color">#99BAFF</Color>
 
     <SolidColorBrush x:Key="Navigation.MenuBackImage.Color" Color="#7F9A8B8B" />
 
@@ -51,6 +52,7 @@
     <SolidColorBrush x:Key="Default.Control.Background.Brush" Color="{DynamicResource Default.Control.Background.Color}" />
 
     <SolidColorBrush x:Key="Default.Accent.Brush" Color="{DynamicResource Default.Accent.Color}" />
+    <SolidColorBrush x:Key="Default.Accent.Second.Brush" Color="{DynamicResource Default.Accent.Second.Color}" />
 
     <SolidColorBrush x:Key="Default.Dialog.Background.Brush" Color="{DynamicResource Default.Dialog.Background.Color}" />
     <Color x:Key="Default.Dialog.Background.Color">#252525</Color>

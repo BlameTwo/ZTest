@@ -1,0 +1,133 @@
+﻿<Page
+    x:Class="SonsOfTheForesrtSave_GUI.Views.PackagePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="clr-namespace:SonsOfTheForesrtSaveLib.Models.SinglePlayer;assembly=SonsOfTheForesrtSaveLib"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:local="clr-namespace:SonsOfTheForesrtSave_GUI.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:panel="clr-namespace:SimpleUI.Controls.Panels;assembly=SimpleUI"
+    xmlns:ui="clr-namespace:SimpleUI.Controls;assembly=SimpleUI"
+    xmlns:vm="clr-namespace:SonsOfTheForesrtSave_GUI.ViewModels"
+    Title="PackagePage"
+    d:DataContext="{d:DesignInstance Type={x:Type vm:PackageViewModel}}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Foreground="{DynamicResource DefaultAppFillBrush}"
+    mc:Ignorable="d">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Image
+                Height="150"
+                Source="/Resources/Images/BAGIMG.png"
+                Stretch="Uniform" />
+            <TextBlock
+                Grid.Column="1"
+                Margin="20,10,10,10"
+                FontSize="15"
+                TextWrapping="Wrap">
+                <Bold FontSize="30">背包</Bold>
+                <LineBreak />
+                <LineBreak />
+                <Run Text="资源背包中的资源" />
+                <LineBreak />
+                <LineBreak />
+                <Run Text="此页目不能修改手持和快捷键物品" />
+            </TextBlock>
+            <StackPanel
+                Grid.Column="1"
+                Margin="0,0,10,0"
+                HorizontalAlignment="Right">
+                <ui:Button Content="复制存档Json" Icon="Copy" />
+                <ui:Button
+                    Margin="0,10,0,0"
+                    Content="备份背包存档"
+                    Icon="Back" />
+                <ui:Button
+                    Margin="0,10,0,0"
+                    Content="保存当前存档"
+                    Icon="Save" />
+            </StackPanel>
+        </Grid>
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding ItemsData.ItemInstanceManager.ItemBlocks, Mode=OneWay}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type data:ItemBlock}">
+                    <Border
+                        Margin="5"
+                        Background="{DynamicResource Default.Control.Background.Brush}"
+                        BorderBrush="{DynamicResource Default.Control.Border.Brush}"
+                        BorderThickness="1"
+                        CornerRadius="3">
+                        <Border.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="数量" Icon="&#xE789;">
+                                    <MenuItem Header="增加" Icon="&#xE948;" />
+                                    <MenuItem Header="减少" Icon="&#xE949;" />
+                                </MenuItem>
+                                <MenuItem Header="报告ID错误" Icon="&#xE783;" />
+                            </ContextMenu>
+                        </Border.ContextMenu>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <ui:FontIcon
+                                Margin="10,0,0,0"
+                                HorizontalAlignment="Left"
+                                FontSize="18"
+                                Glyph="&#xE7B8;" />
+                            <Grid Grid.Column="1" Margin="20,0,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontSize="14"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource Default.Accent.Second.Brush}"
+                                    Text="{Binding ItemID, Mode=OneWay, Converter={StaticResource PackageIDConvert}}" />
+                                <TextBlock Grid.Row="1" VerticalAlignment="Center">
+                                    <Run Text="共计：" />
+                                    <Run Text="{Binding TotalCount, Mode=OneWay}" />
+                                </TextBlock>
+                                <TextBlock
+                                    Grid.Row="2"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding ItemID, Mode=OneWay}" />
+                            </Grid>
+                        </Grid>
+
+
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <panel:VirtualizingWrapPanel
+                        IsItemsHost="True"
+                        ItemSize="180,80"
+                        Orientation="Vertical"
+                        SpacingMode="Uniform"
+                        StretchItems="True" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+    </Grid>
+</Page>

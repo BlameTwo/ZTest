@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Text;
 
 namespace SonsOfTheForesrtSaveLib.SinglePlayer;
 
@@ -15,8 +16,11 @@ public class PlayerStateData
 {
 
     public async Task<ModelBase<PlayerStateDataModel>> ReadSave() {
-        var str = new FileStream(Path.Combine(SaveConfig.DirPath, PlayerStateFileName), FileMode.Open, FileAccess.Read);
-        return await JsonSerializer.DeserializeAsync<ModelBase<PlayerStateDataModel>>(str);
+        var str = File.ReadAllText(Path.Combine(SaveConfig.DirPath, PlayerStateFileName));
+        byte[] array = Encoding.ASCII.GetBytes(str);
+        MemoryStream stream = new MemoryStream(array);
+        StreamReader reader = new StreamReader(stream);
+        return await JsonSerializer.DeserializeAsync<ModelBase<PlayerStateDataModel>>(stream);
     }
 
 

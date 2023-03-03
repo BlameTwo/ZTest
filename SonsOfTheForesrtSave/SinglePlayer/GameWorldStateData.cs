@@ -17,7 +17,7 @@ public class GameWorldStateData: ReadSaveJsonBase {
     public async Task<ModelBase<GameWorldStateResultModel>> ReadSave() {
         var str = File.ReadAllText(Path.Combine(SaveConfig.DirPath,GameWroldFileName));
         byte[] array = Encoding.ASCII.GetBytes(str);
-        MemoryStream stream = new MemoryStream(array);             //convert stream 2 string      
+        MemoryStream stream = new MemoryStream(array);    
         StreamReader reader = new StreamReader(stream);
         return await JsonSerializer.DeserializeAsync<ModelBase<GameWorldStateResultModel>>(stream) ;
     }

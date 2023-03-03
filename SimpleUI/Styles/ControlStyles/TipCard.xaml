@@ -7,7 +7,6 @@
         <Setter Property="CornerRadius" Value="{DynamicResource DefaultCornerRadius}" />
         <Setter Property="BorderBrush" Value="{DynamicResource Default.Control.Border.Brush}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ui:TipCard}">
@@ -41,18 +40,24 @@
                         <Trigger Property="TipType" Value="Default" />
                         <Trigger Property="TipType" Value="Sucess">
                             <Setter TargetName="border" Property="Background" Value="{DynamicResource TipCard.Sucess.Brush}" />
-                            <Setter Property="Foreground" Value="Black" />
+
                             <Setter TargetName="icon" Property="Glyph" Value="&#xE73E;" />
                         </Trigger>
                         <Trigger Property="TipType" Value="Error">
                             <Setter TargetName="border" Property="Background" Value="{DynamicResource TipCard.Error.Brush}" />
-                            <Setter Property="Foreground" Value="Black" />
+
                             <Setter TargetName="icon" Property="Glyph" Value="&#xE783;" />
                         </Trigger>
                         <Trigger Property="TipType" Value="Warning">
                             <Setter TargetName="border" Property="Background" Value="{DynamicResource TipCard.Warning.Brush}" />
-                            <Setter Property="Foreground" Value="Black" />
+
                             <Setter TargetName="icon" Property="Glyph" Value="&#xE7BA;" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="Gray" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Setter Property="Foreground" Value="Black" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

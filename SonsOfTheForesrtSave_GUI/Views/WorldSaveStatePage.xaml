@@ -187,13 +187,28 @@
                     Header="主线和NPC信息"
                     Icon="Family">
                     <StackPanel>
-                        <ui:TipCard Content="请注意，这些信息请谨慎修改" TipType="Warning" />
+                        <ui:TipCard Content="以下信息不可修改" TipType="Warning" />
                         <StackPanel Orientation="Horizontal">
-                            <CheckBox Content="三手女人是否死亡" IsChecked="{Binding Savedata.IsVirginiaDead, Mode=TwoWay}" />
-                            <CheckBox Content="凯文是否死亡" IsChecked="{Binding Savedata.IsRobbyDead, Mode=TwoWay}" />
-                            <CheckBox Content="主线是否通关" IsChecked="{Binding Savedata.CoreGameCompleted, Mode=TwoWay}" />
-                            <CheckBox Content="是否逃离岛屿" IsChecked="{Binding Savedata.EscapedIsland, Mode=TwoWay}" />
-                            <CheckBox Content="是否留在岛屿" IsChecked="{Binding Savedata.StayedOnIsland, Mode=TwoWay}" />
+                            <CheckBox
+                                Content="三手女人是否死亡"
+                                IsChecked="{Binding Savedata.IsVirginiaDead, Mode=TwoWay}"
+                                IsEnabled="False" />
+                            <CheckBox
+                                Content="凯文是否死亡"
+                                IsChecked="{Binding Savedata.IsRobbyDead, Mode=TwoWay}"
+                                IsEnabled="False" />
+                            <CheckBox
+                                Content="主线是否通关"
+                                IsChecked="{Binding Savedata.CoreGameCompleted, Mode=TwoWay}"
+                                IsEnabled="False" />
+                            <CheckBox
+                                Content="是否逃离岛屿"
+                                IsChecked="{Binding Savedata.EscapedIsland, Mode=TwoWay}"
+                                IsEnabled="False" />
+                            <CheckBox
+                                Content="是否留在岛屿"
+                                IsChecked="{Binding Savedata.StayedOnIsland, Mode=TwoWay}"
+                                IsEnabled="False" />
                         </StackPanel>
                     </StackPanel>
                 </ui:Expander>

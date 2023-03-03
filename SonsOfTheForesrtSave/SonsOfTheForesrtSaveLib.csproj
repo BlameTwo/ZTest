@@ -13,4 +13,10 @@
     <Folder Include="Contracts\Bases\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="PackageSource.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

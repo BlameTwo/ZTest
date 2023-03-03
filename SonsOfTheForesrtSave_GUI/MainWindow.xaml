@@ -37,7 +37,10 @@
                     Icon="TwoBars"
                     TypeUri="{x:Type page:StateSavePage}" />
                 <ui:NavigationViewItem Content="实体" Icon="Family" />
-                <ui:NavigationViewItem Content="背包" Icon="HomeGroup" />
+                <ui:NavigationViewItem
+                    Content="背包"
+                    Icon="HomeGroup"
+                    TypeUri="{x:Type page:PackagePage}" />
                 <ui:NavigationViewItem Content="设定" Icon="Settings" />
                 <ui:NavigationViewItem
                     Content="更新"

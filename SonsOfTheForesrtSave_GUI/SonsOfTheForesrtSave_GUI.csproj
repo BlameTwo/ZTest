@@ -2,11 +2,22 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFrameworks>net6.0-windows;net48</TargetFrameworks>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+	  <LangVersion>11</LangVersion>
     <UseWindowsForms>True</UseWindowsForms>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Images\BAGIMG.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\BAGIMG.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
@@ -22,7 +33,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Models\" />
     <Folder Include="Services\Interfaces\" />
+    <Folder Include="Enum\" />
+    <Folder Include="Views\ItemTemplate\" />
   </ItemGroup>
 
   <ItemGroup>
