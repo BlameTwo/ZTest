@@ -21,7 +21,18 @@ public class PlayerPackageData {
         return await JsonSerializer.DeserializeAsync<ModelBase<PlayerPackageModelData>>(stream);
     }
 
-    public PlayerInventoryData FormatData(PlayerPackageModelData data) {
+    public PlayerInventoryData FormatData(PlayerPackageModelData data) 
+    {
         return JsonSerializer.Deserialize<PlayerInventoryData>(JsonObject.Parse(data.Data));
+    }
+
+    public void SaveData(ModelBase<PlayerPackageModelData> database, PlayerInventoryData model) 
+    {
+        var modeldata = JsonSerializer.Serialize<PlayerInventoryData>(model);
+        var data = database;
+        var playerintent = JsonSerializer.Serialize(model);
+        data.Data.Data = playerintent;
+        var result = JsonSerializer.Serialize(data);
+        File.WriteAllText(Path.Combine(SaveConfig.DirPath, GameWroldFileName),result, Encoding.UTF8);
     }
 }

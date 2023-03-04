@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:data="clr-namespace:SonsOfTheForesrtSaveLib.Models.SinglePlayer;assembly=SonsOfTheForesrtSaveLib"
+    xmlns:data="clr-namespace:SonsOfTheForesrtSave_GUI.ViewModels.ItemViewModel"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:local="clr-namespace:SonsOfTheForesrtSave_GUI.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -52,82 +52,104 @@
                 Grid.Column="1"
                 Margin="0,0,10,0"
                 HorizontalAlignment="Right">
-                <ui:Button Content="复制存档Json" Icon="Copy" />
+                <ui:Button
+                    Command="{Binding CopyJsonCommand}"
+                    Content="复制存档Json"
+                    Icon="Copy" />
                 <ui:Button
                     Margin="0,10,0,0"
                     Content="备份背包存档"
                     Icon="Back" />
                 <ui:Button
                     Margin="0,10,0,0"
+                    Command="{Binding SaveDataCommand}"
                     Content="保存当前存档"
                     Icon="Save" />
             </StackPanel>
         </Grid>
-        <ItemsControl Grid.Row="1" ItemsSource="{Binding ItemsData.ItemInstanceManager.ItemBlocks, Mode=OneWay}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="{x:Type data:ItemBlock}">
-                    <Border
-                        Margin="5"
-                        Background="{DynamicResource Default.Control.Background.Brush}"
-                        BorderBrush="{DynamicResource Default.Control.Border.Brush}"
-                        BorderThickness="1"
-                        CornerRadius="3">
-                        <Border.ContextMenu>
-                            <ContextMenu>
-                                <MenuItem Header="数量" Icon="&#xE789;">
-                                    <MenuItem Header="增加" Icon="&#xE948;" />
-                                    <MenuItem Header="减少" Icon="&#xE949;" />
-                                </MenuItem>
-                                <MenuItem Header="报告ID错误" Icon="&#xE783;" />
-                            </ContextMenu>
-                        </Border.ContextMenu>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto" />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <ui:FontIcon
-                                Margin="10,0,0,0"
-                                HorizontalAlignment="Left"
-                                FontSize="18"
-                                Glyph="&#xE7B8;" />
-                            <Grid Grid.Column="1" Margin="20,0,0,0">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
-                                <TextBlock
-                                    VerticalAlignment="Center"
-                                    FontSize="14"
-                                    FontWeight="Bold"
-                                    Foreground="{DynamicResource Default.Accent.Second.Brush}"
-                                    Text="{Binding ItemID, Mode=OneWay, Converter={StaticResource PackageIDConvert}}" />
-                                <TextBlock Grid.Row="1" VerticalAlignment="Center">
-                                    <Run Text="共计：" />
-                                    <Run Text="{Binding TotalCount, Mode=OneWay}" />
-                                </TextBlock>
-                                <TextBlock
-                                    Grid.Row="2"
-                                    VerticalAlignment="Center"
-                                    Text="{Binding ItemID, Mode=OneWay}" />
-                            </Grid>
-                        </Grid>
+        <ScrollViewer Grid.Row="1">
+            <StackPanel>
+                <ui:Expander Header="大背包物资" Icon="Package">
+                    <ItemsControl ItemsSource="{Binding BlockItem, Mode=OneWay}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate DataType="{x:Type data:PackageBlockItemViewModel}">
+                                <Border
+                                    Margin="5"
+                                    Background="{DynamicResource Default.Control.Background.Brush}"
+                                    BorderBrush="{DynamicResource Default.Control.Border.Brush}"
+                                    BorderThickness="1"
+                                    CornerRadius="3">
+                                    <Border.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="数量" Icon="&#xE789;">
+                                                <MenuItem
+                                                    Command="{Binding AddDataCommand}"
+                                                    Header="增加"
+                                                    Icon="&#xE948;" />
+                                                <MenuItem
+                                                    Command="{Binding RemoveDataCommand}"
+                                                    Header="减少"
+                                                    Icon="&#xE949;" />
+                                            </MenuItem>
+                                            <MenuItem Header="报告ID错误" Icon="&#xE783;" />
+                                        </ContextMenu>
+                                    </Border.ContextMenu>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <ui:FontIcon
+                                            Margin="10,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            FontSize="18"
+                                            Glyph="&#xE7B8;" />
+                                        <Grid Grid.Column="1" Margin="20,0,0,0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+                                            <TextBlock
+                                                VerticalAlignment="Center"
+                                                FontSize="14"
+                                                FontWeight="Bold"
+                                                Foreground="{DynamicResource Default.Accent.Second.Brush}"
+                                                Text="{Binding ItemID, Mode=OneWay, Converter={StaticResource PackageIDConvert}}" />
+                                            <TextBlock Grid.Row="1" VerticalAlignment="Center">
+                                                <Run Text="共计：" />
+                                                <Run Text="{Binding TotalCount, Mode=OneWay}" />
+                                            </TextBlock>
+                                            <TextBlock
+                                                Grid.Row="2"
+                                                VerticalAlignment="Center"
+                                                Text="{Binding ItemID, Mode=OneWay}" />
+                                        </Grid>
+                                    </Grid>
 
 
-                    </Border>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <panel:VirtualizingWrapPanel
-                        IsItemsHost="True"
-                        ItemSize="180,80"
-                        Orientation="Vertical"
-                        SpacingMode="Uniform"
-                        StretchItems="True" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-        </ItemsControl>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <panel:VirtualizingWrapPanel
+                                    IsItemsHost="True"
+                                    ItemSize="180,80"
+                                    Orientation="Vertical"
+                                    SpacingMode="Uniform"
+                                    StretchItems="True" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ui:Expander>
+                <ui:Expander Header="手持资源" Icon="NUIFPStartSlideHand">
+                    <ui:TipCard Content="此内容正在开发中" TipType="Warning" />
+                </ui:Expander>
+                <ui:Expander Header="快捷键资源设置" Icon="KeyboardStandard">
+                    <ui:TipCard Content="此内容正在开发中" TipType="Warning" />
+                </ui:Expander>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

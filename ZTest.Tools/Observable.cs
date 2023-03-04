@@ -10,5 +10,6 @@ namespace ZTest.Tools
             list.ForEach((val)=>value.Add(val));
             return value;
         }
+
     }
 }

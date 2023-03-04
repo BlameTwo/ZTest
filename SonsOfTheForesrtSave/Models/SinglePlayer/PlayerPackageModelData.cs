@@ -23,7 +23,8 @@ public class PlayerInventoryData {
 public class ItemInstanceManager {
     [JsonPropertyName("Version")]public string Version { get; set; }
 
-    [JsonPropertyName("ItemBlocks")] public List<ItemBlock> ItemBlocks { get; set; } 
+    [JsonPropertyName("ItemBlocks")] public List<ItemBlock> ItemBlocks { get; set; }
+
 }
 
 
@@ -58,7 +59,7 @@ public class EquippedModulesItem {
     [JsonPropertyName("WeaponModIds")]public IEnumerable<long> WeaponModIDS { get; set; }
 
 
-    [JsonPropertyName("ChannelWeights"),JsonConverter(typeof(ChannelWeightsConverter))]public ChannelWeights ChannelWeights { get; set; }
+    [JsonPropertyName("ChannelWeights")]public object ChannelWeights { get; set; }
 }
 
 public class ChannelWeights {
@@ -70,11 +71,13 @@ public class ChannelWeights {
 
 public class ChannelWeightsConverter : JsonConverter<ChannelWeights> {
     public override ChannelWeights Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) {
-        return JsonSerializer.Deserialize<ChannelWeights>(JsonObject.Parse(ref reader));
+        var result = JsonSerializer.Deserialize<ChannelWeights>(reader.GetString(),new JsonSerializerOptions() { NumberHandling = JsonNumberHandling.AllowReadingFromString});
+        return result;
     }
-
+    
     public override void Write(Utf8JsonWriter writer, ChannelWeights value, JsonSerializerOptions options) {
-        writer.WriteStringValue(JsonSerializer.Serialize(value,typeof(ChannelWeights)));
+        var result = JsonSerializer.Serialize(value, typeof(ChannelWeights));
+        writer.WriteStringValue(result);
     }
 }
 
