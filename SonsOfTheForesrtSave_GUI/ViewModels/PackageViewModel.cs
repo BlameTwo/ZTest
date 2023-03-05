@@ -2,25 +2,25 @@
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using SimpleUI.Interface.AppInterfaces;
+using SimpleUI.Services;
 using SonsOfTheForesrtSave_GUI.Models;
 using SonsOfTheForesrtSave_GUI.ViewModels.ItemViewModel;
+using SonsOfTheForesrtSave_GUI.Views.Dialogs;
 using SonsOfTheForesrtSaveLib;
 using SonsOfTheForesrtSaveLib.Models.SinglePlayer;
 using SonsOfTheForesrtSaveLib.SinglePlayer;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Windows;
-using System.Windows.Documents;
 using ZTest.Tools;
 
 namespace SonsOfTheForesrtSave_GUI.ViewModels;
 public partial class PackageViewModel : ObservableRecipient, IRecipient<AddMenuMessage>,IRecipient<ItemViewModelShowTipMessage> {
-    public PackageViewModel(IToastLitterMessage toastLitterMessage)
+    public PackageViewModel(IToastLitterMessage toastLitterMessage,IShowDialogService showDialogService)
     {
         ToastLitterMessage = toastLitterMessage;
+        ShowDialogService = showDialogService;
         this.IsActive = true;
         Init();
     }
@@ -78,6 +78,11 @@ public partial class PackageViewModel : ObservableRecipient, IRecipient<AddMenuM
         LoadedCommand.Execute(null);
     }
 
+    [RelayCommand]
+    void AddPackageItem() {
+        ShowDialogService.Show<AddPackageDialog,string>(App.GetService<AddPackageDialog>(),"增加物品");
+    }
+
     public void Receive(AddMenuMessage message) {
         bool flage=false;
         int flageindex = -1;
@@ -101,6 +106,7 @@ public partial class PackageViewModel : ObservableRecipient, IRecipient<AddMenuM
         ToastLitterMessage.Show("操作执行完毕");
     }
 
+
     public void Receive(ItemViewModelShowTipMessage message) {
         Debug.WriteLine($"{message.GetType()} 消息错误");
         ToastLitterMessage.Show(message.Message);
@@ -118,4 +124,5 @@ public partial class PackageViewModel : ObservableRecipient, IRecipient<AddMenuM
     [ObservableProperty]
     ObservableCollection<PackageAddMenuViewModel> _AddMenuItems;
     public IToastLitterMessage ToastLitterMessage { get; }
+    public IShowDialogService ShowDialogService { get; }
 }

@@ -98,10 +98,17 @@
             <StackPanel>
                 <ui:Expander Header="大背包物资" Icon="Package">
                     <ui:Expander.RightHeaderContent>
-                        <ui:Button
-                            Command="{Binding RefershBigCommand}"
-                            Content="刷新"
-                            Icon="Refresh" />
+                        <StackPanel Orientation="Horizontal">
+                            <ui:Button
+                                Command="{Binding AddPackageItemCommand}"
+                                Content="增加未拥有的物资"
+                                Icon="AddBold" />
+                            <ui:Button
+                                Margin="5,0,0,0"
+                                Command="{Binding RefershBigCommand}"
+                                Content="刷新"
+                                Icon="Refresh" />
+                        </StackPanel>
                     </ui:Expander.RightHeaderContent>
                     <ItemsControl ItemsSource="{Binding BlockItem, Mode=OneWay}">
                         <ItemsControl.ItemTemplate>

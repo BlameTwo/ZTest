@@ -3,9 +3,12 @@ using Microsoft.Extensions.Hosting;
 using SimpleUI.Interface;
 using SimpleUI.Interface.AppInterfaces;
 using SimpleUI.Interface.AppInterfaces.Services;
+using SimpleUI.Services;
+using SimpleUI.Utils;
 using SonsOfTheForesrtSave_GUI.Services;
 using SonsOfTheForesrtSave_GUI.ViewModels;
 using SonsOfTheForesrtSave_GUI.Views;
+using SonsOfTheForesrtSave_GUI.Views.Dialogs;
 using System;
 
 namespace SonsOfTheForesrtSave_GUI;
@@ -22,6 +25,7 @@ public static class HostResgister
             services.AddTransient<UpdateView>();
             services.AddTransient<WorldSaveStatePage>();
             services.AddTransient<PackagePage>();
+            services.AddTransient<AddPackageDialog>();
         });
         return builder;
     }
@@ -33,6 +37,7 @@ public static class HostResgister
             services.AddSingleton<IAppNavigationViewService, AppNavigationViewService>();
             services.AddSingleton<IWindowManager, WindowManager>();
             services.AddSingleton<IToastLitterMessage, ToastLitterMessage>();
+            services.AddSingleton<IShowDialogService, ShowDialogService>();
         });
         return builder;
     }

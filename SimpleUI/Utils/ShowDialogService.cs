@@ -24,21 +24,7 @@ public class ShowDialogService : IShowDialogService
         }
     }
 
-    public bool CloseDialog()
-    {
-        FrameworkElement element;
-        AdornerDecorator decorator;
-        element = WindowHelper.GetActiveWindow();
-        decorator = WindowHelper.GetChild<AdornerDecorator>(element);
-        AdornerLayer layer = decorator.AdornerLayer;
-        var _container = new AdornerContainer(layer);
-        if(_container.Child is IDialogHost host)
-        {
-            host.Close();
-            return true;
-        }
-        return false;
-    }
+   
 
     public bool Show<T,T1>(T arg,T1 data) 
         where T : IDialogHost

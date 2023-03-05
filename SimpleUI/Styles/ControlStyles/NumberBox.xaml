@@ -8,10 +8,9 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/Sources/ConvertSource.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <Style TargetType="{x:Type ui:NumberBox}">
-        <Setter Property="Background" Value="{DynamicResource Default.Control.Background.Brush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Default.Control.Border.Brush}" />
-        <Setter Property="BorderThickness" Value="{DynamicResource ButtonBase.Thickness}" />
         <Setter Property="Foreground" Value="{DynamicResource DefaultAppFillBrush}" />
+        <Setter Property="Background" Value="{DynamicResource DefaultAppBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Default.Control.Border.Brush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="4" />
         <Setter Property="Template">

@@ -19,9 +19,5 @@ public interface IShowDialogService
     /// </summary>
     bool IsShow { get; }
 
-    /// <summary>
-    /// 关闭活动对话框，解耦VM中的关闭方法
-    /// </summary>
-    /// <returns></returns>
-    bool CloseDialog();
+    
 }

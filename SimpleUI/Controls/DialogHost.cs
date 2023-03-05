@@ -7,28 +7,22 @@ using System.Windows;
 using SimpleUI.Helper;
 using Microsoft.Xaml.Behaviors.Layout;
 using SimpleUI.Interface;
-using System.Windows.Markup;
 
 namespace SimpleUI.Controls;
 
 /// <summary>
 /// 简单对话框服务
 /// </summary>
-[ContentProperty(name: "Content")]
-public class DialogHost : ContentControl, IDialogHost,IDisposable
-{
+public class DialogHost : ContentControl, IDialogHost, IDisposable {
     //本文档来自于这里：https://github.com/BlameTwo/ZUDesignControl.git，经过一定的修改，虽然已经私有
-    static DialogHost()
-    {
+    static DialogHost() {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(DialogHost), new FrameworkPropertyMetadata(typeof(DialogHost)));
     }
 
     private AdornerContainer _container;
 
-    public void Show()
-    {
-        if (ShowingEvent != null)
-        {
+    public void Show() {
+        if (ShowingEvent != null) {
             ShowingEvent.Invoke();
         }
         //在此处保存一个数据上下文
@@ -38,35 +32,28 @@ public class DialogHost : ContentControl, IDialogHost,IDisposable
         element = WindowHelper.GetActiveWindow();
         decorator = WindowHelper.GetChild<AdornerDecorator>(element);
         ((element as Window)!.Content as FrameworkElement)!.IsEnabled = false;
-        if (decorator != null)
-        {
+        if (decorator != null) {
             AdornerLayer layer = decorator.AdornerLayer;
-            if (layer != null && _container == null)
-            {
+            if (layer != null && _container == null) {
                 _container = new AdornerContainer(layer);
-                Border mask = new Border
-                {
-                    Background = new SolidColorBrush(Color.FromArgb(100, 30,30, 30)),
+                Border mask = new Border {
+                    Background = new SolidColorBrush(Color.FromArgb(100, 30, 30, 30)),
                     Opacity = 1,
                 };
-                if (Content is FrameworkElement contentControl)
-                {
-                    if ((Content as FrameworkElement)!.Parent != null)
-                    {
+                if (Content is FrameworkElement contentControl) {
+                    if ((Content as FrameworkElement)!.Parent != null) {
                         var b = (Content as FrameworkElement)!.Parent;
-                        if (b != null)
-                        {
+                        if (b != null) {
                             //移除子控件和父控件之间的关联
                             (b as Border)!.Child = null;
                         }
                     }
-                    else
-                    {
+                    else {
 #if DEBUG
                         Console.WriteLine("未获得父控件");
 #endif
                     }
-                    mask.Child = ((UIElement)this);
+                    mask.Child = ((UIElement)Content);
                     _container.Child = mask;
                     mask.DataContext = VM;
                     layer.Add(_container);
@@ -84,31 +71,26 @@ public class DialogHost : ContentControl, IDialogHost,IDisposable
     private bool disposedValue;
     private bool disposedValue1;
 
-    public void Close()
-    {
-        if (CloseingEvent != null)
-        {
+    public void Close() {
+        if (CloseingEvent != null) {
             CloseingEvent.Invoke();
         }
         StoryBoard = Animation(1, 0, 1, 0.5);
         StoryBoard.Completed += Sbque_Completed;
         StoryBoard.Begin();
-        if (CloseEvent != null)
-        {
+        if (CloseEvent != null) {
             CloseEvent.Invoke();
         }
     }
 
-    private void Sbque_Completed(object? sender, EventArgs e)
-    {
+    private void Sbque_Completed(object? sender, EventArgs e) {
         FrameworkElement element;
         element = WindowHelper.GetActiveWindow();
         if (element == null)
             return;
         var decorator = WindowHelper.GetChild<AdornerDecorator>(element);
         ((element as Window)!.Content as FrameworkElement)!.IsEnabled = true;
-        if (decorator != null && _container != null)
-        {
+        if (decorator != null && _container != null) {
             AdornerLayer layer = decorator.AdornerLayer;
             _container.Child = null;
             layer.Remove(_container);
@@ -118,15 +100,13 @@ public class DialogHost : ContentControl, IDialogHost,IDisposable
         }
     }
 
-    void SetOpenAnimation()
-    {
+    void SetOpenAnimation() {
         StoryBoard = Animation(0, 1, 0.5, 1);
         StoryBoard.Begin();
     }
 
 
-    Storyboard Animation(double OpacityFrom, double OpacityTo, double ScaleFrom, double ScaleTo)
-    {
+    Storyboard Animation(double OpacityFrom, double OpacityTo, double ScaleFrom, double ScaleTo) {
         ScaleTransform scale = new ScaleTransform();   //缩放
 
         TransformGroup group = new TransformGroup();
@@ -136,15 +116,13 @@ public class DialogHost : ContentControl, IDialogHost,IDisposable
 
         (this.Content as UIElement)!.RenderTransformOrigin = new System.Windows.Point(0.5, 0.5);
 
-        DoubleAnimation scaleAnimationx = new DoubleAnimation()
-        {
+        DoubleAnimation scaleAnimationx = new DoubleAnimation() {
             From = ScaleFrom,                                   //起始值
             To = ScaleTo,                                     //结束值
             Duration = new Duration(new TimeSpan(0, 0, 0, 0, 350)),
             EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut }
         };
-        DoubleAnimation scaleAnimationy = new DoubleAnimation()
-        {
+        DoubleAnimation scaleAnimationy = new DoubleAnimation() {
             From = ScaleFrom,                                   //起始值
             To = ScaleTo,                                     //结束值
             Duration = new Duration(new TimeSpan(0, 0, 0, 0, 350)),
@@ -152,8 +130,7 @@ public class DialogHost : ContentControl, IDialogHost,IDisposable
         };
 
 
-        DoubleAnimation doubleAnimation = new DoubleAnimation()
-        {
+        DoubleAnimation doubleAnimation = new DoubleAnimation() {
             From = OpacityFrom,
             To = OpacityTo,
             Duration = new Duration(new TimeSpan(0, 0, 0, 0, 350)),
@@ -181,8 +158,7 @@ public class DialogHost : ContentControl, IDialogHost,IDisposable
         return sbque;
     }
 
-    public virtual void ShowExDate<T>(T data)
-    {
+    public virtual void ShowExDate<T>(T data) {
         //默认无操作
     }
 
@@ -192,9 +168,7 @@ public class DialogHost : ContentControl, IDialogHost,IDisposable
     /// <summary>
     /// 此内容为弹出框的全部内容，如果只需要一段文字，请使用ContentDialog.HostContent
     /// </summary>
-    
-    public object Content
-    {
+    public object Content {
         get { return (object)GetValue(ContentProperty); }
         set { SetValue(ContentProperty, value); }
     }
@@ -211,12 +185,9 @@ public class DialogHost : ContentControl, IDialogHost,IDisposable
     public event IDialogHost.Closed CloseEvent;
     public event IDialogHost.Closeing CloseingEvent;
 
-    protected virtual void Dispose(bool disposing)
-    {
-        if (!disposedValue1)
-        {
-            if (disposing)
-            {
+    protected virtual void Dispose(bool disposing) {
+        if (!disposedValue1) {
+            if (disposing) {
                 this.Content = null;
             }
 
@@ -233,8 +204,7 @@ public class DialogHost : ContentControl, IDialogHost,IDisposable
     //     Dispose(disposing: false);
     // }
 
-    public void Dispose()
-    {
+    public void Dispose() {
         // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
         Dispose(disposing: true);
         GC.SuppressFinalize(this);
