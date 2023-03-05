@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
@@ -56,28 +57,65 @@ public class EquippedModulesItem {
 
     [JsonPropertyName("CurrentAmmo")]public int CurrentAmmo { get; set; }
 
-    [JsonPropertyName("WeaponModIds")]public IEnumerable<long> WeaponModIDS { get; set; }
+    [JsonPropertyName("WeaponModIds")]public object WeaponModIDS { get; set; }
 
 
-    [JsonPropertyName("ChannelWeights")]public object ChannelWeights { get; set; }
+    [JsonPropertyName("ChannelWeights"),JsonConverter(typeof(ChannelWeightsConverter))]
+    public ChannelWeights ChannelWeights { get; set; }
 }
 
+
+
 public class ChannelWeights {
+    [JsonConverter(typeof(DoubleConverter))]
+    [JsonNumberHandling(JsonNumberHandling.AllowNamedFloatingPointLiterals)]
+    [JsonPropertyName("x")]
     public double x { get; set; }
+
+    [JsonConverter(typeof(DoubleConverter))]
+    [JsonNumberHandling(JsonNumberHandling.AllowNamedFloatingPointLiterals)]
+    [JsonPropertyName("y")]
     public double y { get; set; }
+
+    [JsonConverter(typeof(DoubleConverter))]
+    [JsonNumberHandling(JsonNumberHandling.AllowNamedFloatingPointLiterals)]
+    [JsonPropertyName("z")] 
     public double z { get; set; }
+
+    [JsonConverter(typeof(DoubleConverter))]
+    [JsonNumberHandling(JsonNumberHandling.AllowNamedFloatingPointLiterals)]
+    [JsonPropertyName("w")] 
+    
     public double w { get; set; }
 }
 
+public class DoubleConverter : JsonConverter<double> {
+    public override double Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) {
+        var element = JsonDocument.ParseValue(ref reader).RootElement;
+
+        // Get the raw text from the element
+        string value = element.GetRawText().Replace(@"\","");
+        return reader.GetDouble();
+    }
+
+    public override void Write(Utf8JsonWriter writer, double value, JsonSerializerOptions options) {
+        var result = value.ToString("F1");
+        writer.WriteRawValue(result);
+        
+    }
+}
+
+
+
 public class ChannelWeightsConverter : JsonConverter<ChannelWeights> {
     public override ChannelWeights Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) {
-        var result = JsonSerializer.Deserialize<ChannelWeights>(reader.GetString(),new JsonSerializerOptions() { NumberHandling = JsonNumberHandling.AllowReadingFromString});
+        var result = JsonSerializer.Deserialize<ChannelWeights>(ref reader, new JsonSerializerOptions() { WriteIndented = true }) ;
         return result;
     }
     
     public override void Write(Utf8JsonWriter writer, ChannelWeights value, JsonSerializerOptions options) {
         var result = JsonSerializer.Serialize(value, typeof(ChannelWeights));
-        writer.WriteStringValue(result);
+        writer.WriteRawValue(result);
     }
 }
 

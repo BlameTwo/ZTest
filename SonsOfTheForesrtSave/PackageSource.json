@@ -1,14 +1,14 @@
 {
-  "PackageResource":[
+  "PackageResource": [
     {
-      "name":"伏特加酒瓶",
+      "name": "伏特加酒瓶",
       "ID": 414,
       "Type": "Default"
     },
     {
-      "name":"芦荟",
+      "name": "芦荟",
       "ID": 451,
-      "Type":"Single"
+      "Type": "Single"
     },
     {
       "name": "空气罐",
@@ -523,7 +523,12 @@
     {
       "name": "黄金面具",
       "ID": 435,
-      "Type":"Single"
+      "Type": "Single"
+    },
+    {
+      "name": "落生梅",
+      "ID": 446,
+      "Type": "Default"
     }
   ]
 }
