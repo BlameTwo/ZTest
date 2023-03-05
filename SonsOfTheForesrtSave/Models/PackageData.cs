@@ -9,4 +9,6 @@ public class PackageData {
 public class PackageDataItem {
     [JsonPropertyName("name")]public string Name { get; set; }
     [JsonPropertyName("ID")]public int ID { get; set; }
+
+    [JsonPropertyName("Type")]public string Type { get; set; }
 }

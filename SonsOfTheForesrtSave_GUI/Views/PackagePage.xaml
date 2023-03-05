@@ -24,6 +24,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid>
@@ -67,9 +68,41 @@
                     Icon="Save" />
             </StackPanel>
         </Grid>
-        <ScrollViewer Grid.Row="1">
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <ui:Expander Header="快捷菜单" Icon="Subtitles">
+
+                <ItemsControl Margin="5" ItemsSource="{Binding AddMenuItems, Mode=OneWay}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="data:PackageAddMenuViewModel">
+                            <ui:Button
+                                Margin="4"
+                                Command="{Binding ExcuteCommand}"
+                                Content="{Binding Title, Mode=OneWay}"
+                                Icon="{Binding Icon, Mode=OneWay}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <panel:VirtualizingWrapPanel
+                                IsItemsHost="True"
+                                ItemSize="150,50"
+                                Orientation="Vertical"
+                                SpacingMode="Uniform"
+                                StretchItems="True" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </ui:Expander>
+        </ScrollViewer>
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
             <StackPanel>
                 <ui:Expander Header="大背包物资" Icon="Package">
+                    <ui:Expander.RightHeaderContent>
+                        <ui:Button
+                            Command="{Binding RefershBigCommand}"
+                            Content="刷新"
+                            Icon="Refresh" />
+                    </ui:Expander.RightHeaderContent>
                     <ItemsControl ItemsSource="{Binding BlockItem, Mode=OneWay}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate DataType="{x:Type data:PackageBlockItemViewModel}">
