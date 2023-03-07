@@ -152,7 +152,7 @@
 
     <Style TargetType="{x:Type ScrollViewer}">
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Foreground" Value="{DynamicResource DefaultAppFillBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource DefaultAppFillBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ScrollViewer}">

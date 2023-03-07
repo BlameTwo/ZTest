@@ -47,7 +47,7 @@
                 <Run Text="资源背包中的资源" />
                 <LineBreak />
                 <LineBreak />
-                <Run Text="此页目不能修改手持和快捷键物品" />
+                <Run Text="此页面仅修改背包内物品，例如放到储物架上的物品不计入内" />
             </TextBlock>
             <StackPanel
                 Grid.Column="1"

@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
+using SimpleUI.Interface;
 using SonsOfTheForesrtSave_GUI.Models;
 using SonsOfTheForesrtSaveLib;
 using SonsOfTheForesrtSaveLib.Models.SinglePlayer;
@@ -14,6 +15,7 @@ public partial class PackageBlockItemViewModel: ItemBlock {
     void AddData() {
         chang(true);
     }
+
 
     void chang(bool flage) {
         PackageManager.PackageData.Items.ForEach((val) => {

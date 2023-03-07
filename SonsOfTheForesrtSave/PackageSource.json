@@ -78,7 +78,7 @@
     {
       "name": "弩箭",
       "ID": 365,
-      "Type": "Default"
+      "Type": "Single"
     },
     {
       "name": "十字弩箭",

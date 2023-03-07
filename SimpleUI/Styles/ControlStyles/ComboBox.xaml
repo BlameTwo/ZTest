@@ -47,15 +47,19 @@
                                     Background="{TemplateBinding Background}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     CornerRadius="5">
-                                    <Grid
-                                        x:Name="grid"
+                                    <ScrollViewer
                                         Margin="5"
-                                        RenderOptions.ClearTypeHint="Enabled">
-                                        <ItemsPresenter
-                                            x:Name="ItemsPresenter"
-                                            KeyboardNavigation.DirectionalNavigation="Contained"
-                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                    </Grid>
+                                        HorizontalScrollBarVisibility="Visible"
+                                        SnapsToDevicePixels="True"
+                                        VerticalScrollBarVisibility="Visible">
+                                        <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
+                                            <ItemsPresenter
+                                                x:Name="ItemsPresenter"
+                                                KeyboardNavigation.DirectionalNavigation="Contained"
+                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                        </Grid>
+                                    </ScrollViewer>
+
                                 </Border>
                             </Grid>
                         </Popup>

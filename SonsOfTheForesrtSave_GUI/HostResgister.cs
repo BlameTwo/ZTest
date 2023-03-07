@@ -7,6 +7,7 @@ using SimpleUI.Services;
 using SimpleUI.Utils;
 using SonsOfTheForesrtSave_GUI.Services;
 using SonsOfTheForesrtSave_GUI.ViewModels;
+using SonsOfTheForesrtSave_GUI.ViewModels.DialogViewModel;
 using SonsOfTheForesrtSave_GUI.Views;
 using SonsOfTheForesrtSave_GUI.Views.Dialogs;
 using System;
@@ -51,6 +52,7 @@ public static class HostResgister
             services.AddTransient<MainViewModel>();
             services.AddTransient<WorldSaveStateViewModel>();
             services.AddTransient<PackageViewModel>();
+            services.AddTransient<AddPackageViewModel>();
         });
         return builder;
     }
@@ -65,6 +67,17 @@ public partial class App
             throw new System.Exception($"注册项目缺少{typeof(T)}");
         }
         return service;
+    }
+
+
+    /// <summary>
+    /// 执行同步UI线程操作
+    /// </summary>
+    /// <param name="action"></param>
+    public static void RunDispatcher(Action action) {
+        if((App.Current as App)!.MainWindow != null) {
+            (App.Current as App)!.MainWindow.Dispatcher.Invoke(action);
+        }
     }
 
     public static object GetService(Type type)

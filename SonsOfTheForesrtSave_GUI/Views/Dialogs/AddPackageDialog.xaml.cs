@@ -1,5 +1,11 @@
-﻿using SimpleUI.Controls;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Messaging;
+using SimpleUI.Controls;
 using SimpleUI.Services;
+using SonsOfTheForesrtSave_GUI.Models;
+using SonsOfTheForesrtSave_GUI.ViewModels.DialogViewModel;
+using SonsOfTheForesrtSaveLib;
+using SonsOfTheForesrtSaveLib.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,13 +25,14 @@ namespace SonsOfTheForesrtSave_GUI.Views.Dialogs {
     /// <summary>
     /// AddPackageDialog.xaml 的交互逻辑
     /// </summary>
+    [INotifyPropertyChanged]
     public partial class AddPackageDialog : DialogHost {
-        public AddPackageDialog(IShowDialogService showDialogService) {
+        public AddPackageDialog(AddPackageViewModel vm) {
+            vm.dialogHost = this;
+            this.DataContext = vm;
             InitializeComponent();
-            ShowDialogService = showDialogService;
+            
         }
-
-        public IShowDialogService ShowDialogService { get; }
 
         public override void ShowExDate<T>(T data) {
             base.ShowExDate(data);

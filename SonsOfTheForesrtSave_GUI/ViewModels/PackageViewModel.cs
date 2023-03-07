@@ -16,7 +16,7 @@ using System.Windows;
 using ZTest.Tools;
 
 namespace SonsOfTheForesrtSave_GUI.ViewModels;
-public partial class PackageViewModel : ObservableRecipient, IRecipient<AddMenuMessage>,IRecipient<ItemViewModelShowTipMessage> {
+public partial class PackageViewModel : ObservableRecipient, IRecipient<AddMenuMessage>,IRecipient<ItemViewModelShowTipMessage>,IRecipient<DialogAddPackage> {
     public PackageViewModel(IToastLitterMessage toastLitterMessage,IShowDialogService showDialogService)
     {
         ToastLitterMessage = toastLitterMessage;
@@ -33,6 +33,7 @@ public partial class PackageViewModel : ObservableRecipient, IRecipient<AddMenuM
             new PackageAddMenuViewModel(){ Icon = SimpleUI.Utils.Controls.IconResources.FontIconEnum.Add, Id = 437, Number = 6, Type = AddMenuType.Default,Title = "药品补满"},
             new PackageAddMenuViewModel(){ Icon = SimpleUI.Utils.Controls.IconResources.FontIconEnum.Add, Id = 451, Number = 10,Type = AddMenuType.Default, Title = "莴苣+10"},
             new PackageAddMenuViewModel(){ Icon = SimpleUI.Utils.Controls.IconResources.FontIconEnum.Add, Id = 527, Number = 6,Type = AddMenuType.Default, Title = "电池+6"},
+            new PackageAddMenuViewModel(){ Icon = SimpleUI.Utils.Controls.IconResources.FontIconEnum.Add, Id = 358, Number = 1,Type = AddMenuType.Single, Title = "获得霰弹枪"},
         };
     }
 
@@ -99,8 +100,11 @@ public partial class PackageViewModel : ObservableRecipient, IRecipient<AddMenuM
             var model = new PackageBlockItemViewModel() {
                 ItemID = message.DataVM.Id,
                 TotalCount = message.DataVM.Number,
-                UniqueItems = new()
+                UniqueItems=null
             };
+            if (message.DataVM.Type == AddMenuType.Single) {
+                model.UniqueItems = new();
+            }
             this.BlockItem.Add(model);
         }
         ToastLitterMessage.Show("操作执行完毕");
@@ -110,6 +114,18 @@ public partial class PackageViewModel : ObservableRecipient, IRecipient<AddMenuM
     public void Receive(ItemViewModelShowTipMessage message) {
         Debug.WriteLine($"{message.GetType()} 消息错误");
         ToastLitterMessage.Show(message.Message);
+    }
+
+    public void Receive(DialogAddPackage message) {
+        var model = new PackageBlockItemViewModel() {
+             ItemID = message.Data.ID,
+             TotalCount= message.Number,
+             UniqueItems=null
+        };
+        if(message.Data.Type == "Single") {
+            model.UniqueItems = new();
+        }
+        this.BlockItem.Add(model);
     }
 
     [ObservableProperty]
