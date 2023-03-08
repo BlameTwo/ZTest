@@ -92,13 +92,14 @@ public class ChannelWeights {
 public class DoubleConverter : JsonConverter<double> {
     public override double Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) {
         var element = JsonDocument.ParseValue(ref reader).RootElement;
-
-        // Get the raw text from the element
+        //过滤\符号获取原Json数据
         string value = element.GetRawText().Replace(@"\","");
+        //转换double
         return reader.GetDouble();
     }
 
     public override void Write(Utf8JsonWriter writer, double value, JsonSerializerOptions options) {
+        //直接写入原数据
         var result = value.ToString("F1");
         writer.WriteRawValue(result);
         

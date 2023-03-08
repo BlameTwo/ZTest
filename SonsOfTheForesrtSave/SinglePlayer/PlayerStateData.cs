@@ -38,7 +38,7 @@ public class PlayerStateData
         var byt = JsonSerializer.SerializeToUtf8Bytes(playerStateDataEntries,typeof(PlayerStateDataEntries));
         var str = System.Text.Encoding.UTF8.GetString(byt);
         ModelBase<PlayerStateDataModel> model = database;
-        model.Data.StateData = str;
+        model.Data.Data = str;
         var result = JsonSerializer.Serialize(database,typeof(ModelBase<PlayerStateDataModel>));
 
         File.WriteAllText(Path.Combine(SaveConfig.DirPath, PlayerStateFileName), Regex.Unescape(result));
