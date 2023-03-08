@@ -12,6 +12,7 @@
     Height="500"
     d:DataContext="{d:DesignInstance Type=vm:FirstSteamConfigViewModel}"
     Background="{DynamicResource ResourceKey=DefaultAppBackgroundBrush}"
+    Icon="pack://application:,,,/Resources/Icons/icon.ico"
     MaxButtonVisibility="Collapsed"
     Style="{DynamicResource DefaultWindowBaseStyle}"
     mc:Ignorable="d">

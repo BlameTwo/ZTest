@@ -7,14 +7,23 @@
     <UseWPF>true</UseWPF>
 	  <LangVersion>11</LangVersion>
     <UseWindowsForms>True</UseWindowsForms>
+    <ApplicationIcon>Resources\Icons\icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Icons\icon.ico" />
+    <None Remove="Resources\Images\appicon.png" />
     <None Remove="Resources\Images\BAGIMG.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Icons\icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\BAGIMG.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\appicon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

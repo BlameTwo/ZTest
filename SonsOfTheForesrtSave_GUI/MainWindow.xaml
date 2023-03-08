@@ -16,6 +16,7 @@
     MinHeight="250"
     d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
     Background="{DynamicResource ResourceKey=DefaultAppBackgroundBrush}"
+    Icon="pack://application:,,,/Resources/Icons/icon.ico"
     Style="{DynamicResource DefaultWindowBaseStyle}"
     mc:Ignorable="d">
     <Grid x:Name="grid">
@@ -35,7 +36,7 @@
                     x:Name="cd"
                     Content="状态"
                     Icon="TwoBars"
-                    TypeUri="{x:Type page:StateSavePage}" />
+                    TypeUri="{x:Type page:ConfigurrationPage}" />
                 <ui:NavigationViewItem Content="实体" Icon="Family" />
                 <ui:NavigationViewItem
                     Content="背包"

@@ -21,7 +21,7 @@ public static class HostResgister
         builder.ConfigureServices(services =>
         {
             services.AddTransient<MainWindow>();
-            services.AddTransient<StateSavePage>();
+            services.AddTransient<ConfigurrationPage>();
             services.AddTransient<FirstSteamConfig>();
             services.AddTransient<UpdateView>();
             services.AddTransient<WorldSaveStatePage>();
@@ -48,7 +48,7 @@ public static class HostResgister
         builder.ConfigureServices(services =>
         {
             services.AddTransient<FirstSteamConfigViewModel>();
-            services.AddTransient<StateSaveViewModel>();
+            services.AddTransient<ConfigurrationViewModel>();
             services.AddTransient<MainViewModel>();
             services.AddTransient<WorldSaveStateViewModel>();
             services.AddTransient<PackageViewModel>();
