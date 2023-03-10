@@ -52,4 +52,10 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0-windows'">
+    <PackageReference Include="Betalgo.OpenAI.GPT3">
+      <Version>6.7.2</Version>
+    </PackageReference>
+  </ItemGroup>
+
 </Project>

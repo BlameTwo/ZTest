@@ -1,17 +1,16 @@
 ﻿<Application
-    x:Class="SonsOfTheForesrtSave_GUI.App"
+    x:Class="ChatGPT_GUI.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:convert="clr-namespace:SonsOfTheForesrtSave_GUI.Converter"
-    xmlns:local="clr-namespace:SonsOfTheForesrtSave_GUI"
+    xmlns:local="clr-namespace:ChatGPT_GUI"
     xmlns:style="clr-namespace:SimpleUI.Styles;assembly=SimpleUI"
     xmlns:theme="clr-namespace:SimpleUI.Themes;assembly=SimpleUI">
     <Application.Resources>
         <ResourceDictionary>
-            <convert:PackageIDConvert x:Key="PackageIDConvert" />
             <ResourceDictionary.MergedDictionaries>
-                <theme:Theme Type="Light" />
+                <theme:Theme Type="Dark" />
                 <style:SimpleStyle Type="Default" />
+                <ResourceDictionary Source="ChatTemplate.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

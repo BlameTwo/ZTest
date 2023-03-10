@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFrameworks>net7.0-windows;net6.0-windows</TargetFrameworks>
+	  <Nullable>enable</Nullable>
+	  <LangVersion>11</LangVersion>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\aislogo.png" />
+    <None Remove="Resources\user.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Betalgo.OpenAI.GPT3" Version="6.7.2" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0-preview.1.23110.8" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleUI\SimpleUI.csproj" />
+    <ProjectReference Include="..\ZTest.Tools\ZTest.Tools.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\aislogo.png" />
+    <Resource Include="Resources\user.png" />
+  </ItemGroup>
+
+</Project>

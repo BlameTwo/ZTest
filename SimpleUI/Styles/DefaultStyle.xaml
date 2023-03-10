@@ -54,6 +54,8 @@
     </Style>
 
     <Style TargetType="{x:Type ItemsControl}">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ItemsControl}">
@@ -64,7 +66,11 @@
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="5"
                         FocusVisualStyle="{x:Null}">
-                        <ScrollViewer x:Name="ScrollViewer" Margin="{TemplateBinding Padding}">
+                        <ScrollViewer
+                            x:Name="ScrollViewer"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                             <ItemsPresenter />
                         </ScrollViewer>
 

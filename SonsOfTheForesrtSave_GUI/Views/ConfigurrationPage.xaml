@@ -33,7 +33,9 @@
                 Description="{Binding Modeldata.Version}"
                 Header="存档版本"
                 Icon="UpdateRestore"
-                SubTitle="环境存档的版本" />
+                SubTitle="状态存档的版本" />
+            <ItemsControl ItemsSource="{Binding Itemlist, Mode=OneWay}" />
         </StackPanel>
+
     </Grid>
 </Page>

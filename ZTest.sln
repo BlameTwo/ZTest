@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaveTest", "SaveTest\SaveTe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SonsOfTheForesrtSave_GUI", "SonsOfTheForesrtSave_GUI\SonsOfTheForesrtSave_GUI.csproj", "{DEB7A828-1709-4267-AB3F-237CCEFEFF90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZTest.Tools", "ZTest.Tools\ZTest.Tools.csproj", "{471818C7-A6DE-4F30-803C-D72F55158F8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZTest.Tools", "ZTest.Tools\ZTest.Tools.csproj", "{471818C7-A6DE-4F30-803C-D72F55158F8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatGPT_GUI", "ChatGPT_GUI\ChatGPT_GUI.csproj", "{392E53CC-317F-47E2-9989-522991B97F3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{471818C7-A6DE-4F30-803C-D72F55158F8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{471818C7-A6DE-4F30-803C-D72F55158F8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{471818C7-A6DE-4F30-803C-D72F55158F8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{392E53CC-317F-47E2-9989-522991B97F3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{392E53CC-317F-47E2-9989-522991B97F3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{392E53CC-317F-47E2-9989-522991B97F3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{392E53CC-317F-47E2-9989-522991B97F3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

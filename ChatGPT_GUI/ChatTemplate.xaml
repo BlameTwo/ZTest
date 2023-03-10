@@ -1,0 +1,78 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:data="clr-namespace:ChatGPT_GUI.Models"
+    xmlns:selecter="clr-namespace:ChatGPT_GUI.Selecter">
+
+    <DataTemplate x:Key="UserDateTemplate" DataType="{x:Type data:ChatModel}">
+        <Grid HorizontalAlignment="Right">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Border
+                Grid.Column="0"
+                Margin="10,10"
+                Padding="5"
+                VerticalAlignment="Top"
+                Background="{DynamicResource Default.Accent.Brush}"
+                CornerRadius="5">
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Text="{Binding Message, Mode=OneWay}"
+                    TextWrapping="WrapWithOverflow" />
+            </Border>
+            <Border
+                Grid.Column="1"
+                Padding="5"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Background="{DynamicResource Default.Accent.Brush}"
+                CornerRadius="5">
+                <Image
+                    Width="20"
+                    Height="20"
+                    VerticalAlignment="Top"
+                    Source="/Resources/user.png" />
+            </Border>
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="AIDateTemplate" DataType="{x:Type data:ChatModel}">
+        <Grid HorizontalAlignment="Left">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Border
+                Grid.Column="1"
+                Margin="10,10"
+                Padding="5"
+                VerticalAlignment="Top"
+                Background="{DynamicResource Default.Accent.Brush}"
+                CornerRadius="5">
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Text="{Binding Message, Mode=OneWay}"
+                    TextWrapping="WrapWithOverflow" />
+            </Border>
+            <Border
+                Grid.Column="0"
+                Padding="5"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Background="{DynamicResource Default.Accent.Brush}"
+                CornerRadius="5">
+                <Image
+                    Width="20"
+                    Height="20"
+                    VerticalAlignment="Top"
+                    Source="/Resources/aislogo.png" />
+            </Border>
+        </Grid>
+
+
+    </DataTemplate>
+</ResourceDictionary>
