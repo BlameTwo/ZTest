@@ -7,26 +7,46 @@ using OpenAI.GPT3.ObjectModels.RequestModels;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using SimpleUI.Services;
+using ZTest.Tools.Interfaces;
+using OpenAI.GPT3.Managers;
+using OpenAI.GPT3;
 
 namespace ChatGPT_GUI.ViewModels;
 
-public partial class MainViewModel:ObservableRecipient
-{
-    public MainViewModel(IOpenAIService openAIService)
-    {
+public partial class MainViewModel: ObservableRecipient {
+    public MainViewModel(IShowDialogService showDialogService, IOpenAIService openAIService, ILocalSetting localSetting) {
         IsActive = true;
-        this.ChatList = new ObservableCollection<ChatModel>() ;
+        this.ChatList = new ObservableCollection<ChatModel>();
+        ShowDialogService = showDialogService;
         OpenAIService = openAIService;
+        LocalSetting = localSetting;
+        OpenAIService = App.GetOpenAIService();
+
+    }
+
+
+    [RelayCommand]
+    async void Loaded() {
+        var str = (await LocalSetting.ReadConfig("KeyWord")).ToString();
+        OpenAIService = new OpenAIService(new OpenAiOptions() { ApiKey = str });
     }
 
     [ObservableProperty]
     ObservableCollection<ChatModel> _ChatList;
 
-    public IOpenAIService OpenAIService { get; }
+    public IOpenAIService OpenAIService { get; set; }
+    public IShowDialogService ShowDialogService { get; }
+    public ILocalSetting LocalSetting { get; }
 
     [RelayCommand]
     async void Ask(string message) {
         await action(message, false);
+    }
+
+    [RelayCommand]
+    void ShowSetting() {
+        ShowDialogService.Show(App.GetSerivces<SettingDialog>(), "空的");
     }
 
     [RelayCommand]
@@ -41,6 +61,7 @@ public partial class MainViewModel:ObservableRecipient
             Message = message
         });
         var messagelist = new List<OpenAI.GPT3.ObjectModels.RequestModels.ChatMessage>();
+        
         foreach (var chat in ChatList) {
             switch (chat.Type) {
                 case ChatType.User:

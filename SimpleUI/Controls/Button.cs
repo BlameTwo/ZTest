@@ -17,6 +17,19 @@ namespace SimpleUI.Controls
                 new System.Windows.FrameworkPropertyMetadata(typeof(Button)));
         }
 
+
+
+        public Visibility ContentVisiblity {
+            get { return (Visibility)GetValue(ContentVisiblityProperty); }
+            set { SetValue(ContentVisiblityProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ContentVisiblity.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ContentVisiblityProperty =
+            DependencyProperty.Register("ContentVisiblity", typeof(Visibility), typeof(SimpleUI.Controls.Button), new PropertyMetadata(Visibility.Visible));
+
+
+
         public FontIconEnum Icon
         {
             get { return (FontIconEnum)GetValue(IconProperty); }

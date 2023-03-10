@@ -3,15 +3,19 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OpenAI.GPT3.Extensions;
 using OpenAI.GPT3.Interfaces;
+using SimpleUI.Interface;
 using SimpleUI.Interface.AppInterfaces;
 using SimpleUI.Interface.AppInterfaces.Services;
 using SimpleUI.Services;
+using SimpleUI.Themes;
 using SimpleUI.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZTest.Tools.Interfaces;
+using ZTest.Tools.Services;
 
 namespace ChatGPT_GUI; 
 public static class HostRegister 
@@ -19,11 +23,13 @@ public static class HostRegister
     public static IHostBuilder RegisterService(this IHostBuilder host) {
         host.ConfigureServices(services => 
         {
-            services.AddOpenAIService(setting => {
-                setting.ApiKey = "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";
+            services.AddOpenAIService((setting) => {
+                setting.ApiKey = "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";
             });
             services.AddSingleton<IToastLitterMessage, ToastLitterMessage>();
             services.AddSingleton<IShowDialogService, ShowDialogService>();
+            services.AddSingleton<IThemeApply<App>, ThemeApply<App>>();
+            services.AddSingleton<ILocalSetting, LocalSetting>();
         });
         return host;
     }
@@ -32,6 +38,8 @@ public static class HostRegister
         host.ConfigureServices(services => {
             services.AddSingleton<MainWindow>();
             services.AddSingleton<MainViewModel>();
+            services.AddSingleton<SettingDialog>();
+            services.AddSingleton<SettingViewModel>();
         });
         return host;
     }
@@ -39,7 +47,7 @@ public static class HostRegister
 
 public partial class App {
     public static IOpenAIService GetOpenAIService() {
-        if ((App.Current as App)!.Host.Services.GetService(typeof(IOpenAIService)) is not IOpenAIService service) {
+        if ((App.Current as App)!.Host.Services.GetRequiredService(typeof(IOpenAIService)) is not IOpenAIService service) {
             throw new System.Exception($"注册项目缺少{typeof(IOpenAIService)}");
         }
         return service;   

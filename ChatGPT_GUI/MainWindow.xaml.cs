@@ -7,13 +7,10 @@ namespace ChatGPT_GUI {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : WindowBase {
-        public MainWindow(IOpenAIService openAIService,MainViewModel vm) {
+        public MainWindow(MainViewModel vm) {
             InitializeComponent();
-            OpenAIService = openAIService;
-            OpenAIService.SetDefaultModelId(OpenAI.GPT3.ObjectModels.Models.Davinci);
             this.DataContext = vm;
         }
 
-        public IOpenAIService OpenAIService { get; }
     }
 }
