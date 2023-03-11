@@ -21,10 +21,17 @@
         CornerRadius="3">
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
                 <RowDefinition />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
-            <StackPanel Margin="10,0">
+            <TextBlock
+                Margin="10,10,0,0"
+                HorizontalAlignment="Left"
+                FontSize="25"
+                FontWeight="Bold"
+                Text="应用设置" />
+            <StackPanel Grid.Row="1" Margin="10,0">
                 <ui:Expander Header="API钥匙">
                     <TextBox Margin="10" Text="{Binding Keywrold, Mode=TwoWay}" />
                 </ui:Expander>
@@ -33,14 +40,14 @@
                         x:Name="themecombox"
                         Margin="10"
                         Padding="5"
-                        SelectedItem="{Binding Themestr, Mode=TwoWay}">
+                        Text="{Binding Themestr, Mode=TwoWay}">
                         <ComboBoxItem Content="浅色" />
                         <ComboBoxItem Content="深色" />
                     </ComboBox>
                 </ui:Expander>
             </StackPanel>
             <StackPanel
-                Grid.Row="1"
+                Grid.Row="2"
                 Margin="10"
                 HorizontalAlignment="Center"
                 Orientation="Horizontal">

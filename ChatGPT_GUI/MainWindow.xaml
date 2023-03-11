@@ -28,7 +28,7 @@
             AI="{StaticResource AIDateTemplate}"
             User="{StaticResource UserDateTemplate}" />
     </ui:WindowBase.Resources>
-    <Grid>
+    <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition />

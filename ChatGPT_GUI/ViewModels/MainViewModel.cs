@@ -11,18 +11,19 @@ using SimpleUI.Services;
 using ZTest.Tools.Interfaces;
 using OpenAI.GPT3.Managers;
 using OpenAI.GPT3;
+using SimpleUI.Interface.AppInterfaces;
 
 namespace ChatGPT_GUI.ViewModels;
 
 public partial class MainViewModel: ObservableRecipient {
-    public MainViewModel(IShowDialogService showDialogService, IOpenAIService openAIService, ILocalSetting localSetting) {
+    public MainViewModel(IShowDialogService showDialogService, IOpenAIService openAIService, ILocalSetting localSetting,IToastLitterMessage toastLitterMessage) {
         IsActive = true;
         this.ChatList = new ObservableCollection<ChatModel>();
         ShowDialogService = showDialogService;
         OpenAIService = openAIService;
         LocalSetting = localSetting;
+        ToastLitterMessage = toastLitterMessage;
         OpenAIService = App.GetOpenAIService();
-
     }
 
 
@@ -30,6 +31,7 @@ public partial class MainViewModel: ObservableRecipient {
     async void Loaded() {
         var str = (await LocalSetting.ReadConfig("KeyWord")).ToString();
         OpenAIService = new OpenAIService(new OpenAiOptions() { ApiKey = str });
+        ToastLitterMessage.Show("你好，欢迎使用猫娘模拟器");
     }
 
     [ObservableProperty]
@@ -38,6 +40,7 @@ public partial class MainViewModel: ObservableRecipient {
     public IOpenAIService OpenAIService { get; set; }
     public IShowDialogService ShowDialogService { get; }
     public ILocalSetting LocalSetting { get; }
+    public IToastLitterMessage ToastLitterMessage { get; }
 
     [RelayCommand]
     async void Ask(string message) {
@@ -95,6 +98,12 @@ public partial class MainViewModel: ObservableRecipient {
                 DateTime = DateTime.Now.AddSeconds(1),
                 Message = str
             });
+        }
+        else {
+            if (result.Error == null) {
+                throw new Exception("Unknown Error");
+            }
+            ToastLitterMessage.Show($"{result.Error.Message}");
         }
     }
 }

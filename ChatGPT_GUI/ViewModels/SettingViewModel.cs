@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using SimpleUI.Interface;
+using SimpleUI.Themes;
+using System.Reflection.Metadata.Ecma335;
 using System.Windows.Controls;
 using ZTest.Tools.Interfaces;
 
@@ -11,18 +12,27 @@ public partial class SettingViewModel:ObservableObject
     {
         ThemeApply = themeApply;
         LocalSetting = localSetting;
+        Init();
     }
 
-    partial void OnThemestrChanged(object value) {
-        switch ((value as ComboBoxItem).Content.ToString()) {
-            case "浅色":
-                ThemeApply.Apply(SimpleUI.Themes.ThemeType.Light);
-                LocalSetting.SaveConfig("Theme", "Light");
-                break;
-            case "深色":
-                ThemeApply.Apply(SimpleUI.Themes.ThemeType.Dark);
-                LocalSetting.SaveConfig("Theme", "Dark");
-                break;
+    private async void Init() {
+        Keywrold = (await LocalSetting.ReadConfig("KeyWord")).ToString()!;
+        Themestr = (await LocalSetting.ReadConfig("Theme")).ToString()!;
+    }
+
+    partial void OnThemestrChanged(string value) {
+        if(value is string str) {
+            switch (str) {
+                case "浅色":
+                    ThemeApply.Apply(SimpleUI.Themes.ThemeType.Light);
+                    LocalSetting.SaveConfig("Theme", "浅色");
+                    break;
+                case "深色":
+                    ThemeApply.Apply(SimpleUI.Themes.ThemeType.Dark);
+                    LocalSetting.SaveConfig("Theme", "深色");
+                    break;
+            }
+            return;
         }
     }
 
@@ -37,7 +47,7 @@ public partial class SettingViewModel:ObservableObject
     string _keywrold;
 
     [ObservableProperty]
-    object _themestr;
+    string _themestr;
 
 
 }
