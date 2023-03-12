@@ -16,7 +16,6 @@ namespace ChatGPT_GUI {
     public partial class App : Application {
         public IHost Host { get;}
 
-
         public App()
         {
             InitializeComponent();

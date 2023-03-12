@@ -25,6 +25,9 @@
     <!--  导航控件的Line颜色  -->
     <Color x:Key="Navigation.LineColor">#C1C1C1</Color>
 
+    <Color x:Key="Control.EnableFalse.Color">#434343</Color>
+
+    <SolidColorBrush x:Key="Control.EnableFalse.Brush" Color="{DynamicResource Control.EnableFalse.Color}" />
 
     <SolidColorBrush x:Key="NavigationItem.Background" Color="#666666" />
 

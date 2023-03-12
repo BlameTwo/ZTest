@@ -1,17 +1,18 @@
 ﻿using ChatGPT_GUI.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using OpenAI.GPT3.Interfaces;
-using System;
-using OpenAI.GPT3.ObjectModels.RequestModels;
-using System.Collections.ObjectModel;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using SimpleUI.Services;
-using ZTest.Tools.Interfaces;
-using OpenAI.GPT3.Managers;
 using OpenAI.GPT3;
+using OpenAI.GPT3.Interfaces;
+using OpenAI.GPT3.Managers;
+using OpenAI.GPT3.ObjectModels.RequestModels;
 using SimpleUI.Interface.AppInterfaces;
+using SimpleUI.Services;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows;
+using ZTest.Tools.Interfaces;
 
 namespace ChatGPT_GUI.ViewModels;
 
@@ -24,6 +25,9 @@ public partial class MainViewModel: ObservableRecipient {
         LocalSetting = localSetting;
         ToastLitterMessage = toastLitterMessage;
         OpenAIService = App.GetOpenAIService();
+        RingVisibility = Visibility.Collapsed;
+        StateMessage = "[等待A (用户)]";
+        IsSend = true;
     }
 
 
@@ -42,7 +46,8 @@ public partial class MainViewModel: ObservableRecipient {
     public ILocalSetting LocalSetting { get; }
     public IToastLitterMessage ToastLitterMessage { get; }
 
-    [RelayCommand]
+
+    [RelayCommand(CanExecute = nameof(IsSendMethod))]
     async void Ask(string message) {
         await action(message, false);
     }
@@ -52,12 +57,33 @@ public partial class MainViewModel: ObservableRecipient {
         ShowDialogService.Show(App.GetSerivces<SettingDialog>(), "空的");
     }
 
+    bool IsSendMethod() {
+        return IsSend;
+    }
+
     [RelayCommand]
     async void SetSystem(string message) {
         await action(message, true);
     }
 
+    [ObservableProperty]
+    Visibility _RingVisibility;
+
+    [ObservableProperty]
+    string _StateMessage;
+
+    [ObservableProperty]
+    private bool isSend;
+
+    partial void OnIsSendChanged(bool value) {
+        AskCommand.NotifyCanExecuteChanged();
+    }
+
+
     async Task action(string message,bool issystem) {
+        IsSend = false;
+        RingVisibility = Visibility.Visible;
+        StateMessage = "[等待B (AI)]";
         ChatList.Add(new ChatModel() {
             Type = ChatType.User,
             DateTime = DateTime.Now.AddSeconds(1),
@@ -86,8 +112,9 @@ public partial class MainViewModel: ObservableRecipient {
             messagelist.Add(OpenAI.GPT3.ObjectModels.RequestModels.ChatMessage.FromUser(message));
         var result = await OpenAIService.ChatCompletion.CreateCompletion(new ChatCompletionCreateRequest() {
             Messages = messagelist,
-            Model = OpenAI.GPT3.ObjectModels.Models.ChatGpt3_5Turbo
+            Model = OpenAI.GPT3.ObjectModels.Models.ChatGpt3_5Turbo0301
         });
+        
         if (result.Successful) {
             string str = "";
             result.Choices.ForEach((val) => {
@@ -105,5 +132,8 @@ public partial class MainViewModel: ObservableRecipient {
             }
             ToastLitterMessage.Show($"{result.Error.Message}");
         }
+        RingVisibility = Visibility.Collapsed;
+        StateMessage = "[等待A (用户)]";
+        IsSend = true;
     }
 }

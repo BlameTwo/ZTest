@@ -8,7 +8,7 @@
             <Setter.Value>
                 <WindowChrome
                     CaptionHeight="36"
-                    GlassFrameThickness="1"
+                    GlassFrameThickness="-1"
                     ResizeBorderThickness="5" />
             </Setter.Value>
         </Setter>

@@ -1,5 +1,6 @@
 ﻿using SimpleUI.Base;
 using SimpleUI.Helper;
+using SimpleUI.Utils;
 using System;
 using System.Drawing.Drawing2D;
 using System.Runtime.CompilerServices;
@@ -8,6 +9,7 @@ using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 using System.Windows.Controls;
 using System.Windows.Interop;
+using static SimpleUI.Utils.WindowBackdropBase;
 
 namespace SimpleUI.Controls
 {
@@ -19,6 +21,7 @@ namespace SimpleUI.Controls
         static WindowBase()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(WindowBase), new FrameworkPropertyMetadata(typeof(WindowBase)));
+
         }
 
         public override void OnApplyTemplate()
@@ -46,11 +49,37 @@ namespace SimpleUI.Controls
             {
                 this.Close();
             };
-
-
         }
 
 
+
+        public WindowBackdropBase WindowBackdrop {
+            get { return (WindowBackdropBase)GetValue(WindowBackdropProperty); }
+            set { SetValue(WindowBackdropProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for WindowBackdrop.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty WindowBackdropProperty =
+            DependencyProperty.Register("WindowBackdrop", typeof(WindowBackdropBase), typeof(WindowBase), new PropertyMetadata(default(WindowBackdropBase)));
+
+        private void OnBackdropChanged() {
+            WindowInteropHelper mainWindowPtr = new WindowInteropHelper(this);
+            WindowBackdropBase.RefreshFrame(mainWindowPtr.Handle);
+            WindowBackdropBase.RefreshDarkMode(mainWindowPtr.Handle, 1);
+            if (WindowBackdrop == null) return;
+            switch (this.WindowBackdrop.BackType) {
+                case WindowBackdropBase.Type.Acrylic:
+                    BackgroundApply.SetWindowAttribute(mainWindowPtr.Handle, BackgroundEnum.DWMWINDOWATTRIBUTE.DWMWA_SYSTEMBACKDROP_TYPE, WindowBackdropBase.Type.Acrylic);
+                    break;
+                case WindowBackdropBase.Type.Mica:
+                    BackgroundApply.SetWindowAttribute(mainWindowPtr.Handle, BackgroundEnum.DWMWINDOWATTRIBUTE.DWMWA_SYSTEMBACKDROP_TYPE, WindowBackdropBase.Type.Mica);
+                    break;
+                case WindowBackdropBase.Type.Tabbed:
+                    BackgroundApply.SetWindowAttribute(mainWindowPtr.Handle, BackgroundEnum.DWMWINDOWATTRIBUTE.DWMWA_SYSTEMBACKDROP_TYPE, WindowBackdropBase.Type.Tabbed);
+                    break;
+            }
+            Win32.Win32.SetWindowLong(mainWindowPtr.Handle, Win32.Win32.GWL_STYLE, Win32.Win32.GetWindowLong(mainWindowPtr.Handle, Win32.Win32.GWL_STYLE) & ~Win32.Win32.WS_SYSMENU);
+        }
 
         public Visibility MaxButtonVisibility
         {
@@ -111,6 +140,7 @@ namespace SimpleUI.Controls
                 var source = HwndSource.FromHwnd(handle);
                 HwndSource source2 = HwndSource.FromHwnd(source.Handle);
                 //source2.AddHook(HwndSourceHook);
+                OnBackdropChanged();
             }
         }
 

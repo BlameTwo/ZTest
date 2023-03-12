@@ -9,15 +9,10 @@ using SimpleUI.Interface.AppInterfaces.Services;
 using SimpleUI.Services;
 using SimpleUI.Themes;
 using SimpleUI.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZTest.Tools.Interfaces;
 using ZTest.Tools.Services;
 
-namespace ChatGPT_GUI; 
+namespace ChatGPT_GUI;
 public static class HostRegister 
 {
     public static IHostBuilder RegisterService(this IHostBuilder host) {

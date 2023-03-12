@@ -1,6 +1,8 @@
 ﻿using ChatGPT_GUI.ViewModels;
 using OpenAI.GPT3.Interfaces;
 using SimpleUI.Controls;
+using SimpleUI.Utils;
+using SimpleUI.Utils.Backdrop;
 using System;
 
 namespace ChatGPT_GUI {

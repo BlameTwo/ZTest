@@ -14,6 +14,7 @@
     Height="600"
     d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
     Background="{DynamicResource ResourceKey=DefaultAppBackgroundBrush}"
+    Foreground="{DynamicResource DefaultAppFillBrush}"
     MaxButtonVisibility="Collapsed"
     Style="{DynamicResource DefaultWindowBaseStyle}"
     mc:Ignorable="d">
@@ -30,10 +31,28 @@
     </ui:WindowBase.Resources>
     <Grid x:Name="grid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="40" />
             <RowDefinition />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
+        <StackPanel
+            Margin="10,5"
+            HorizontalAlignment="Left"
+            Orientation="Horizontal">
+            <TextBlock
+                VerticalAlignment="Center"
+                Foreground="{DynamicResource Default.Accent.Brush}"
+                Text="{Binding StateMessage, Mode=OneWay}" />
+            <ui:ProgressRing
+                Grid.Row="1"
+                Width="20"
+                Height="20"
+                Margin="10,0"
+                VerticalAlignment="Center"
+                IsActive="True"
+                IsIndeterminate="True"
+                Visibility="{Binding RingVisibility, Mode=OneWay}" />
+        </StackPanel>
         <StackPanel
             Margin="10,5"
             HorizontalAlignment="Right"

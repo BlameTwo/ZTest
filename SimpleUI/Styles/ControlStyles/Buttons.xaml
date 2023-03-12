@@ -107,6 +107,11 @@
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
                         </Trigger>
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource Control.EnableFalse.Brush}" />
+                            <Setter Property="BorderBrush" Value="Transparent" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False" />
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

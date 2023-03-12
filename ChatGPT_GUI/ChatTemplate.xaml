@@ -5,14 +5,41 @@
     xmlns:selecter="clr-namespace:ChatGPT_GUI.Selecter">
 
     <DataTemplate x:Key="UserDateTemplate" DataType="{x:Type data:ChatModel}">
-        <Grid HorizontalAlignment="Right">
+        <Grid Margin="0,5" HorizontalAlignment="Right">
+            <Grid.RenderTransform>
+                <TranslateTransform />
+            </Grid.RenderTransform>
+            <Grid.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetProperty="Opacity"
+                                From="0"
+                                To="1"
+                                Duration="0:0:0.3" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Unloaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetProperty="Opacity"
+                                To="0"
+                                Duration="0:0:0.3" />
+
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Grid.Triggers>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Border
                 Grid.Column="0"
-                Margin="10,10"
+                Margin="0,0,5,0"
                 Padding="5"
                 VerticalAlignment="Top"
                 Background="{DynamicResource Default.Accent.Brush}"
@@ -21,7 +48,7 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     Text="{Binding Message, Mode=OneWay}"
-                    TextWrapping="WrapWithOverflow" />
+                    TextWrapping="Wrap" />
             </Border>
             <Border
                 Grid.Column="1"
@@ -40,16 +67,39 @@
     </DataTemplate>
 
     <DataTemplate x:Key="AIDateTemplate" DataType="{x:Type data:ChatModel}">
-        <Grid HorizontalAlignment="Left">
+        <Grid Margin="0,5" HorizontalAlignment="Left">
+            <Grid.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetProperty="Opacity"
+                                From="0"
+                                To="1"
+                                Duration="0:0:0.3" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Unloaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetProperty="Opacity"
+                                To="0"
+                                Duration="0:0:0.3" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Grid.Triggers>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Border
                 Grid.Column="1"
-                Margin="10,10"
+                Margin="5,0,0,0"
                 Padding="5"
-                VerticalAlignment="Top"
+                VerticalAlignment="Center"
                 Background="{DynamicResource Default.Accent.Brush}"
                 CornerRadius="5">
                 <TextBlock
@@ -60,6 +110,7 @@
             </Border>
             <Border
                 Grid.Column="0"
+                Margin="5,0,0,0"
                 Padding="5"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"

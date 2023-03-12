@@ -1,8 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using SimpleUI.Interface;
-using SimpleUI.Themes;
-using System.Reflection.Metadata.Ecma335;
-using System.Windows.Controls;
 using ZTest.Tools.Interfaces;
 
 namespace ChatGPT_GUI.ViewModels;
