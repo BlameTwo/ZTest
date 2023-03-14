@@ -61,7 +61,8 @@ public partial class MainViewModel: ObservableRecipient {
         return IsSend;
     }
 
-    [RelayCommand]
+
+    [RelayCommand(CanExecute = nameof(IsSendMethod))]
     async void SetSystem(string message) {
         await action(message, true);
     }
@@ -77,6 +78,7 @@ public partial class MainViewModel: ObservableRecipient {
 
     partial void OnIsSendChanged(bool value) {
         AskCommand.NotifyCanExecuteChanged();
+        SetSystemCommand.NotifyCanExecuteChanged();
     }
 
 
@@ -110,30 +112,40 @@ public partial class MainViewModel: ObservableRecipient {
             messagelist.Add(OpenAI.GPT3.ObjectModels.RequestModels.ChatMessage.FromSystem(message));
         else
             messagelist.Add(OpenAI.GPT3.ObjectModels.RequestModels.ChatMessage.FromUser(message));
-        var result = await OpenAIService.ChatCompletion.CreateCompletion(new ChatCompletionCreateRequest() {
-            Messages = messagelist,
-            Model = OpenAI.GPT3.ObjectModels.Models.ChatGpt3_5Turbo0301
-        });
-        
-        if (result.Successful) {
-            string str = "";
-            result.Choices.ForEach((val) => {
-                str += string.IsNullOrWhiteSpace(val.Message.Content) ? "" : val.Message.Content;
+        try {
+            var result = await OpenAIService.ChatCompletion.CreateCompletion(new ChatCompletionCreateRequest() {
+                Messages = messagelist,
+                Model = OpenAI.GPT3.ObjectModels.Models.ChatGpt3_5Turbo0301
+                
             });
-            ChatList.Add(new ChatModel() {
-                Type = ChatType.AI,
-                DateTime = DateTime.Now.AddSeconds(1),
-                Message = str
-            });
-        }
-        else {
-            if (result.Error == null) {
-                throw new Exception("Unknown Error");
+            if (result.Successful) {
+                string str = "";
+                result.Choices.ForEach((val) => {
+                    str += string.IsNullOrWhiteSpace(val.Message.Content) ? "" : val.Message.Content;
+                });
+                ChatList.Add(new ChatModel() {
+                    Type = ChatType.AI,
+                    DateTime = DateTime.Now.AddSeconds(1),
+                    Message = str
+                });
             }
-            ToastLitterMessage.Show($"{result.Error.Message}");
+            else {
+                if (result.Error == null) {
+                    throw new Exception("Unknown Error");
+                }
+                ToastLitterMessage.Show($"{result.Error.Message}");
+            }
+            RingVisibility = Visibility.Collapsed;
+            StateMessage = "[等待A (用户)]";
+            IsSend = true;
         }
-        RingVisibility = Visibility.Collapsed;
-        StateMessage = "[等待A (用户)]";
-        IsSend = true;
+        catch (Exception) 
+        {
+            ToastLitterMessage.Show("代理或网络错误");
+            RingVisibility = Visibility.Collapsed;
+            StateMessage = "[等待A (用户)]";
+            IsSend = true;
+        }
+        
     }
 }

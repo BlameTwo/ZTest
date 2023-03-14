@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	  <TargetFrameworks>net48;net6.0-windows;net472</TargetFrameworks>
+	  <TargetFrameworks>net6.0-windows;net7.0-windows</TargetFrameworks>
 	<LangVersion>11</LangVersion>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
