@@ -94,6 +94,7 @@ public class DoubleConverter : JsonConverter<double> {
         var element = JsonDocument.ParseValue(ref reader).RootElement;
         //过滤\符号获取原Json数据
         string value = element.GetRawText().Replace(@"\","");
+        
         //转换double
         return reader.GetDouble();
     }
@@ -103,6 +104,31 @@ public class DoubleConverter : JsonConverter<double> {
         var result = value.ToString("F1");
         writer.WriteRawValue(result);
         
+    }
+}
+
+public class DoubleListConverter : JsonConverter<List<double>> {
+    public override List<double> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) {
+        var list = new List<double>();
+        while (reader.Read()) {
+            if(reader.TokenType == JsonTokenType.EndArray) {
+                return list;
+            }
+            else if(reader.TokenType == JsonTokenType.Number) {
+                list.Add(reader.GetDouble());
+            }
+
+        }
+        throw new JsonException();
+    }
+
+    public override void Write(Utf8JsonWriter writer, List<double> value, JsonSerializerOptions options) {
+        writer.WriteStartArray();
+        foreach (var item in value) {
+            var result = item.ToString("F1");
+            writer.WriteRawValue(result);
+        }
+        writer.WriteEndArray();
     }
 }
 

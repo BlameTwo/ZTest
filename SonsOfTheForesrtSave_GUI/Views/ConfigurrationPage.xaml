@@ -6,6 +6,7 @@
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:local="clr-namespace:SonsOfTheForesrtSave_GUI.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:selecter="clr-namespace:SonsOfTheForesrtSave_GUI.Selecters"
     xmlns:ui="clr-namespace:SimpleUI.Controls;assembly=SimpleUI"
     xmlns:viewmodels="clr-namespace:SonsOfTheForesrtSave_GUI.ViewModels"
     Title="ConfigurrationPage"
@@ -15,6 +16,17 @@
     Background="Transparent"
     Foreground="{DynamicResource DefaultAppFillBrush}"
     mc:Ignorable="d">
+    <Page.Resources>
+        <selecter:ConfigurationSelecter
+            x:Key="Selecter"
+            BoolDataTemplate="{StaticResource ConfigurationBoolDataTemplate}"
+            DefaultDataTemplate="{StaticResource ConfigurationDefaultDataTemplate}"
+            FloatDataTemplate="{StaticResource ConfigruationFloatataTemplate}"
+            IntDataTemplate="{StaticResource ConfigruationIntataTemplate}"
+            PostionDataTemplate="{StaticResource ConfigurationPostionDataTemplate}"
+            RotaionDataTemplate="{StaticResource ConfigurationRoationDataTemplate}"
+            StringDataTemplate="{StaticResource ConfigurationStringDataTemplate}" />
+    </Page.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
@@ -26,16 +38,61 @@
             <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBlock FontSize="25" Text="状态" />
-        <StackPanel Grid.Row="1">
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Image
+                    Height="150"
+                    Margin="10,0,0,0"
+                    Source="/Resources/Images/stateImg.png"
+                    Stretch="Uniform" />
+                <TextBlock
+                    Grid.Column="1"
+                    Margin="20,10,10,10"
+                    FontSize="15"
+                    TextWrapping="Wrap">
+                    <Bold FontSize="30">状态</Bold>
+                    <LineBreak />
+                    <LineBreak />
+                    <Run Text="修改人物的属性状态" />
+                </TextBlock>
+                <StackPanel
+                    Grid.Column="1"
+                    Margin="0,0,10,0"
+                    HorizontalAlignment="Right">
+                    <ui:Button Content="复制存档Json" Icon="Copy" />
+                    <ui:Button
+                        Margin="0,10,0,0"
+                        Content="备份状态存档"
+                        Icon="Back" />
+                    <ui:Button
+                        Margin="0,10,0,0"
+                        Command="{Binding SaveDataCommand}"
+                        Content="保存当前存档"
+                        Icon="Save" />
+                </StackPanel>
+            </Grid>
             <ui:ActionCard
+                Grid.Row="1"
                 Margin="10"
                 Description="{Binding Modeldata.Version}"
                 Header="存档版本"
                 Icon="UpdateRestore"
                 SubTitle="状态存档的版本" />
-            <ItemsControl ItemsSource="{Binding Itemlist, Mode=OneWay}" />
-        </StackPanel>
+            <ItemsControl
+                x:Name="list"
+                Grid.Row="2"
+                ItemTemplateSelector="{StaticResource Selecter}"
+                ItemsSource="{Binding Itemlist, Mode=OneWay}" />
+        </Grid>
 
     </Grid>
 </Page>

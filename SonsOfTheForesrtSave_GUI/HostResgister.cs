@@ -27,6 +27,7 @@ public static class HostResgister
             services.AddTransient<WorldSaveStatePage>();
             services.AddTransient<PackagePage>();
             services.AddTransient<AddPackageDialog>();
+            services.AddTransient<GameSettingPage>();
         });
         return builder;
     }
@@ -53,6 +54,7 @@ public static class HostResgister
             services.AddTransient<WorldSaveStateViewModel>();
             services.AddTransient<PackageViewModel>();
             services.AddTransient<AddPackageViewModel>();
+            services.AddTransient<GameSettingViewModel>();
         });
         return builder;
     }

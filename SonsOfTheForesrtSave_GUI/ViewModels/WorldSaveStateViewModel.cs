@@ -6,6 +6,8 @@ using System.Windows.Media.Imaging;
 using System;
 using System.Windows;
 using SimpleUI.Interface.AppInterfaces;
+using System.Windows.Documents;
+using System.Collections.Generic;
 
 namespace SonsOfTheForesrtSave_GUI.ViewModels;
 public partial class WorldSaveStateViewModel:ObservableObject {
@@ -14,6 +16,12 @@ public partial class WorldSaveStateViewModel:ObservableObject {
     public WorldSaveStateViewModel(IToastLitterMessage toastLitterMessage)
     {
         ToastLitterMessage = toastLitterMessage;
+        this.WordSaveType = new List<string>() {
+            "Normal",
+            "Peaceful",
+            "Hard",
+            "Custom"
+        };
     }
 
     [ObservableProperty]
@@ -39,6 +47,9 @@ public partial class WorldSaveStateViewModel:ObservableObject {
         ToastLitterMessage.Show("已保存存档");
     }
 
+    [ObservableProperty]
+    List<string> _WordSaveType;
+
     [RelayCommand]
     async void Loaded() {
         if (SonsOfTheForesrtSaveLib.SaveConfig.DirPath != null)
@@ -46,5 +57,4 @@ public partial class WorldSaveStateViewModel:ObservableObject {
         Gameworldstateresult = await  _gameword.ReadSave();
         this.Savedata = _gameword.FormatData(this.Gameworldstateresult.Data);
     }
-
 }

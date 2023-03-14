@@ -1,0 +1,97 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:convert="clr-namespace:SonsOfTheForesrtSave_GUI.Converter"
+    xmlns:itemvm="clr-namespace:SonsOfTheForesrtSave_GUI.ViewModels.ItemViewModel"
+    xmlns:ui="clr-namespace:SimpleUI.Controls;assembly=SimpleUI">
+    <convert:StateConverter x:Key="StateConvert" />
+    <DataTemplate x:Key="ConfigurationStringDataTemplate" DataType="{x:Type itemvm:ConfigurationItemViewModel}">
+        <ui:ActionCard
+            Margin="10"
+            Description="{Binding StringValue, Mode=OneWay}"
+            Header="{Binding Name, Converter={StaticResource StateConvert}}"
+            SubTitle="{Binding Protected}" />
+    </DataTemplate>
+    <DataTemplate x:Key="ConfigurationDefaultDataTemplate" DataType="{x:Type itemvm:ConfigurationItemViewModel}">
+        <ui:ActionCard Margin="10" Header="{Binding Name}" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="ConfigruationIntataTemplate" DataType="{x:Type itemvm:ConfigurationItemViewModel}">
+        <ui:ActionCard
+            Margin="10"
+            Header="{Binding Name, Converter={StaticResource StateConvert}}"
+            SubTitle="{Binding Protected}">
+            <ui:ActionCard.Description>
+                <TextBox Padding="3" Text="{Binding IntValue, Mode=TwoWay}" />
+            </ui:ActionCard.Description>
+        </ui:ActionCard>
+    </DataTemplate>
+
+
+    <DataTemplate x:Key="ConfigruationFloatataTemplate" DataType="{x:Type itemvm:ConfigurationItemViewModel}">
+        <ui:ActionCard
+            Margin="10"
+            Header="{Binding Name, Converter={StaticResource StateConvert}}"
+            SubTitle="{Binding Protected}">
+            <ui:ActionCard.Description>
+                <TextBox Padding="3" Text="{Binding FloatValue, Mode=TwoWay}" />
+            </ui:ActionCard.Description>
+        </ui:ActionCard>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ConfigurationBoolDataTemplate" DataType="{x:Type itemvm:ConfigurationItemViewModel}">
+        <ui:ActionCard
+            Margin="10"
+            Header="{Binding Name, Converter={StaticResource StateConvert}}"
+            SubTitle="{Binding Protected}">
+            <ui:ActionCard.Description>
+                <CheckBox IsChecked="{Binding BoolValue, Mode=TwoWay}" />
+            </ui:ActionCard.Description>
+        </ui:ActionCard>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ConfigurationPostionDataTemplate" DataType="{x:Type itemvm:ConfigurationItemViewModel}">
+        <ui:ActionCard
+            Margin="10"
+            Header="{Binding Name, Converter={StaticResource StateConvert}}"
+            SubTitle="{Binding Protected}">
+            <ui:ActionCard.Description>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center" Text="X: " />
+                    <TextBox Text="{Binding FloatArrayValue[0], Mode=TwoWay}" />
+                    <TextBlock Text="  " />
+                    <TextBlock VerticalAlignment="Center" Text="Y: " />
+                    <TextBox Text="{Binding FloatArrayValue[1], Mode=TwoWay}" />
+                    <TextBlock Text="  " />
+                    <TextBlock VerticalAlignment="Center" Text="Z: " />
+                    <TextBox Text="{Binding FloatArrayValue[2], Mode=TwoWay}" />
+                    <TextBlock Text="  " />
+                </StackPanel>
+            </ui:ActionCard.Description>
+        </ui:ActionCard>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ConfigurationRoationDataTemplate" DataType="{x:Type itemvm:ConfigurationItemViewModel}">
+        <ui:ActionCard
+            Margin="10"
+            Header="{Binding Name, Converter={StaticResource StateConvert}}"
+            SubTitle="{Binding Protected}">
+            <ui:ActionCard.Description>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center" Text="X: " />
+                    <TextBox Text="{Binding FloatArrayValue[0], Mode=TwoWay}" />
+                    <TextBlock Text="  " />
+                    <TextBlock VerticalAlignment="Center" Text="Y: " />
+                    <TextBox Text="{Binding FloatArrayValue[1], Mode=TwoWay}" />
+                    <TextBlock Text="  " />
+                    <TextBlock VerticalAlignment="Center" Text="Z: " />
+                    <TextBox Text="{Binding FloatArrayValue[2], Mode=TwoWay}" />
+                    <TextBlock Text="  " />
+                    <TextBlock VerticalAlignment="Center" Text="W: " />
+                    <TextBox Text="{Binding FloatArrayValue[2], Mode=TwoWay}" />
+                    <TextBlock Text="  " />
+                </StackPanel>
+            </ui:ActionCard.Description>
+        </ui:ActionCard>
+    </DataTemplate>
+</ResourceDictionary>

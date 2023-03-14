@@ -42,7 +42,10 @@
                     Content="背包"
                     Icon="HomeGroup"
                     TypeUri="{x:Type page:PackagePage}" />
-                <ui:NavigationViewItem Content="设定" Icon="Settings" />
+                <ui:NavigationViewItem
+                    Content="设定"
+                    Icon="Settings"
+                    TypeUri="{x:Type page:GameSettingPage}" />
                 <ui:NavigationViewItem
                     Content="更新"
                     Icon="InsiderHubApp"

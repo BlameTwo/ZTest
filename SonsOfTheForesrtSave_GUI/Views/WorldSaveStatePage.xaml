@@ -104,10 +104,17 @@
                     Icon="Edit"
                     SubTitle="存档游戏类型">
                     <ui:ActionCard.Description>
-                        <TextBox
+                        <ComboBox
                             Width="250"
                             Padding="5"
-                            Text="{Binding Savedata.GameType, Mode=TwoWay}" />
+                            ItemsSource="{Binding WordSaveType}"
+                            SelectedItem="{Binding Savedata.GameType, Mode=TwoWay}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Converter={StaticResource WordSaveType}}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                     </ui:ActionCard.Description>
                 </ui:ActionCard>
                 <ui:Expander Header="游戏时间" Icon="DateTime">

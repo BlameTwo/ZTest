@@ -9,8 +9,10 @@
     <Application.Resources>
         <ResourceDictionary>
             <convert:PackageIDConvert x:Key="PackageIDConvert" />
+            <convert:WordSaveTypeConverter x:Key="WordSaveType" />
             <ResourceDictionary.MergedDictionaries>
-                <theme:Theme Type="Light" />
+                <ResourceDictionary Source="/Resources/DatatTemplates/ConfigurationDataTemplate.xaml" />
+                <theme:Theme Type="Dark" />
                 <style:SimpleStyle Type="Default" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

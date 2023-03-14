@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFrameworks>net6.0-windows</TargetFrameworks>
+    <TargetFrameworks>net6.0-windows;net7.0-windows</TargetFrameworks>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
 	  <LangVersion>11</LangVersion>
@@ -14,6 +14,7 @@
     <None Remove="Resources\Icons\icon.ico" />
     <None Remove="Resources\Images\appicon.png" />
     <None Remove="Resources\Images\BAGIMG.png" />
+    <None Remove="Resources\Images\stateImg.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +27,7 @@
     <Resource Include="Resources\Images\appicon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\stateImg.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,11 +41,6 @@
     <ProjectReference Include="..\SimpleUI\SimpleUI.csproj" />
     <ProjectReference Include="..\SonsOfTheForesrtSave\SonsOfTheForesrtSaveLib.csproj" />
     <ProjectReference Include="..\ZTest.Tools\ZTest.Tools.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Enum\" />
-    <Folder Include="Views\ItemTemplate\" />
   </ItemGroup>
 
   <ItemGroup>
