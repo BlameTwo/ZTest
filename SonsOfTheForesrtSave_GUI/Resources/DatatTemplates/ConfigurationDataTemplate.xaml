@@ -13,7 +13,14 @@
             SubTitle="{Binding Protected}" />
     </DataTemplate>
     <DataTemplate x:Key="ConfigurationDefaultDataTemplate" DataType="{x:Type itemvm:ConfigurationItemViewModel}">
-        <ui:ActionCard Margin="10" Header="{Binding Name}" />
+        <ui:ActionCard
+            Margin="10"
+            Header="{Binding Name, Converter={StaticResource StateConvert}}"
+            SubTitle="{Binding Protected}">
+            <ui:ActionCard.Description>
+                <TextBox Padding="3" Text="{Binding StringValue, Mode=TwoWay}" />
+            </ui:ActionCard.Description>
+        </ui:ActionCard>
     </DataTemplate>
 
     <DataTemplate x:Key="ConfigruationIntataTemplate" DataType="{x:Type itemvm:ConfigurationItemViewModel}">

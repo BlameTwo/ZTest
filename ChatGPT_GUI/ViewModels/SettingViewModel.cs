@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using SimpleUI.Interface;
+using System.Threading.Tasks;
 using ZTest.Tools.Interfaces;
 
 namespace ChatGPT_GUI.ViewModels;
@@ -17,30 +18,38 @@ public partial class SettingViewModel:ObservableObject
         Themestr = (await LocalSetting.ReadConfig("Theme")).ToString()!;
     }
 
-    partial void OnThemestrChanged(string value) {
-        if(value is string str) {
-            switch (str) {
-                case "浅色":
-                    ThemeApply.Apply(SimpleUI.Themes.ThemeType.Light);
-                    LocalSetting.SaveConfig("Theme", "浅色");
-                    ThemeApply.IsEnable = false;
-                    break;
-                case "深色":
-                    ThemeApply.Apply(SimpleUI.Themes.ThemeType.Dark);
-                    LocalSetting.SaveConfig("Theme", "深色");
-                    ThemeApply.IsEnable = false;
-                    break;
-                case "自动":
-                    LocalSetting.SaveConfig("Theme", "自动");
-                    ThemeApply.IsEnable = true;
-                    break;
+    partial  void OnThemestrChanged(string value) {
+        Task.Run(async () =>
+        {
+            if (value is string str)
+            {
+                switch (str)
+                {
+                    case "浅色":
+                        ThemeApply.Apply(SimpleUI.Themes.ThemeType.Light);
+                        await LocalSetting.SaveConfig("Theme", "浅色");
+                        ThemeApply.IsEnable = false;
+                        break;
+                    case "深色":
+                        ThemeApply.Apply(SimpleUI.Themes.ThemeType.Dark);
+                        await LocalSetting.SaveConfig("Theme", "深色");
+                        ThemeApply.IsEnable = false;
+                        break;
+                    case "自动":
+                        await LocalSetting.SaveConfig("Theme", "自动");
+                        ThemeApply.IsEnable = true;
+                        break;
+                }
+                return;
             }
-            return;
-        }
+        });
     }
 
     partial void OnKeywroldChanged(string value) {
-        LocalSetting.SaveConfig("KeyWord", value);
+        Task.Run(async () =>
+        {
+            await LocalSetting.SaveConfig("KeyWord", value);
+        });
     }
 
     public IThemeApply<App> ThemeApply { get; }

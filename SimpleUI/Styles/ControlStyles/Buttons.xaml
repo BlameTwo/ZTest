@@ -7,7 +7,6 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/Sources/Thickess.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/Sources/CornerRadius.xaml" />
-
     </ResourceDictionary.MergedDictionaries>
     <Style TargetType="{x:Type ui:Button}">
         <!--  在这里设定外部的样式，以保证扩展性  -->
@@ -108,10 +107,13 @@
                             </Trigger.ExitActions>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource Control.EnableFalse.Brush}" />
+                            <Setter Property="Background" Value="{DynamicResource Default.Control.Background.Brush}" />
                             <Setter Property="BorderBrush" Value="Transparent" />
                         </Trigger>
-                        <Trigger Property="IsEnabled" Value="False" />
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{DynamicResource Control.EnableFalse.Brush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource Default.Control.Border.Brush}" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -235,10 +237,13 @@
                             </Trigger.ExitActions>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource Control.EnableFalse.Brush}" />
+                            <Setter Property="Background" Value="{DynamicResource Default.Control.Background.Brush}" />
                             <Setter Property="BorderBrush" Value="Transparent" />
                         </Trigger>
-                        <Trigger Property="IsEnabled" Value="False" />
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{DynamicResource Control.EnableFalse.Brush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource Default.Control.Border.Brush}" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

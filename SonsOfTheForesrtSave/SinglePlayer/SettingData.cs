@@ -1,11 +1,11 @@
 ﻿using SonsOfTheForesrtSaveLib.Models.SinglePlayer;
-using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace SonsOfTheForesrtSaveLib.SinglePlayer {
+namespace SonsOfTheForesrtSaveLib.SinglePlayer
+{
     public class SettingData: SaveBase {
         readonly string ConfigFileName = "GameSetupSaveData.json";
 
@@ -22,8 +22,12 @@ namespace SonsOfTheForesrtSaveLib.SinglePlayer {
         }
 
 
-        public void WriteSave(ModelBase<GameSetupDataModel> model,SettingResultData data) {
+        public void WriteSave(ModelBase<GameSetupDataModel> database,SettingResultData model) {
 
+            var modeldata = JsonSerializer.Serialize<SettingResultData>(model);
+            database.Data.Data = modeldata;
+            var result = JsonSerializer.Serialize(database);
+            File.WriteAllText(Path.Combine(SaveConfig.DirPath, ConfigFileName), result, Encoding.UTF8);
         }
     }
 }

@@ -16,6 +16,9 @@
 
     <Color x:Key="Navigation.LineColor">#6F6F6F</Color>
 
+    <Color x:Key="Control.EnableFalse.Color">gray</Color>
+
+    <SolidColorBrush x:Key="Control.EnableFalse.Brush" Color="{DynamicResource Control.EnableFalse.Color}" />
 
 
     <Color x:Key="Navigation.Content.Background.Color">#EFEFEF</Color>

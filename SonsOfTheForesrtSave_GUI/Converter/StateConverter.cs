@@ -51,6 +51,14 @@ public class StateConverter : IValueConverter {
                     return "*玩家区域遮罩";
                 case "isNewItemInInventory_00000483":
                     return "00000483是库存新物品";
+                case "Mode":
+                    return "游戏模式";
+                case "UID":
+                    return "存档ID";
+                case "GameSetting.Vail.EnemySpawn":
+                    return "是否生成敌人";
+                case "GameSetting.Vail.AnimalSpawnRate":
+                    return "动物生成频率";
             }
         }
         return value;

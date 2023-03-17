@@ -16,6 +16,10 @@ public class ConfigurrationResultData {
 /// </summary>
 public class SettingResultData {
     [JsonPropertyName("_settings")]public List<ConfigurrationResultDataItem> Items { get; set; }
+
+    [JsonPropertyName("name")]public string Name { get; set; }
+
+    [JsonPropertyName("hideFlags")]public int HideFlag { get; set; }
 }
 
 public class ConfigurrationResultDataItem {

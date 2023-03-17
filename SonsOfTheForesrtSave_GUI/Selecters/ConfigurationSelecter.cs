@@ -20,9 +20,13 @@ public class ConfigurationSelecter : DataTemplateSelector {
             || vm.Name == "crafted.00000589"
             || vm.Name == "crafted.00000589"
             || vm.Name == "seenFirstTimeEquip_00000358"
-            || vm.Name.StartsWith("is")) {
+            || vm.Name.StartsWith("is")
+            ) {
             return BoolDataTemplate;
         }
+
+        if (vm.Name.IndexOf("GameSetting.Vail.EnemySpawn") != -1)
+            return BoolDataTemplate;
 
         if ( vm.Name == "StrengthLevel"
             || vm.Name == "consumed.00000446"
@@ -45,10 +49,21 @@ public class ConfigurationSelecter : DataTemplateSelector {
             || vm.Name == "player.areaMask")
             return FloatDataTemplate;
 
+
+        if (vm.Name == "Mode"
+            ||vm.Name== "UID"
+            ||vm.Name == "GameSetting.Vail.AnimalSpawnRate")
+            return StringDataTemplate;
+
+
         if (vm.Name == "player.position")
             return PostionDataTemplate;
+
+
         if (vm.Name == "player.rotation")
             return RotaionDataTemplate;
+
+
         return DefaultDataTemplate;
     }
     

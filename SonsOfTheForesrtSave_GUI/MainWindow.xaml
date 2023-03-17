@@ -37,7 +37,10 @@
                     Content="状态"
                     Icon="TwoBars"
                     TypeUri="{x:Type page:ConfigurrationPage}" />
-                <ui:NavigationViewItem Content="实体" Icon="Family" />
+                <ui:NavigationViewItem
+                    Content="实体"
+                    Icon="Family"
+                    IsEnabled="False" />
                 <ui:NavigationViewItem
                     Content="背包"
                     Icon="HomeGroup"

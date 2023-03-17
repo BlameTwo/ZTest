@@ -28,7 +28,6 @@ public class PlayerPackageData {
 
     public void SaveData(ModelBase<PlayerPackageModelData> database, PlayerInventoryData model) 
     {
-        var modeldata = JsonSerializer.Serialize<PlayerInventoryData>(model);
         var data = database;
         var playerintent = JsonSerializer.Serialize(model);
         data.Data.Data = playerintent;
