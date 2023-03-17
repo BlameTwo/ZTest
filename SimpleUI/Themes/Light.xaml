@@ -4,9 +4,11 @@
 
     <Color x:Key="Default.Control.Border.Color">#000000</Color>
 
-    <Color x:Key="Default.Control.Background.Color">#D7D7D7</Color>
+    <Color x:Key="Default.Control.Background.Color">#E1E1E1</Color>
 
     <Color x:Key="DefaultAppFillBrushColor">black</Color>
+
+
 
     <Color x:Key="Default.Accent.Color">#189AA7</Color>
 

@@ -27,11 +27,15 @@ namespace ChatGPT_GUI {
 
         protected override void OnStartup(StartupEventArgs e) {
             var main = App.GetSerivces<MainWindow>();
-            App.GetSerivces<IThemeApply<App>>().App = this;
+
+            var themechanged = App.GetSerivces<IThemeApply<App>>();
+            themechanged.App= this;
             App.GetSerivces<ILocalSetting>().InitSetting();
             this.MainWindow = main;
             main.Show();
+            themechanged.IsEnable = true;
             base.OnStartup(e);
         }
+
     }
 }

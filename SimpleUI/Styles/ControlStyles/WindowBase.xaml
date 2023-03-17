@@ -4,6 +4,8 @@
     xmlns:ui="clr-namespace:SimpleUI.Controls">
 
     <Style x:Key="DefaultWindowBaseStyle" TargetType="{x:Type ui:WindowBase}">
+        <Setter Property="Background" Value="{DynamicResource DefaultAppBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource DefaultAppFileBrush}" />
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
                 <WindowChrome

@@ -1,4 +1,5 @@
 ﻿
+using SimpleUI.Themes;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -12,6 +13,8 @@ internal interface IThemeRegistry<T>:IDisposable
     internal void Restart();
 
     internal List<Themes.Registry.RegistryArgs> Init();
+
+    internal ThemeType GetSystemTheme();
 
 
     /// <summary>

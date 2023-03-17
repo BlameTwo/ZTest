@@ -23,10 +23,16 @@ public partial class SettingViewModel:ObservableObject
                 case "浅色":
                     ThemeApply.Apply(SimpleUI.Themes.ThemeType.Light);
                     LocalSetting.SaveConfig("Theme", "浅色");
+                    ThemeApply.IsEnable = false;
                     break;
                 case "深色":
                     ThemeApply.Apply(SimpleUI.Themes.ThemeType.Dark);
                     LocalSetting.SaveConfig("Theme", "深色");
+                    ThemeApply.IsEnable = false;
+                    break;
+                case "自动":
+                    LocalSetting.SaveConfig("Theme", "自动");
+                    ThemeApply.IsEnable = true;
                     break;
             }
             return;

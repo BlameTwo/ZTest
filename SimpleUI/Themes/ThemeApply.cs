@@ -28,9 +28,14 @@ public partial class ThemeApply<T> : IThemeApply<T>
         set
         {
             if (value)
+            {
+                this.Apply(Registry.GetSystemTheme());
                 Registry.Start();
+            }
             else
+            {
                 Registry.Dispose();
+            }
             _Isenable = value;
         }
     }
@@ -61,10 +66,12 @@ public partial class ThemeApply<T> : IThemeApply<T>
             case "SystemUsesLightTheme":
                 _options.Add(ThemeSettings.WindowsMode);
                 _SystemTheme = (int)args.Value == 1 ? ThemeType.Light : ThemeType.Dark;
+                if (IsEnable == true) this.Apply(_SystemTheme);
                 break;
             case "AccentColor":
                 _options.Add(ThemeSettings.AccentColor);
                 _AccentColor = ColorTranslator.FromWin32((int)args.Value);
+                if (IsEnable == true) this.Apply(_SystemTheme, _AccentColor);
                 break;
         }
 

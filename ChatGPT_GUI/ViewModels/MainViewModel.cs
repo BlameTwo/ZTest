@@ -113,10 +113,11 @@ public partial class MainViewModel: ObservableRecipient {
         else
             messagelist.Add(OpenAI.GPT3.ObjectModels.RequestModels.ChatMessage.FromUser(message));
         try {
-            var result = await OpenAIService.ChatCompletion.CreateCompletion(new ChatCompletionCreateRequest() {
+            var result = await OpenAIService.ChatCompletion.CreateCompletion(new ChatCompletionCreateRequest()
+            {
                 Messages = messagelist,
-                Model = OpenAI.GPT3.ObjectModels.Models.ChatGpt3_5Turbo0301
-                
+                Model = OpenAI.GPT3.ObjectModels.Models.ChatGpt3_5Turbo,
+                MaxTokens = 100
             });
             if (result.Successful) {
                 string str = "";

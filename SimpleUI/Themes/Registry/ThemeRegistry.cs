@@ -130,6 +130,17 @@ internal class ThemeRegistry<T>: IThemeRegistry<T>
         }
         return args;
     }
+
+    ThemeType IThemeRegistry<T>.GetSystemTheme()
+    {
+        var value = (int)Microsoft.Win32.Registry.GetValue(_themepath, "SystemUsesLightTheme",null);
+        if(value == null)
+            throw new ArgumentNullException("注册表让吃了");
+        if (value == 1)
+            return ThemeType.Light;
+        else
+            return ThemeType.Dark;
+    }
 }
 
 public class RegistryArgs:EventArgs

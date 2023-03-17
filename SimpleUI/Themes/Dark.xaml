@@ -17,7 +17,7 @@
     <SolidColorBrush x:Key="Navigation.MenuBackImage.Color" Color="#7F9A8B8B" />
 
     <!--  控件的背景颜色  -->
-    <Color x:Key="Default.Control.Background.Color">#666666</Color>
+    <Color x:Key="Default.Control.Background.Color">#3FF1F1F1</Color>
 
     <!--  控件的前景颜色  -->
     <Color x:Key="DefaultAppFillBrushColor">white</Color>

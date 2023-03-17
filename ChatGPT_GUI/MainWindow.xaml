@@ -13,8 +13,6 @@
     Width="350"
     Height="600"
     d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
-    Background="{DynamicResource ResourceKey=DefaultAppBackgroundBrush}"
-    Foreground="{DynamicResource DefaultAppFillBrush}"
     MaxButtonVisibility="Collapsed"
     Style="{DynamicResource DefaultWindowBaseStyle}"
     mc:Ignorable="d">
@@ -100,14 +98,13 @@
                     CommandParameter="{Binding ElementName=MessageBox, Path=Text, Mode=OneWay}"
                     Content="发送"
                     Icon="Send" />
-                <ui:Button
+                <Button
                     Grid.Row="1"
                     Grid.ColumnSpan="2"
                     Margin="5,5,5,0"
                     Command="{Binding SetSystemCommand}"
                     CommandParameter="{Binding ElementName=MessageBox, Path=Text, Mode=OneWay}"
-                    Content="发送设定系统消息"
-                    Icon="Message" />
+                    Content="发送设定系统消息" />
             </Grid>
         </Grid>
     </Grid>

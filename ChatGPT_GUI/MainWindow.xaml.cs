@@ -11,6 +11,7 @@ namespace ChatGPT_GUI {
             InitializeComponent();
             this.Loaded += MainWindow_Loaded;
             this.DataContext = vm;
+            this.WindowBackdrop = new SimpleUI.Utils.Backdrop.AcrylicBackdrop();
         }
 
         private void MainWindow_Loaded(object sender, System.Windows.RoutedEventArgs e) {

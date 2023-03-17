@@ -43,6 +43,7 @@
                         Text="{Binding Themestr, Mode=TwoWay}">
                         <ComboBoxItem Content="浅色" />
                         <ComboBoxItem Content="深色" />
+                        <ComboBoxItem Content="自动" />
                     </ComboBox>
                 </ui:Expander>
             </StackPanel>
