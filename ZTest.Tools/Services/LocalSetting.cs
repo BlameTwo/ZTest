@@ -28,16 +28,24 @@ namespace ZTest.Tools.Services {
         }
 
         private async Task initWrite() {
-            await File.WriteAllTextAsync(Path.Combine(filedir, LocalSettingFileName), "");
+            await Task.Run(() =>
+            {
+                File.WriteAllText(Path.Combine(filedir, LocalSettingFileName), "");
+            });
         }
 
         async Task refresh() {
-            var str = await File.ReadAllTextAsync(file);
-            if (!string.IsNullOrWhiteSpace(str)) {
-                Config = JsonSerializer.Deserialize<Dictionary<string, object>>(str)!;
-            }
-            else
-                Config = new();
+            await Task.Run(async () =>
+            {
+
+                var str = File.ReadAllText(file);
+                if (!string.IsNullOrWhiteSpace(str))
+                {
+                    Config = JsonSerializer.Deserialize<Dictionary<string, object>>(str)!;
+                }
+                else
+                    Config = new();
+            });
         }
 
         public async Task<Object> ReadConfig(string key) {
@@ -86,7 +94,10 @@ namespace ZTest.Tools.Services {
         }
 
         public async Task save() {
-            await File.WriteAllTextAsync(Path.Combine(filedir, LocalSettingFileName), JsonSerializer.Serialize(Config));
+            await Task.Run(() =>
+            {
+                File.WriteAllText(Path.Combine(filedir, LocalSettingFileName), JsonSerializer.Serialize(Config));
+            });
         }
 
         public async Task<bool> DelectConfig(string key) {

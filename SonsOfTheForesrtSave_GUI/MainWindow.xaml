@@ -55,7 +55,10 @@
                     TypeUri="{x:Type page:UpdateView}" />
             </ui:NavigationView.MenuItems>
             <ui:NavigationView.Content>
-                <Frame x:Name="framebase" NavigationUIVisibility="Hidden" />
+                <Frame
+                    x:Name="framebase"
+                    NavigationUIVisibility="Hidden"
+                    Source="/Views/Welcome.xaml" />
             </ui:NavigationView.Content>
         </ui:NavigationView>
     </Grid>
