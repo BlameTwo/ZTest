@@ -1,5 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style TargetType="{x:Type TextBox}">
+    <Style x:Key="BaseTextBox" TargetType="{x:Type TextBox}">
         <Setter Property="Background" Value="{DynamicResource Default.Control.Background.Brush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource Default.Control.Border.Brush}" />
         <Setter Property="BorderThickness" Value="0" />

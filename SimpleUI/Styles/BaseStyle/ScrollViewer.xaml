@@ -150,7 +150,7 @@
     </Style>
 
 
-    <Style TargetType="{x:Type ScrollViewer}">
+    <Style x:Key="BaseScrollViewer" TargetType="{x:Type ScrollViewer}">
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Foreground" Value="{DynamicResource DefaultAppFillBrush}" />
         <Setter Property="Template">

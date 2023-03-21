@@ -37,8 +37,11 @@ namespace ZTest.Tools.Services {
         async Task refresh() {
             await Task.Run(async () =>
             {
-
-                var str = File.ReadAllText(file);
+                StreamReader reader
+                 = new(file);
+                var str = reader.ReadToEnd();
+                reader.Close();
+                reader.Dispose();
                 if (!string.IsNullOrWhiteSpace(str))
                 {
                     Config = JsonSerializer.Deserialize<Dictionary<string, object>>(str)!;
@@ -90,20 +93,17 @@ namespace ZTest.Tools.Services {
             else {
                 Config.Add(key, value);
             }
-            await save();
+            save();
         }
 
-        public async Task save() {
-            await Task.Run(() =>
-            {
-                File.WriteAllText(Path.Combine(filedir, LocalSettingFileName), JsonSerializer.Serialize(Config));
-            });
+        public void save() {
+            File.WriteAllText(Path.Combine(filedir, LocalSettingFileName), JsonSerializer.Serialize(Config));
         }
 
         public async Task<bool> DelectConfig(string key) {
             if (Config.ContainsKey(key)) {
                 Config.Remove(key);
-                await save();
+                save();
                 return true;
             }
             return false;

@@ -7,7 +7,7 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/Sources/CornerRadius.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/Sources/ConvertSource.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style TargetType="{x:Type ui:NumberBox}">
+    <Style x:Key="BaseNumberBox" TargetType="{x:Type ui:NumberBox}">
         <Setter Property="Foreground" Value="{DynamicResource DefaultAppFillBrush}" />
         <Setter Property="Background" Value="{DynamicResource DefaultAppBackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource Default.Control.Border.Brush}" />

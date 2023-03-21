@@ -9,7 +9,7 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/Sources/CornerRadius.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/Sources/FontSize.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style TargetType="{x:Type ui:NavigationView}">
+    <Style x:Key="BaseNavigationView" TargetType="{x:Type ui:NavigationView}">
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="Foreground" Value="{DynamicResource DefaultAppFillBrush}" />
         <Setter Property="VerticalAlignment" Value="Stretch" />

@@ -8,7 +8,7 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/Sources/CornerRadius.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/Sources/FontSize.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style TargetType="{x:Type ui:Card}">
+    <Style x:Key="BaseCard" TargetType="{x:Type ui:Card}">
         <Setter Property="Padding" Value="15" />
         <Setter Property="CornerRadius" Value="{DynamicResource DefaultCornerRadius}" />
         <Setter Property="BorderBrush" Value="{DynamicResource Default.Control.Border.Brush}" />

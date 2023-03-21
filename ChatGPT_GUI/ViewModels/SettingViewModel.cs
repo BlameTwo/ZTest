@@ -14,6 +14,7 @@ public partial class SettingViewModel:ObservableObject
     }
 
     private async void Init() {
+
         Keywrold = (await LocalSetting.ReadConfig("KeyWord")).ToString()!;
         Themestr = (await LocalSetting.ReadConfig("Theme")).ToString()!;
     }

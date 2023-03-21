@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZTest.Tools", "ZTest.Tools\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatGPT_GUI", "ChatGPT_GUI\ChatGPT_GUI.csproj", "{392E53CC-317F-47E2-9989-522991B97F3C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bing-Gpt_GUI", "Bing-Gpt_GUI\Bing-Gpt_GUI.csproj", "{F9EA0CF6-FED4-4EEC-9F28-9523D5BF6FA9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{392E53CC-317F-47E2-9989-522991B97F3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{392E53CC-317F-47E2-9989-522991B97F3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{392E53CC-317F-47E2-9989-522991B97F3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9EA0CF6-FED4-4EEC-9F28-9523D5BF6FA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9EA0CF6-FED4-4EEC-9F28-9523D5BF6FA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9EA0CF6-FED4-4EEC-9F28-9523D5BF6FA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9EA0CF6-FED4-4EEC-9F28-9523D5BF6FA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

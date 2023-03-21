@@ -35,6 +35,10 @@ namespace SimpleUI.Themes
                         //深色主题
                         this.Source = new Uri($"{Utils.AppThemeData.ThemePath}Dark.xaml", UriKind.Absolute);
                         break;
+                    case ThemeType.Cyberpunk:
+                        //赛博朋克颜色
+                        this.Source = new Uri($"{Utils.AppThemeData.ThemePath}Cyberpunk.xaml", UriKind.Absolute);
+                        break;
                     case ThemeType.Default:
                         break;
                 }
@@ -46,6 +50,6 @@ namespace SimpleUI.Themes
 
     public enum ThemeType
     {
-        Light, Dark,Default
+        Light, Dark,Default, Cyberpunk
     }
 }

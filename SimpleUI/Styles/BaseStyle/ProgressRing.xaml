@@ -4,7 +4,7 @@
     xmlns:convert="clr-namespace:SimpleUI.Styles.Converter"
     xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
     xmlns:ui="clr-namespace:SimpleUI.Controls">
-    <Style TargetType="{x:Type ui:ProgressRing}">
+    <Style x:Key="BaseProgressRing" TargetType="{x:Type ui:ProgressRing}">
         <Setter Property="Foreground" Value="{DynamicResource Default.Accent.Brush}" />
         <Setter Property="Template">
             <Setter.Value>

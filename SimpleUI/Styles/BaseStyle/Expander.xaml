@@ -7,7 +7,8 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/Sources/Thickess.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/Sources/CornerRadius.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style TargetType="{x:Type ui:Expander}">
+    <Style x:Key="BaseExpander" TargetType="{x:Type ui:Expander}">
+        <Setter Property="CornerRadius" Value="0.3" />
         <Setter Property="Margin" Value="5" />
         <Setter Property="Foreground" Value="{DynamicResource DefaultAppFillBrush}" />
         <Setter Property="Template">
@@ -89,7 +90,7 @@
                                     Background="{DynamicResource DefaultAppBackgroundBrush}"
                                     BorderBrush="{DynamicResource Default.Control.Border.Brush}"
                                     BorderThickness="{DynamicResource Expander.Content.Thickness}"
-                                    CornerRadius="{DynamicResource ExpanderCornerRadius}"
+                                    CornerRadius="{TemplateBinding CornerRadius}"
                                     Opacity="0"
                                     RenderTransformOrigin="0.5,0.5" />
                                 <!--  卡片内容  -->
@@ -165,7 +166,7 @@
                 Background="{DynamicResource DefaultAppBackgroundBrush}"
                 BorderBrush="{DynamicResource Default.Control.Border.Brush}"
                 BorderThickness="{DynamicResource ButtonBase.Thickness}"
-                CornerRadius="{DynamicResource ExpanderCornerRadius}" />
+                CornerRadius="{TemplateBinding CornerRadius}" />
             <Grid Margin="{TemplateBinding Padding}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />

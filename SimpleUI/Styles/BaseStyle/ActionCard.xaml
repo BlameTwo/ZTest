@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:convert="clr-namespace:SimpleUI.Styles.Converter"
     xmlns:ui="clr-namespace:SimpleUI.Controls">
-    <Style TargetType="{x:Type ui:ActionCard}">
+    <Style x:Key="BaseActionCard" TargetType="{x:Type ui:ActionCard}">
         <Setter Property="CornerRadius" Value="{DynamicResource ExpanderCornerRadius}" />
         <Setter Property="BorderBrush" Value="{DynamicResource Default.Control.Border.Brush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource ButtonBase.Thickness}" />

@@ -7,7 +7,7 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/Sources/FontSize.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/Sources/CornerRadius.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style TargetType="{x:Type ui:NavigationViewItem}">
+    <Style x:Key="BaseNavigationViewItem" TargetType="{x:Type ui:NavigationViewItem}">
         <Style.Resources>
             <Storyboard x:Key="MouseOvertrue">
                 <DoubleAnimation

@@ -1,0 +1,77 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--  应用的背景颜色  -->
+    <Color x:Key="DefaultAppBackgroundBrushColor">#290D0D</Color>
+
+    <!--  控件的边框颜色  -->
+    <Color x:Key="Default.Control.Border.Color">#FF6059</Color>
+
+    <Color x:Key="Card.Background.Color">#3F38FFFC</Color>
+
+    <SolidColorBrush x:Key="Card.Background.Brush" Color="{DynamicResource Card.Background.Color}" />
+
+
+    <!--  应用程序点缀颜色  -->
+    <Color x:Key="Default.Accent.Color">#5DF6FF</Color>
+    <Color x:Key="Default.Accent.Second.Color">#FA8072</Color>
+
+
+    <!--  控件的前景颜色  -->
+    <Color x:Key="DefaultAppFillBrushColor">#FA8072</Color>
+
+    <!--  导航控件的Line颜色  -->
+    <Color x:Key="Navigation.LineColor">#53DAD8</Color>
+
+    <Color x:Key="Control.EnableFalse.Color">gray</Color>
+
+    <SolidColorBrush x:Key="Control.EnableFalse.Brush" Color="{DynamicResource Control.EnableFalse.Color}" />
+
+    <SolidColorBrush x:Key="NavigationItem.Background" Color="#26000000" />
+
+    <SolidColorBrush x:Key="ProgressRing.Background.Brush" Color="#FF6D6D6D" />
+
+    <SolidColorBrush x:Key="Navigation.LineBrush" Color="{DynamicResource Navigation.LineColor}" />
+
+    <Color x:Key="Navigation.Content.Background.Color">#26000000</Color>
+
+    <SolidColorBrush x:Key="Navigation.Content.Background.Brush" Color="{DynamicResource Navigation.Content.Background.Color}" />
+
+    <SolidColorBrush x:Key="WindowChromeExit" Color="Red" />
+
+    <!--  SolidColorBrush都是依赖于以上颜色配置  -->
+    <SolidColorBrush x:Key="DefaultAppFillBrush" Color="{DynamicResource DefaultAppFillBrushColor}" />
+
+
+    <Color x:Key="Navigation.MenuPanelColor">#26000000</Color>
+    <SolidColorBrush x:Key="Navigation.MenuPanelBrush" Color="{DynamicResource Navigation.MenuPanelColor}" />
+
+    <SolidColorBrush x:Key="DefaultAppBackgroundBrush" Color="{DynamicResource DefaultAppBackgroundBrushColor}" />
+
+    <SolidColorBrush x:Key="Default.Control.Border.Brush" Color="{DynamicResource Default.Control.Border.Color}" />
+
+    <!--  控件的背景颜色  -->
+    <Color x:Key="Default.Control.Background.Color">#26F1F1F1</Color>
+    <SolidColorBrush x:Key="Default.Control.Background.Brush" Color="{DynamicResource Default.Control.Background.Color}" />
+
+    <SolidColorBrush x:Key="Default.Accent.Brush" Color="{DynamicResource Default.Accent.Color}" />
+    <SolidColorBrush x:Key="Default.Accent.Second.Brush" Color="{DynamicResource Default.Accent.Second.Color}" />
+
+    <SolidColorBrush x:Key="Default.Dialog.Background.Brush" Color="{DynamicResource Default.Dialog.Background.Color}" />
+    <Color x:Key="Default.Dialog.Background.Color">#252525</Color>
+
+    <SolidColorBrush x:Key="Default.Dialog.BorderBrush.Brush" Color="{DynamicResource Default.Dialog.BorderBrush.Color}" />
+    <Color x:Key="Default.Dialog.BorderBrush.Color">#EBEBEB</Color>
+
+
+    <SolidColorBrush x:Key="Default.ContextMenu.BorderBrush.Brush" Color="{DynamicResource Default.ContextMenu.BorderBrush.Color}" />
+    <Color x:Key="Default.ContextMenu.BorderBrush.Color">#BFBFBF</Color>
+
+    <SolidColorBrush x:Key="Default.ContextMenu.Background.Brush" Color="{DynamicResource Default.ContextMenu.Background.Color}" />
+    <Color x:Key="Default.ContextMenu.Background.Color">#5F5F5F</Color>
+
+    <SolidColorBrush x:Key="Default.NumberBox.IsNumber.Brush" Color="{DynamicResource Default.Number.IsNumber.Color}" />
+    <Color x:Key="Default.Number.IsNumber.Color">red</Color>
+
+    <SolidColorBrush x:Key="TipCard.Sucess.Brush">#71F791</SolidColorBrush>
+    <SolidColorBrush x:Key="TipCard.Warning.Brush">#F9FF6C</SolidColorBrush>
+    <SolidColorBrush x:Key="TipCard.Error.Brush">#F48888</SolidColorBrush>
+</ResourceDictionary>

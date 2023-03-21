@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:contrl="clr-namespace:SimpleUI.PersonPicture"
     xmlns:ui="clr-namespace:SimpleUI.Controls">
-    <Style TargetType="{x:Type ui:PersonPicture}">
+    <Style x:Key="BasePersonPicture" TargetType="{x:Type ui:PersonPicture}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ui:PersonPicture}">

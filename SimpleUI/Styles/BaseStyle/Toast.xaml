@@ -8,7 +8,7 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/Sources/CornerRadius.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type ui:ToastControl}">
+    <Style x:Key="BaseToast" TargetType="{x:Type ui:ToastControl}">
         <Setter Property="CornerRadius" Value="{DynamicResource DefaultCornerRadius}" />
         <Setter Property="BorderBrush" Value="{DynamicResource Default.Control.Border.Brush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource ButtonBase.Thickness}" />

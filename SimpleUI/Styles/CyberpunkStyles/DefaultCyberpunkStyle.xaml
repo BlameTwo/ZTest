@@ -3,8 +3,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="clr-namespace:SimpleUI.Controls">
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/SimpleUI;component/Styles/CyberpunkStyles/ControlStyles/WindowBase.xaml" />
+        <ResourceDictionary Source="/SimpleUI;component/Styles/CyberpunkStyles/ControlStyles/Buttons.xaml" />
+        <ResourceDictionary Source="/SimpleUI;component/Styles/CyberpunkStyles/ControlStyles/RadioButton.xaml" />
+
+
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/Buttons.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/WindowBase.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/TreeViewItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/NavigationViewItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/NavigationView.xaml" />
@@ -23,7 +27,6 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/ContextMenu.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/ComboBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/NumberBox.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/RadioButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/CheckButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/TipCard.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/SimpleUIImage.xaml" />
@@ -55,30 +58,76 @@
 
     <Style BasedOn="{StaticResource DefaultTreeViewItem}" TargetType="ui:TreeViewItem" />
 
-    <Style BasedOn="{StaticResource BaseButton}" TargetType="{x:Type ui:Button}" />
+    <Style BasedOn="{StaticResource UIButtonCyberpunkBase}" TargetType="{x:Type ui:Button}" />
 
-    <Style BasedOn="{StaticResource BaseActionCard}" TargetType="{x:Type ui:ActionCard}" />
+    <Style BasedOn="{StaticResource BaseActionCard}" TargetType="{x:Type ui:ActionCard}">
+        <Setter Property="CornerRadius" Value="0" />
+    </Style>
 
-    <Style BasedOn="{StaticResource BaseCard}" TargetType="{x:Type ui:Card}" />
+    <Style BasedOn="{StaticResource BaseCard}" TargetType="{x:Type ui:Card}">
+        <Setter Property="CornerRadius" Value="0" />
+    </Style>
 
-    <Style BasedOn="{StaticResource BaseExpander}" TargetType="{x:Type ui:Expander}" />
+    <Style BasedOn="{StaticResource BaseExpander}" TargetType="{x:Type ui:Expander}">
+        <Setter Property="CornerRadius" Value="0" />
+    </Style>
 
     <Style BasedOn="{StaticResource BaseNavigationView}" TargetType="{x:Type ui:NavigationView}" />
 
-    <Style BasedOn="{StaticResource BaseNumberBox}" TargetType="{x:Type ui:NumberBox}" />
+    <Style BasedOn="{StaticResource BaseNumberBox}" TargetType="{x:Type ui:NumberBox}">
+        <Setter Property="CornerRadius" Value="0" />
+    </Style>
 
-    <Style BasedOn="{StaticResource DefaultButtonBase}" TargetType="{x:Type Button}" />
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Viewbox>
+                            <Path
+                                x:Name="border"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                                Data="m 0,0 159.23333,-0.60667 -0.64334,24.067285 -41.92044,10.732188 -114.35756,0.98948 z"
+                                Fill="Transparent"
+                                Stretch="Uniform"
+                                Stroke="{DynamicResource Default.Accent.Second.Brush}" />
+                        </Viewbox>
+                        <ContentControl
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Content="{TemplateBinding Content}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Stroke" Value="{DynamicResource Default.Accent.Brush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource Default.Accent.Brush}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Opacity" Value="0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
     <Style BasedOn="{StaticResource BaseContextMenu}" TargetType="{x:Type ContextMenu}" />
 
     <Style BasedOn="{StaticResource BaseProgressRing}" TargetType="{x:Type ui:ProgressRing}" />
 
-    <Style BasedOn="{StaticResource BaseTipCard}" TargetType="{x:Type ui:TipCard}" />
-    <Style BasedOn="{StaticResource BaseToast}" TargetType="{x:Type ui:ToastControl}" />
+    <Style BasedOn="{StaticResource BaseTipCard}" TargetType="{x:Type ui:TipCard}">
+        <Setter Property="CornerRadius" Value="0" />
+    </Style>
+    <Style BasedOn="{StaticResource BaseToast}" TargetType="{x:Type ui:ToastControl}">
+        <Setter Property="CornerRadius" Value="0" />
+    </Style>
 
     <Style BasedOn="{StaticResource BaseTextBox}" TargetType="{x:Type TextBox}" />
 
-    <Style BasedOn="{StaticResource BaseRadioButton}" TargetType="{x:Type RadioButton}" />
+    <Style BasedOn="{StaticResource RadioCyberpunkButtonBase}" TargetType="{x:Type RadioButton}" />
 
     <Style BasedOn="{StaticResource BaseCheckBox}" TargetType="{x:Type CheckBox}" />
 

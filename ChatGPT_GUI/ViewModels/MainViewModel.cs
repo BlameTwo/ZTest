@@ -33,8 +33,9 @@ public partial class MainViewModel: ObservableRecipient {
 
     [RelayCommand]
     async void Loaded() {
-        var str = (await LocalSetting.ReadConfig("KeyWord")).ToString();
-        OpenAIService = new OpenAIService(new OpenAiOptions() { ApiKey = str });
+        var str = (await LocalSetting.ReadConfig("KeyWord"));
+        if(str != null)
+            OpenAIService = new OpenAIService(new OpenAiOptions() { ApiKey = str.ToString()});
         ToastLitterMessage.Show("你好，欢迎使用猫娘模拟器");
     }
 
