@@ -16,6 +16,8 @@
                         </Grid.ColumnDefinitions>
                         <Border
                             x:Name="backborder"
+                            Width="20"
+                            Height="20"
                             Padding="11"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
@@ -23,6 +25,8 @@
                             CornerRadius="0" />
                         <Border
                             x:Name="foreborder"
+                            Width="13"
+                            Height="13"
                             Margin="5"
                             Background="{DynamicResource Default.Accent.Brush}"
                             CornerRadius="0"

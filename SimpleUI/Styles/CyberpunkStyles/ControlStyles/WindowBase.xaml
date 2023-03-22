@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="clr-namespace:SimpleUI.Controls">
     <!--  注：赛博朋克主题WindowBase最好不要切换背景底色  -->
-    <Style x:Key="CyberpunkWindowBase" TargetType="{x:Type ui:WindowBase}">
+    <Style x:Key="DefaultWindowBaseStyle" TargetType="{x:Type ui:WindowBase}">
         <Setter Property="Background" Value="{DynamicResource DefaultAppBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource DefaultAppFileBrush}" />
         <Setter Property="WindowChrome.WindowChrome">

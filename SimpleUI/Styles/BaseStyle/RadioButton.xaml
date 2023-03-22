@@ -4,6 +4,9 @@
         <Setter Property="BorderBrush" Value="{DynamicResource Default.Control.Border.Brush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource ButtonBase.Thickness}" />
         <Setter Property="Foreground" Value="{DynamicResource DefaultAppFillBrush}" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
@@ -14,16 +17,20 @@
                         </Grid.ColumnDefinitions>
                         <Border
                             x:Name="backborder"
-                            Padding="11"
+                            Width="20"
+                            Height="20"
+                            Padding="10"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="10" />
+                            CornerRadius="5" />
                         <Border
                             x:Name="foreborder"
+                            Width="13"
+                            Height="13"
                             Margin="5"
                             Background="{DynamicResource Default.Accent.Brush}"
-                            CornerRadius="10"
+                            CornerRadius="5"
                             Opacity="0" />
                         <ContentControl
                             Grid.Column="1"

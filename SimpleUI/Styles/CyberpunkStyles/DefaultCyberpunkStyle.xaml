@@ -6,8 +6,8 @@
         <ResourceDictionary Source="/SimpleUI;component/Styles/CyberpunkStyles/ControlStyles/WindowBase.xaml" />
         <ResourceDictionary Source="/SimpleUI;component/Styles/CyberpunkStyles/ControlStyles/Buttons.xaml" />
         <ResourceDictionary Source="/SimpleUI;component/Styles/CyberpunkStyles/ControlStyles/RadioButton.xaml" />
-
-
+        <ResourceDictionary Source="/SimpleUI;component/Styles/CyberpunkStyles/ControlStyles/CheckBox.xaml" />
+        <ResourceDictionary Source="/SimpleUI;component/Styles/CyberpunkStyles/ControlStyles/ListBoxs.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/Buttons.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/TreeViewItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/NavigationViewItem.xaml" />
@@ -18,7 +18,6 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/PersonPicture.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/Expander.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/ScrollViewer.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/ListBoxs.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/DialogHost.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/ProgressBar.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/TextBox.xaml" />
@@ -78,6 +77,8 @@
         <Setter Property="CornerRadius" Value="0" />
     </Style>
 
+    <Style BasedOn="{StaticResource ListBoxBase}" TargetType="{x:Type ListBox}" />
+
     <Style TargetType="{x:Type Button}">
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Cursor" Value="Hand" />
@@ -129,7 +130,7 @@
 
     <Style BasedOn="{StaticResource RadioCyberpunkButtonBase}" TargetType="{x:Type RadioButton}" />
 
-    <Style BasedOn="{StaticResource BaseCheckBox}" TargetType="{x:Type CheckBox}" />
+    <Style BasedOn="{StaticResource CheckBoxCyberpunkStyle}" TargetType="{x:Type CheckBox}" />
 
     <Style BasedOn="{StaticResource BaseComboBox}" TargetType="{x:Type ComboBox}" />
 

@@ -11,9 +11,13 @@
     Height="400"
     Background="{DynamicResource DefaultAppBackgroundBrush}"
     BorderThickness="1"
-    Style="{DynamicResource CyberpunkWindowBase}"
+    Style="{DynamicResource DefaultWindowBaseStyle}"
     mc:Ignorable="d">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
         <ui:Expander
             Margin="10,0,10,0"
             VerticalAlignment="Center"
@@ -24,7 +28,15 @@
                     Margin="10"
                     Content="测试按钮"
                     Icon="FavoriteStar" />
+                <CheckBox Content="你好" />
+                <RadioButton Content="选择我" GroupName="1" />
+                <RadioButton Content="选择我" GroupName="1" />
             </StackPanel>
         </ui:Expander>
+        <ListBox Grid.Row="1" Margin="10">
+            <ListBoxItem Content="你好" />
+            <ListBoxItem Content="你好" />
+            <ListBoxItem Content="你好" />
+        </ListBox>
     </Grid>
 </ui:WindowBase>

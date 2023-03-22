@@ -8,7 +8,6 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--  赛博朋克主题，这是我的另外一个尝试  -->
                 <theme:Theme Type="Cyberpunk" />
                 <style:SimpleStyle Type="Cyberpunk" />
             </ResourceDictionary.MergedDictionaries>
