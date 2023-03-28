@@ -8,8 +8,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <theme:Theme Type="Dark" />
-                <style:SimpleStyle Type="Default" />
+                <theme:Theme Type="Cyberpunk" />
+                <style:SimpleStyle Type="Cyberpunk" />
                 <ResourceDictionary Source="ChatTemplate.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

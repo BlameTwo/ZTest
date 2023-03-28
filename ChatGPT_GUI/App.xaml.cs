@@ -33,7 +33,7 @@ namespace ChatGPT_GUI {
             App.GetSerivces<ILocalSetting>().InitSetting();
             this.MainWindow = main;
             main.Show();
-            themechanged.IsEnable = true;
+            themechanged.IsEnable = false;
             base.OnStartup(e);
         }
 

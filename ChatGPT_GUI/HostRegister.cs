@@ -1,4 +1,5 @@
-﻿using ChatGPT_GUI.ViewModels;
+﻿using ChatGPT_GUI.Services;
+using ChatGPT_GUI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OpenAI.GPT3.Extensions;
@@ -25,6 +26,8 @@ public static class HostRegister
             services.AddSingleton<IShowDialogService, ShowDialogService>();
             services.AddSingleton<IThemeApply<App>, ThemeApply<App>>();
             services.AddSingleton<ILocalSetting, LocalSetting>();
+
+            services.AddSingleton<IVITSService, VITSService>();
         });
         return host;
     }

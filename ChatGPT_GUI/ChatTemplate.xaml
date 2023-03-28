@@ -2,7 +2,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:data="clr-namespace:ChatGPT_GUI.Models"
-    xmlns:selecter="clr-namespace:ChatGPT_GUI.Selecter">
+    xmlns:selecter="clr-namespace:ChatGPT_GUI.Selecter"
+    xmlns:ui="clr-namespace:SimpleUI.Controls;assembly=SimpleUI">
 
     <DataTemplate x:Key="UserDateTemplate" DataType="{x:Type data:ChatModel}">
         <Grid Margin="0,5" HorizontalAlignment="Right">
@@ -95,18 +96,29 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
             <Border
+                Grid.Row="0"
                 Grid.Column="1"
                 Margin="5,0,0,0"
                 Padding="5"
                 VerticalAlignment="Center"
                 Background="{DynamicResource Default.Accent.Brush}"
                 CornerRadius="5">
-                <TextBlock
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    Text="{Binding Message, Mode=OneWay}"
-                    TextWrapping="WrapWithOverflow" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Text="{Binding Message, Mode=OneWay}"
+                        TextWrapping="WrapWithOverflow" />
+                </Grid>
             </Border>
             <Border
                 Grid.Column="0"
@@ -122,8 +134,26 @@
                     VerticalAlignment="Top"
                     Source="/Resources/aislogo.png" />
             </Border>
+            <StackPanel
+                Grid.Row="1"
+                Grid.Column="1"
+                Orientation="Horizontal">
+                <ui:Button
+                    Margin="5"
+                    Padding="3"
+                    HorizontalAlignment="Left"
+                    Command="{Binding PlayerCommand}"
+                    Content="播放"
+                    ContentVisiblity="Collapsed"
+                    Icon="Play" />
+                <ui:Button
+                    Margin="0,5,5,5"
+                    Padding="3"
+                    HorizontalAlignment="Left"
+                    Command="{Binding PlayerCommand}"
+                    ContentVisiblity="Collapsed"
+                    Icon="Save" />
+            </StackPanel>
         </Grid>
-
-
     </DataTemplate>
 </ResourceDictionary>

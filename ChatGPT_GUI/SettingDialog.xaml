@@ -44,6 +44,7 @@
                         <ComboBoxItem Content="浅色" />
                         <ComboBoxItem Content="深色" />
                         <ComboBoxItem Content="自动" />
+                        <ComboBoxItem Content="深红色" />
                     </ComboBox>
                 </ui:Expander>
             </StackPanel>

@@ -118,7 +118,6 @@ public partial class MainViewModel: ObservableRecipient {
             {
                 Messages = messagelist,
                 Model = OpenAI.GPT3.ObjectModels.Models.ChatGpt3_5Turbo,
-                MaxTokens = 100
             });
             if (result.Successful) {
                 string str = "";

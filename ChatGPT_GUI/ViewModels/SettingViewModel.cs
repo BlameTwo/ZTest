@@ -36,6 +36,11 @@ public partial class SettingViewModel:ObservableObject
                         await LocalSetting.SaveConfig("Theme", "深色");
                         ThemeApply.IsEnable = false;
                         break;
+                    case "深红色":
+                        ThemeApply.Apply(SimpleUI.Themes.ThemeType.Cyberpunk);
+                        await LocalSetting.SaveConfig("Theme", "深红色");
+                        ThemeApply.IsEnable = false;
+                        break;
                     case "自动":
                         await LocalSetting.SaveConfig("Theme", "自动");
                         ThemeApply.IsEnable = true;
