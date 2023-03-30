@@ -1,12 +1,8 @@
 ﻿using ChatGPT_GUI.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using SkiaSharp;
 using System;
-using System.IO;
 using System.Media;
-using System.Security.Permissions;
-using System.Windows.Media;
 using ZTest.Tools;
 namespace ChatGPT_GUI.Models;
 
@@ -32,6 +28,9 @@ public partial class ChatModel {
     [ObservableProperty]
     bool _IsConvert;
 
+    [ObservableProperty]
+    bool _IsVist;
+
     bool IsConverttMethod() => IsConvert;
 
     partial void OnIsConvertChanged(bool value)
@@ -39,17 +38,31 @@ public partial class ChatModel {
         PlayerCommand.NotifyCanExecuteChanged();
     }
 
+    [RelayCommand]
+    void SaveWMV()
+    {
+        if (MS == null) return;
+        VITSService.SaveWAV(false, MS.Convert());
+    }
+
     [RelayCommand(CanExecute =nameof(IsConverttMethod))]
     async void Player()
     {
+        IsVist = true;
         IsConvert = false;
         if(MS == null)
         {
-            MS= (await VITSService.GetBase64(Message)); 
+            var result =await VITSService.GetBase64(Message);
+            if(result == "NONE" || string.IsNullOrWhiteSpace(result))
+            {
+                return;
+            } 
+            MS = result;
         }
         SoundPlayer player = new SoundPlayer(MS.Convert());
 
         player.Play();
+        IsVist = false;
         IsConvert = true;
     }
 }

@@ -24,4 +24,5 @@ public static class Base64ToMemoryStream
         var bytes = stream.ToArray();
         return System.Convert.ToBase64String(bytes);
     }
+
 }

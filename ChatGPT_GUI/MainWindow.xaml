@@ -9,7 +9,7 @@
     xmlns:selecter="clr-namespace:ChatGPT_GUI.Selecter"
     xmlns:ui="clr-namespace:SimpleUI.Controls;assembly=SimpleUI"
     xmlns:viewmodels="clr-namespace:ChatGPT_GUI.ViewModels"
-    Title="ChatGPT聊天小应用"
+    Title="你有什么问题？胡桃来帮你！"
     Width="350"
     Height="600"
     d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"

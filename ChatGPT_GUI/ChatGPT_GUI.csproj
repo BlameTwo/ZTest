@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFrameworks>net7.0-windows;net6.0-windows</TargetFrameworks>
+    <TargetFrameworks>net7.0-windows;net6.0-windows;</TargetFrameworks>
 	  <Nullable>enable</Nullable>
 	  <LangVersion>11</LangVersion>
 	  <Version>1.0</Version>
@@ -10,8 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\aislogo.png" />
+    <None Remove="Resources\aislogo.jpg" />
     <None Remove="Resources\user.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\aislogo.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,7 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\aislogo.png" />
     <Resource Include="Resources\user.png" />
   </ItemGroup>
 

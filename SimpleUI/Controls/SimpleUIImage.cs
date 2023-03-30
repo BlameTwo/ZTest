@@ -84,7 +84,7 @@ public class SimpleUIImage:Control
 
     // Using a DependencyProperty as the backing store for Stretch.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty StretchProperty =
-        DependencyProperty.Register("Stretch", typeof(Stretch), typeof(Stretch), new FrameworkPropertyMetadata(Stretch.Uniform, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender));
+        DependencyProperty.Register("Stretch", typeof(Stretch), typeof(SimpleUIImage), new FrameworkPropertyMetadata(Stretch.Uniform, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender));
 
 
 
@@ -96,7 +96,7 @@ public class SimpleUIImage:Control
 
     // Using a DependencyProperty as the backing store for StretchDirection.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty StretchDirectionProperty =
-        DependencyProperty.Register("StretchDirection", typeof(StretchDirection), typeof(SimpleUIImage), new FrameworkPropertyMetadata(Stretch.Uniform, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender));
+        DependencyProperty.Register("StretchDirection", typeof(StretchDirection), typeof(SimpleUIImage), new FrameworkPropertyMetadata(StretchDirection.Both, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender));
 
 
 

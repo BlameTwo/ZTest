@@ -105,7 +105,7 @@
                 Grid.Column="1"
                 Margin="5,0,0,0"
                 Padding="5"
-                VerticalAlignment="Center"
+                VerticalAlignment="Top"
                 Background="{DynamicResource Default.Accent.Brush}"
                 CornerRadius="5">
                 <Grid>
@@ -115,7 +115,7 @@
                     </Grid.RowDefinitions>
                     <TextBlock
                         HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
+                        VerticalAlignment="Top"
                         Text="{Binding Message, Mode=OneWay}"
                         TextWrapping="WrapWithOverflow" />
                 </Grid>
@@ -123,23 +123,26 @@
             <Border
                 Grid.Column="0"
                 Margin="5,0,0,0"
-                Padding="5"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                Background="{DynamicResource Default.Accent.Brush}"
                 CornerRadius="5">
-                <Image
-                    Width="20"
-                    Height="20"
+                <!--
+                    Background="{DynamicResource Default.Accent.Brush}"
+                -->
+                <ui:SimpleUIImage
+                    Width="35"
                     VerticalAlignment="Top"
-                    Source="/Resources/aislogo.png" />
+                    CornerRadius="20"
+                    Source="/Resources/aislogo.jpg"
+                    StretchDirection="Both" />
             </Border>
             <StackPanel
                 Grid.Row="1"
                 Grid.Column="1"
+                Margin="5,5,0,0"
                 Orientation="Horizontal">
+                <ui:ProgressRing Height="10" IsActive="{Binding IsVist, Mode=OneWay}" />
                 <ui:Button
-                    Margin="5"
                     Padding="3"
                     HorizontalAlignment="Left"
                     Command="{Binding PlayerCommand}"
@@ -147,10 +150,10 @@
                     ContentVisiblity="Collapsed"
                     Icon="Play" />
                 <ui:Button
-                    Margin="0,5,5,5"
+                    Margin="5,0,0,0"
                     Padding="3"
                     HorizontalAlignment="Left"
-                    Command="{Binding PlayerCommand}"
+                    Command="{Binding SaveWMVCommand}"
                     ContentVisiblity="Collapsed"
                     Icon="Save" />
             </StackPanel>
