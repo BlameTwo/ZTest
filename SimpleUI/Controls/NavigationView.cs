@@ -60,6 +60,20 @@ public partial class NavigationView:ContentControl,INavigationViewService
 
 
 
+
+    public object TitleRightContent
+    {
+        get { return (object)GetValue(TitleRightContentProperty); }
+        set { SetValue(TitleRightContentProperty, value); }
+    }
+
+    // Using a DependencyProperty as the backing store for TitleRightContent.  This enables animation, styling, binding, etc...
+    public static readonly DependencyProperty TitleRightContentProperty =
+        DependencyProperty.Register("TitleRightContent", typeof(object), typeof(NavigationView), new PropertyMetadata(null));
+
+
+
+
     public CornerRadius CornerRadius
     {
         get { return (CornerRadius)GetValue(CornerRadiusProperty); }

@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="ChatGPT_GUI.WelCome"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ChatGPT_GUI"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="clr-namespace:SimpleUI.Controls;assembly=SimpleUI"
+    Title="WelCome"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Foreground="{DynamicResource DefaultAppFillBrush}"
+    mc:Ignorable="d">
+    <Grid>
+        <ui:Card
+            Width="356"
+            Height="150"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Header="欢迎"
+            Icon="ActionCenter">
+            <ui:Card.Content>
+                <TextBlock LineHeight="25">
+                    <Run Text="这是一个集成了VITS服务与GPT语言模型的一个程序。" />
+                    <LineBreak />
+                    <Run Text="程序预先设置了胡桃、爱莉希雅、雷电将军（影）的预训练。" />
+                    <LineBreak />
+                    <Run Text="但VITS服务只有胡桃语音，其他的暂时没有办法解决。" />
+                </TextBlock>
+
+            </ui:Card.Content>
+        </ui:Card>
+    </Grid>
+</Page>

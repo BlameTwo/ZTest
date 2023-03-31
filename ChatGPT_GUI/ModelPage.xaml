@@ -60,21 +60,7 @@
                     IsIndeterminate="True"
                     Visibility="{Binding RingVisibility, Mode=OneWay}" />
             </StackPanel>
-            <StackPanel
-                Margin="10,5"
-                HorizontalAlignment="Right"
-                Orientation="Horizontal">
-                <ui:Button
-                    Command="{Binding ShowSettingCommand}"
-                    ContentVisiblity="Collapsed"
-                    Icon="Settings"
-                    ToolTipService.ToolTip="设置" />
-                <ui:Button
-                    Margin="5,0,0,0"
-                    ContentVisiblity="Collapsed"
-                    Icon="Message"
-                    ToolTipService.ToolTip="更新计划" />
-            </StackPanel>
+
             <ItemsControl
                 Grid.Row="1"
                 ItemTemplateSelector="{DynamicResource ChatSelecter}"

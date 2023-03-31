@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="clr-namespace:SimpleUI.Controls;assembly=SimpleUI"
     xmlns:viewmodels="clr-namespace:ChatGPT_GUI.ViewModels"
-    Title="你有什么问题？胡桃来帮你！"
+    Title="找对话老婆就来这里吧"
     Width="350"
     Height="600"
     d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
@@ -20,14 +20,29 @@
         x:Name="navigation"
         MenuOpenLength="200"
         NavigationHeader="GPT聊天程序"
-        PanelTitle="胡桃">
+        PanelTitle="{Binding ModelName}">
+        <ui:NavigationView.TitleRightContent>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <ui:Button
+                    Command="{Binding ShowSettingCommand}"
+                    ContentVisiblity="Collapsed"
+                    Icon="Settings"
+                    ToolTipService.ToolTip="设置" />
+                <ui:Button
+                    Margin="5,0,0,0"
+                    ContentVisiblity="Collapsed"
+                    Icon="Message"
+                    ToolTipService.ToolTip="更新计划" />
+            </StackPanel>
+        </ui:NavigationView.TitleRightContent>
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="SelectionChanged">
                 <i:InvokeCommandAction Command="{Binding NavigationChangedCommand}" CommandParameter="{Binding ElementName=navigation, Path=SelectionItem.Tag}" />
             </i:EventTrigger>
         </i:Interaction.Triggers>
         <ui:NavigationView.MenuItems>
-            <ui:NavigationViewHeader Header="模型" />
+            <ui:NavigationViewHeader Header="人物" />
+            <ui:NavigationViewLine Margin="0,5,0,0" StrokeThickness="1" />
             <ui:NavigationViewItem
                 Content="胡桃"
                 Icon="People"
@@ -40,10 +55,12 @@
                 Content="雷电影"
                 Icon="People"
                 Tag="Ying" />
-            <ui:NavigationViewLine StrokeThickness="1" />
         </ui:NavigationView.MenuItems>
         <Grid x:Name="grid">
-            <Frame x:Name="Framebase" NavigationUIVisibility="Hidden" />
+            <Frame
+                x:Name="Framebase"
+                NavigationUIVisibility="Hidden"
+                Source="/WelCome.xaml" />
         </Grid>
     </ui:NavigationView>
 </ui:WindowBase>

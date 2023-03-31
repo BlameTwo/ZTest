@@ -83,11 +83,7 @@ public partial class ModelViewModel:ObservableRecipient
         await action(message, false, true);
     }
 
-    [RelayCommand]
-    void ShowSetting()
-    {
-        ShowDialogService.Show(App.GetSerivces<SettingDialog>(), "空的");
-    }
+    
 
     bool IsSendMethod()
     {

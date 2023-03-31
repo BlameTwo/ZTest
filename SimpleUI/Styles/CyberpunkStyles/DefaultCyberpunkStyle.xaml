@@ -74,7 +74,7 @@
     </Style>
 
     <Style BasedOn="{StaticResource BaseNavigationViewItem}" TargetType="{x:Type ui:NavigationViewItem}">
-        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="CornerRadius" Value="3" />
     </Style>
 
     <Style BasedOn="{StaticResource BaseNavigationView}" TargetType="{x:Type ui:NavigationView}" />

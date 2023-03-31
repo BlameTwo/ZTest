@@ -43,11 +43,14 @@
                 Margin="0,0,5,0"
                 Padding="5"
                 VerticalAlignment="Top"
-                Background="{DynamicResource Default.Accent.Brush}"
+                Background="{DynamicResource Default.Control.Background.Brush}"
+                BorderBrush="{DynamicResource Default.Control.Border.Brush}"
+                BorderThickness="1"
                 CornerRadius="5">
                 <TextBlock
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
+                    Foreground="{DynamicResource Default.Accent.Brush}"
                     Text="{Binding Message, Mode=OneWay}"
                     TextWrapping="Wrap" />
             </Border>
@@ -58,6 +61,8 @@
                 VerticalAlignment="Top"
                 Background="{DynamicResource Default.Accent.Brush}"
                 CornerRadius="5">
+
+
                 <Image
                     Width="20"
                     Height="20"
@@ -68,6 +73,7 @@
     </DataTemplate>
 
     <DataTemplate x:Key="AIDateTemplate" DataType="{x:Type data:ChatModel}">
+
         <Grid Margin="0,5" HorizontalAlignment="Left">
             <Grid.Triggers>
                 <EventTrigger RoutedEvent="Loaded">
@@ -106,8 +112,11 @@
                 Margin="5,0,0,0"
                 Padding="5"
                 VerticalAlignment="Top"
-                Background="{DynamicResource Default.Accent.Brush}"
+                Background="{DynamicResource Default.Control.Background.Brush}"
+                BorderBrush="{DynamicResource Default.Control.Border.Brush}"
+                BorderThickness="1"
                 CornerRadius="5">
+
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition />
@@ -116,6 +125,7 @@
                     <TextBlock
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
+                        Foreground="{DynamicResource Default.Accent.Brush}"
                         Text="{Binding Message, Mode=OneWay}"
                         TextWrapping="WrapWithOverflow" />
                 </Grid>
