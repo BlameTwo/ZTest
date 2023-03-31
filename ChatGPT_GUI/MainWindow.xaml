@@ -37,75 +37,86 @@
             AI="{StaticResource AIDateTemplate}"
             User="{StaticResource UserDateTemplate}" />
     </ui:WindowBase.Resources>
-    <Grid x:Name="grid">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40" />
-                <RowDefinition />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-            <StackPanel
-                Margin="10,5"
-                HorizontalAlignment="Left"
-                Orientation="Horizontal">
-                <TextBlock
-                    VerticalAlignment="Center"
-                    Foreground="{DynamicResource Default.Accent.Brush}"
-                    Text="{Binding StateMessage, Mode=OneWay}" />
-                <ui:ProgressRing
-                    Grid.Row="1"
-                    Width="20"
-                    Height="20"
-                    Margin="10,0"
-                    VerticalAlignment="Center"
-                    IsActive="True"
-                    IsIndeterminate="True"
-                    Visibility="{Binding RingVisibility, Mode=OneWay}" />
-            </StackPanel>
-            <StackPanel
-                Margin="10,5"
-                HorizontalAlignment="Right"
-                Orientation="Horizontal">
-                <ui:Button
-                    Command="{Binding ShowSettingCommand}"
-                    ContentVisiblity="Collapsed"
-                    Icon="Settings"
-                    ToolTipService.ToolTip="设置" />
-                <ui:Button
-                    Margin="5,0,0,0"
-                    ContentVisiblity="Collapsed"
-                    Icon="Message"
-                    ToolTipService.ToolTip="更新计划" />
-            </StackPanel>
-            <ItemsControl
-                Grid.Row="1"
-                ItemTemplateSelector="{DynamicResource ChatSelecter}"
-                ItemsSource="{Binding ChatList, Mode=OneWay}" />
-            <Grid Grid.Row="2" Margin="10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
+    <ui:NavigationView
+        MenuOpenLength="200"
+        NavigationHeader="GPT聊天程序"
+        PanelTitle="胡桃">
+        <ui:NavigationView.MenuItems>
+            <ui:NavigationViewItem Content="胡桃" Icon="People" />
+            <ui:NavigationViewItem Content="爱莉希雅" Icon="People" />
+            <ui:NavigationViewItem Content="雷电影" Icon="People" />
+            <ui:NavigationViewLine />
+        </ui:NavigationView.MenuItems>
+        <Grid x:Name="grid">
+            <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
                     <RowDefinition />
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
-                <TextBox x:Name="MessageBox" TextWrapping="Wrap" />
-                <ui:Button
-                    Grid.Column="1"
-                    Margin="5,0,0,0"
-                    Command="{Binding AskCommand}"
-                    CommandParameter="{Binding ElementName=MessageBox, Path=Text, Mode=OneWay}"
-                    Content="发送"
-                    Icon="Send" />
-                <Button
+                <StackPanel
+                    Margin="10,5"
+                    HorizontalAlignment="Left"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Foreground="{DynamicResource Default.Accent.Brush}"
+                        Text="{Binding StateMessage, Mode=OneWay}" />
+                    <ui:ProgressRing
+                        Grid.Row="1"
+                        Width="20"
+                        Height="20"
+                        Margin="10,0"
+                        VerticalAlignment="Center"
+                        IsActive="True"
+                        IsIndeterminate="True"
+                        Visibility="{Binding RingVisibility, Mode=OneWay}" />
+                </StackPanel>
+                <StackPanel
+                    Margin="10,5"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+                    <ui:Button
+                        Command="{Binding ShowSettingCommand}"
+                        ContentVisiblity="Collapsed"
+                        Icon="Settings"
+                        ToolTipService.ToolTip="设置" />
+                    <ui:Button
+                        Margin="5,0,0,0"
+                        ContentVisiblity="Collapsed"
+                        Icon="Message"
+                        ToolTipService.ToolTip="更新计划" />
+                </StackPanel>
+                <ItemsControl
                     Grid.Row="1"
-                    Grid.ColumnSpan="2"
-                    Margin="5,5,5,0"
-                    Command="{Binding SetSystemCommand}"
-                    CommandParameter="{Binding ElementName=MessageBox, Path=Text, Mode=OneWay}"
-                    Content="发送设定系统消息" />
+                    ItemTemplateSelector="{DynamicResource ChatSelecter}"
+                    ItemsSource="{Binding ChatList, Mode=OneWay}" />
+                <Grid Grid.Row="2" Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="MessageBox" TextWrapping="Wrap" />
+                    <ui:Button
+                        Grid.Column="1"
+                        Margin="5,0,0,0"
+                        Command="{Binding AskCommand}"
+                        CommandParameter="{Binding ElementName=MessageBox, Path=Text, Mode=OneWay}"
+                        Content="发送"
+                        Icon="Send" />
+                    <Button
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        Margin="5,5,5,0"
+                        Command="{Binding SetSystemCommand}"
+                        CommandParameter="{Binding ElementName=MessageBox, Path=Text, Mode=OneWay}"
+                        Content="发送设定系统消息" />
+                </Grid>
             </Grid>
         </Grid>
-    </Grid>
+    </ui:NavigationView>
 </ui:WindowBase>

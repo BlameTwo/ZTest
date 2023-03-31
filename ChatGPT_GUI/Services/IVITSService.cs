@@ -10,7 +10,7 @@ public interface IVITSService
     /// </summary>
     /// <param name="text"></param>
     /// <returns></returns>
-    public  Task<string> GetBase64(string text);
+    public  Task<Stream> GetStream(string text);
 
 
     /// <summary>
@@ -22,5 +22,5 @@ public interface IVITSService
     /// 保存语音
     /// </summary>
     /// <param name="isopen">是否自主选择</param>
-    public void SaveWAV(bool isopen,MemoryStream Base64);
+    public void SaveWAV(bool isopen,Stream Base64);
 }

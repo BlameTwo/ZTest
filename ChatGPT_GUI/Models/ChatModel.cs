@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
+using System.IO;
 using System.Media;
 using ZTest.Tools;
 namespace ChatGPT_GUI.Models;
@@ -23,7 +24,7 @@ public partial class ChatModel {
 
     public ChatType Type { get; set; }
 
-    private string MS { get; set; } = null;
+    private Stream MS { get; set; } = null;
     
     [ObservableProperty]
     bool _IsConvert;
@@ -42,7 +43,7 @@ public partial class ChatModel {
     void SaveWMV()
     {
         if (MS == null) return;
-        VITSService.SaveWAV(false, MS.Convert());
+        VITSService.SaveWAV(false, MS);
     }
 
     [RelayCommand(CanExecute =nameof(IsConverttMethod))]
@@ -52,15 +53,17 @@ public partial class ChatModel {
         IsConvert = false;
         if(MS == null)
         {
-            var result =await VITSService.GetBase64(Message);
-            if(result == "NONE" || string.IsNullOrWhiteSpace(result))
+            var result =await VITSService.GetStream(Message);
+            if(result == null)
             {
                 return;
+                IsVist = false;
+                IsConvert = true;
             } 
             MS = result;
         }
-        SoundPlayer player = new SoundPlayer(MS.Convert());
-
+        MS.Position = 0;
+        SoundPlayer player = new SoundPlayer(MS);
         player.Play();
         IsVist = false;
         IsConvert = true;

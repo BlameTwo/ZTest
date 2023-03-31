@@ -62,7 +62,7 @@ namespace ZTest.Tools.Services {
                     return null;
             }
             else {
-                return default(object);
+                return null;
             }
         }
 

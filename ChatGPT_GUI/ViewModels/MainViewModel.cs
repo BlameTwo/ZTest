@@ -36,9 +36,9 @@ public partial class MainViewModel: ObservableRecipient {
     [RelayCommand]
     async void Loaded() {
         var str = (await LocalSetting.ReadConfig("KeyWord"));
-        if(str != null)
+        if(!string.IsNullOrWhiteSpace(str.ToString()))
             OpenAIService = new OpenAIService(new OpenAiOptions() { ApiKey = str.ToString()});
-        ToastLitterMessage.Show("你好，欢迎使用胡桃模拟器");
+        //ToastLitterMessage.Show("你好，欢迎使用胡桃模拟器");
 
         await action(ifmessage, 
             true,false);
@@ -118,7 +118,7 @@ public partial class MainViewModel: ObservableRecipient {
                     break;
                 case ChatType.AI:
                     //AI的回答
-                    messagelist.Add(OpenAI.GPT3.ObjectModels.RequestModels.ChatMessage.FromAssistance(chat.Message));
+                    messagelist.Add(OpenAI.GPT3.ObjectModels.RequestModels.ChatMessage.FromAssistant(chat.Message));
                     break;
                 case ChatType.System:
                     messagelist.Add(OpenAI.GPT3.ObjectModels.RequestModels.ChatMessage.FromSystem(chat.Message));

@@ -19,7 +19,7 @@
     <Color x:Key="DefaultAppFillBrushColor">#FA8072</Color>
 
     <!--  导航控件的Line颜色  -->
-    <Color x:Key="Navigation.LineColor">#53DAD8</Color>
+    <Color x:Key="Navigation.LineColor">#BF0000</Color>
 
     <Color x:Key="Control.EnableFalse.Color">gray</Color>
 
@@ -41,7 +41,7 @@
     <SolidColorBrush x:Key="DefaultAppFillBrush" Color="{DynamicResource DefaultAppFillBrushColor}" />
 
 
-    <Color x:Key="Navigation.MenuPanelColor">#26000000</Color>
+    <Color x:Key="Navigation.MenuPanelColor">#420000</Color>
     <SolidColorBrush x:Key="Navigation.MenuPanelBrush" Color="{DynamicResource Navigation.MenuPanelColor}" />
 
     <SolidColorBrush x:Key="DefaultAppBackgroundBrush" Color="{DynamicResource DefaultAppBackgroundBrushColor}" />

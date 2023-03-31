@@ -71,6 +71,7 @@
                                 <!--  导航图标  -->
                                 <ContentControl
                                     Grid.Row="1"
+                                    Margin="10,0,0,0"
                                     Content="{TemplateBinding NavigationHeader}"
                                     FontSize="{DynamicResource NavigationHeaderTitleFontSize}"
                                     FontWeight="Bold" />

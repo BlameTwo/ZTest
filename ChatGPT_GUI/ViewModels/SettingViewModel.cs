@@ -1,22 +1,29 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using OpenAI.GPT3;
+using OpenAI.GPT3.Interfaces;
+using OpenAI.GPT3.Managers;
+using SimpleUI.Controls;
 using SimpleUI.Interface;
 using System.Threading.Tasks;
+using Waher.Content.Html.Elements;
 using ZTest.Tools.Interfaces;
 
 namespace ChatGPT_GUI.ViewModels;
 public partial class SettingViewModel:ObservableObject 
 {
-    public SettingViewModel(IThemeApply<App> themeApply,ILocalSetting localSetting)
+    public SettingViewModel(IThemeApply<App> themeApply,ILocalSetting localSetting, IOpenAIService openAIService)
     {
         ThemeApply = themeApply;
         LocalSetting = localSetting;
+        OpenAIService = openAIService;
         Init();
     }
 
     private async void Init() {
-
-        Keywrold = (await LocalSetting.ReadConfig("KeyWord")).ToString()!;
-        Themestr = (await LocalSetting.ReadConfig("Theme")).ToString()!;
+        var keyw = (await LocalSetting.ReadConfig("KeyWord"));
+        var themesrt= (await LocalSetting.ReadConfig("Theme"));
+        Keywrold = keyw == null?"":keyw.ToString()!;
+        Themestr = themesrt == null ? "深红色" : themesrt.ToString()!;
     }
 
     partial  void OnThemestrChanged(string value) {
@@ -55,11 +62,14 @@ public partial class SettingViewModel:ObservableObject
         Task.Run(async () =>
         {
             await LocalSetting.SaveConfig("KeyWord", value);
+            OpenAIService = new OpenAIService(new OpenAiOptions() { ApiKey =value });
+
         });
     }
 
     public IThemeApply<App> ThemeApply { get; }
     public ILocalSetting LocalSetting { get; }
+    public IOpenAIService OpenAIService { get; set; }
 
     [ObservableProperty]
     string _keywrold;

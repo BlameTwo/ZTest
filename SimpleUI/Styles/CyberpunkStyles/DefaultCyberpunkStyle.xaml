@@ -29,6 +29,7 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/CheckButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/TipCard.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/SimpleUIImage.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/NavigationViewLine.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type ui:FontIcon}">
@@ -68,6 +69,10 @@
     </Style>
 
     <Style BasedOn="{StaticResource BaseExpander}" TargetType="{x:Type ui:Expander}">
+        <Setter Property="CornerRadius" Value="0" />
+    </Style>
+
+    <Style BasedOn="{StaticResource BaseNavigationViewItem}" TargetType="{x:Type ui:NavigationViewItem}">
         <Setter Property="CornerRadius" Value="0" />
     </Style>
 
@@ -165,6 +170,8 @@
 
     <Style BasedOn="{StaticResource BaseScrollViewer}" TargetType="{x:Type ScrollViewer}" />
 
+
+    <Style BasedOn="{StaticResource NavigationViewItemBase}" TargetType="{x:Type ui:NavigationViewLine}" />
 
     <Style TargetType="{x:Type ItemsControl}">
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />

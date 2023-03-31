@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using SkiaSharp;
 using System;
 using System.IO;
 using System.Media;
@@ -13,27 +14,34 @@ public class VITSService : IVITSService
 {
     public string SavePath { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
 
-    public async Task<string> GetBase64(string text)
+    public async Task<Stream> GetStream(string text)
     {
-        string txt = text.Length > 35 ? text.Substring(0, 34) : text;
         var client = new HttpClient();
         var request = new HttpRequestMessage
         {
             Method = HttpMethod.Post,
-            RequestUri = new Uri("http://osu.natapp1.cc/vits/getAI2/"),
+            RequestUri = new Uri("http://vits.natapp1.cc/sovits/genByText"),
             Content = JsonContent.Create(new
-            { uId = "3014085426", token = "a6fbd666-1e71-4e32-85f4-f16fc389b02e", mId = "3", rId = "119", text = $"[ZH]{txt}[ZH]" }
+            { uId = "3014085426", token = "a6fbd666-1e71-4e32-85f4-f16fc389b02e", mId = "3", rId = "119", text = $"[ZH]{text}[ZH]" }
             ),
         };
         using (var response = await client.SendAsync(request))
         {
             response.EnsureSuccessStatusCode();
             var body = await response.Content.ReadAsStringAsync();
-            return body;
+            var stream = JsonObject.Parse(body);
+            var url = stream!["data"]!.ToString();
+            if(url.StartsWith("http://") ||url.StartsWith("https://"))
+            {
+                var result = await client.GetAsync(url);
+                var resultstream = await result.Content.ReadAsStreamAsync();
+                return resultstream;
+            }
         }
+        return null;
     }
 
-    public void SaveWAV(bool isopen, MemoryStream Base64)
+    public async void SaveWAV(bool isopen, Stream Base64)
     {
         string filename = "";
         if(isopen)
@@ -47,9 +55,13 @@ public class VITSService : IVITSService
         {
             filename = SavePath + "\\output.wav";
         }
+        MemoryStream ms = new MemoryStream(); //创建一个空的MemoryStream对象
+        byte[] buffer = new byte[Base64.Length]; //创建一个和stream长度相同的字节数组
+        ms.Write(buffer, 0, buffer.Length); //将字节数组写入MemoryStream对象中
+        ms.Close(); //关闭MemoryStream
 
         FileStream fs = new FileStream(filename, FileMode.Create);
-        Base64.WriteTo(fs);
+        await ms.CopyToAsync(fs);
         fs.Close();
         Base64.Close();
     }
