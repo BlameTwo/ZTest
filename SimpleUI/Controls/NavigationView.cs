@@ -114,6 +114,7 @@ public partial class NavigationView:ContentControl,INavigationViewService
 
     internal void Select(INavigationItemServices item)
     {
+        if (item is not NavigationViewItem) return;
         if(this.SelectionItem == null)
         {//如果当前选择项目为空
             this.SelectionItem = item;

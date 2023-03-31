@@ -9,7 +9,7 @@
                     <Viewbox Stretch="Fill">
                         <Canvas Width="1.0" Height="1.0">
                             <Line
-                                Stroke="{DynamicResource Navigation.LineBrush}"
+                                Stroke="{DynamicResource Default.Accent.Brush}"
                                 StrokeThickness="{TemplateBinding StrokeThickness}"
                                 X1="0"
                                 X2="1"

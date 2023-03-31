@@ -28,6 +28,7 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/TipCard.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/SimpleUIImage.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/NavigationViewLine.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/NavigationViewHeader.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type ui:FontIcon}">
@@ -71,6 +72,7 @@
     <Style BasedOn="{StaticResource DefaultButtonBase}" TargetType="{x:Type Button}" />
 
     <Style BasedOn="{StaticResource BaseContextMenu}" TargetType="{x:Type ContextMenu}" />
+    <Style BasedOn="{StaticResource NavigationViewHeaderBase}" TargetType="{x:Type ui:NavigationViewHeader}" />
 
     <Style BasedOn="{StaticResource BaseProgressRing}" TargetType="{x:Type ui:ProgressRing}" />
 

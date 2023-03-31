@@ -26,7 +26,7 @@ public static class HostRegister
             services.AddSingleton<IShowDialogService, ShowDialogService>();
             services.AddSingleton<IThemeApply<App>, ThemeApply<App>>();
             services.AddSingleton<ILocalSetting, LocalSetting>();
-
+            services.AddSingleton<IAppNavigationViewService, AppNavigationViewService>();
             services.AddSingleton<IVITSService, VITSService>();
         });
         return host;
@@ -38,6 +38,8 @@ public static class HostRegister
             services.AddSingleton<MainViewModel>();
             services.AddSingleton<SettingDialog>();
             services.AddSingleton<SettingViewModel>();
+            services.AddTransient<ModelPage>();
+            services.AddTransient<ModelViewModel>();
         });
         return host;
     }

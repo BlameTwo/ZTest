@@ -18,6 +18,7 @@ namespace ChatGPT_GUI {
             if(this.DataContext is MainViewModel vm) {
                 vm.ToastLitterMessage.ShowOwner = this.grid;
                 vm.ToastLitterMessage.ShowTime = TimeSpan.FromSeconds(5);
+                vm.AppNavigationViewService.Init(this.Framebase, true);
             }
         }
     }

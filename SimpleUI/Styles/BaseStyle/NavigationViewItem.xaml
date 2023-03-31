@@ -29,11 +29,21 @@
                     Storyboard.TargetProperty="Opacity"
                     To="0.8"
                     Duration="0:0:0.2" />
+                <DoubleAnimation
+                    Storyboard.TargetName="rectangle"
+                    Storyboard.TargetProperty="Width"
+                    To="3"
+                    Duration="0:0:0.2" />
             </Storyboard>
             <Storyboard x:Key="Ispressedfalse">
                 <DoubleAnimation
                     Storyboard.TargetName="backcolor"
                     Storyboard.TargetProperty="Opacity"
+                    Duration="0:0:0.2" />
+                <DoubleAnimation
+                    Storyboard.TargetName="rectangle"
+                    Storyboard.TargetProperty="Width"
+                    To="0"
                     Duration="0:0:0.2" />
             </Storyboard>
         </Style.Resources>
@@ -45,8 +55,19 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ui:NavigationViewItem}">
-                    <Border>
-                        <Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Rectangle
+                            x:Name="rectangle"
+                            Width="0"
+                            Margin="0,5"
+                            Fill="{DynamicResource Default.Accent.Brush}"
+                            RadiusX="5"
+                            RadiusY="5" />
+                        <Grid Grid.Column="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto" />
                                 <ColumnDefinition />
@@ -74,7 +95,8 @@
                                 Content="{TemplateBinding Content}"
                                 TextBlock.Foreground="{TemplateBinding Foreground}" />
                         </Grid>
-                    </Border>
+                    </Grid>
+
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Trigger.EnterActions>
