@@ -22,6 +22,8 @@ public partial class ChatModel {
 
     public string Message { get; set; }
 
+    public ViewModels.ModelViewModel.ModelType ModelType { get; set; }
+
     public ChatType Type { get; set; }
 
     private Stream MS { get; set; } = null;

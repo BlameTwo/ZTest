@@ -2,7 +2,6 @@
     x:Class="ChatGPT_GUI.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:ChatGPT_GUI"
     xmlns:style="clr-namespace:SimpleUI.Styles;assembly=SimpleUI"
     xmlns:theme="clr-namespace:SimpleUI.Themes;assembly=SimpleUI">
     <Application.Resources>
@@ -11,6 +10,7 @@
                 <theme:Theme Type="Cyberpunk" />
                 <style:SimpleStyle Type="Cyberpunk" />
                 <ResourceDictionary Source="ChatTemplate.xaml" />
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

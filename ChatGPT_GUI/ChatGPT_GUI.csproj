@@ -10,11 +10,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\aili.png" />
     <None Remove="Resources\aislogo.jpg" />
     <None Remove="Resources\user.png" />
+    <None Remove="Resources\ying.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\aili.png" />
     <Resource Include="Resources\aislogo.jpg" />
   </ItemGroup>
 
@@ -33,6 +36,7 @@
 
   <ItemGroup>
     <Resource Include="Resources\user.png" />
+    <Resource Include="Resources\ying.png" />
   </ItemGroup>
 
 </Project>

@@ -139,6 +139,7 @@ public partial class ModelViewModel:ObservableRecipient
                 Type = ChatGPT_GUI.Models.ChatType.User,
                 DateTime = DateTime.Now.AddSeconds(1),
                 Message = message
+                
             });
         }
         var messagelist = new List<OpenAI.GPT3.ObjectModels.RequestModels.ChatMessage>();
@@ -194,6 +195,7 @@ public partial class ModelViewModel:ObservableRecipient
                     Type = ChatGPT_GUI.Models.ChatType.AI,
                     DateTime = DateTime.Now.AddSeconds(1),
                     Message = str
+                    ,ModelType = CheckModel()
                 });
             }
             else
@@ -218,6 +220,8 @@ public partial class ModelViewModel:ObservableRecipient
 
     }
 
+
+    ModelType CheckModel() => this.ChatType;
 
 
     public enum ModelType
