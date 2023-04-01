@@ -13,6 +13,7 @@
     Height="600"
     d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
     MaxButtonVisibility="Collapsed"
+    ShowInTaskbar="True"
     Style="{DynamicResource DefaultWindowBaseStyle}"
     mc:Ignorable="d">
 
