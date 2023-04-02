@@ -10,11 +10,9 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     Foreground="{DynamicResource DefaultAppFillBrush}"
-    mc:Ignorable="d">
+    mc:Ignorable="d"> 
     <Grid>
         <ui:Card
-            Width="356"
-            Height="150"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Header="欢迎"

@@ -9,11 +9,10 @@
     xmlns:ui="clr-namespace:SimpleUI.Controls;assembly=SimpleUI"
     xmlns:viewmodels="clr-namespace:ChatGPT_GUI.ViewModels"
     Title="找对话老婆就来这里吧"
-    Width="350"
+    Width="380"
     Height="600"
     d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
     MaxButtonVisibility="Collapsed"
-    ShowInTaskbar="True"
     Style="{DynamicResource DefaultWindowBaseStyle}"
     mc:Ignorable="d">
 
