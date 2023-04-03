@@ -49,10 +49,18 @@ public partial class MainViewModel: ObservableRecipient {
     {
         if(type is string str)
         {
+            if(str == "Bing")
+            {
+                var bing = App.GetSerivces<BingPage>();
+                AppNavigationViewService.Navigation(bing, null);
+                ModelName = "Bing";
+                return;
+            }
             var page = App.GetSerivces<ModelPage>();
             AppNavigationViewService.Navigation(page, str);
             ModelName = str;
         }
+
     }
 
 }

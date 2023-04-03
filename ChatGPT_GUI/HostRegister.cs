@@ -40,6 +40,8 @@ public static class HostRegister
             services.AddSingleton<SettingViewModel>();
             services.AddTransient<ModelPage>();
             services.AddTransient<ModelViewModel>();
+            services.AddTransient<BingPageViewModel>();
+            services.AddTransient<BingPage>();
         });
         return host;
     }

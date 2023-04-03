@@ -28,6 +28,7 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0-preview.1.23110.8" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="Waher.Content.Markdown" Version="2.3.0" />
+    <PackageReference Include="Websocket.Client" Version="4.6.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,6 +39,10 @@
   <ItemGroup>
     <Resource Include="Resources\user.png" />
     <Resource Include="Resources\ying.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Bing-Bot\" />
   </ItemGroup>
 
 </Project>

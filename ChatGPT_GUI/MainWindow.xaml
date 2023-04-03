@@ -41,6 +41,12 @@
             </i:EventTrigger>
         </i:Interaction.Triggers>
         <ui:NavigationView.MenuItems>
+            <ui:NavigationViewHeader Header="Bot" />
+            <ui:NavigationViewLine Margin="0,5,0,0" StrokeThickness="1" />
+            <ui:NavigationViewItem
+                Content="Bing"
+                Icon="QuickNote"
+                Tag="Bing" />
             <ui:NavigationViewHeader Header="人物" />
             <ui:NavigationViewLine Margin="0,5,0,0" StrokeThickness="1" />
             <ui:NavigationViewItem
