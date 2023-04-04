@@ -19,11 +19,14 @@ public partial class SettingViewModel:ObservableObject
         Init();
     }
 
+
     private async void Init() {
         var keyw = (await LocalSetting.ReadConfig("KeyWord"));
-        var themesrt= (await LocalSetting.ReadConfig("Theme"));
+        var themesrt = (await LocalSetting.ReadConfig("Theme"));
+        var bingcookie = (await LocalSetting.ReadConfig("BingCookie"));
         Keywrold = keyw == null?"":keyw.ToString()!;
         Themestr = themesrt == null ? "深红色" : themesrt.ToString()!;
+        Bingcookie = bingcookie == null ? "" : bingcookie.ToString()!;
     }
 
     partial  void OnThemestrChanged(string value) {
@@ -67,6 +70,14 @@ public partial class SettingViewModel:ObservableObject
         });
     }
 
+    partial void OnBingcookieChanged(string value)
+    {
+        Task.Run(async () =>
+        {
+            await LocalSetting.SaveConfig("BingCookie", value);
+        });
+    }
+
     public IThemeApply<App> ThemeApply { get; }
     public ILocalSetting LocalSetting { get; }
     public IOpenAIService OpenAIService { get; set; }
@@ -76,6 +87,9 @@ public partial class SettingViewModel:ObservableObject
 
     [ObservableProperty]
     string _themestr;
+
+    [ObservableProperty]
+    string _bingcookie;
 
 
 }

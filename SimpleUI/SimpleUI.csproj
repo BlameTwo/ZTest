@@ -27,8 +27,4 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controls\Image\" />
-  </ItemGroup>
-
 </Project>

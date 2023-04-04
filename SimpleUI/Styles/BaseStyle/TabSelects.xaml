@@ -1,0 +1,119 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:convert="clr-namespace:SimpleUI.Styles.Converter"
+    xmlns:panel="clr-namespace:SimpleUI.Controls.Panels"
+    xmlns:ui="clr-namespace:SimpleUI.Controls">
+    <Style x:Key="DefaultTabSelectBase" TargetType="{x:Type ui:TabSelect}">
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Opacity="0.5" Color="{DynamicResource Card.Background.Color}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource Default.Control.Border.Brush}" />
+        <Setter Property="Padding" Value="15" />
+        <Setter Property="CornerRadius" Value="3" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="ItemStyle" Value="{DynamicResource DefaultTabSelectItemBase}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ui:TabSelect}">
+                    <Grid
+                        x:Name="grid"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}">
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}" />
+                        <ItemsControl
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            ItemsSource="{TemplateBinding Items}"
+                            ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                            ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <!--  虚拟化可变子项大小Panel  -->
+                                    <VirtualizingStackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="DefaultTabSelectItemBase" TargetType="{x:Type ui:TabSelectItem}">
+        <Setter Property="Background" Value="{DynamicResource Default.Accent.Brush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Default.Accent.Second.Brush}" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ui:TabSelectItem}">
+                    <Grid Margin="5">
+                        <Border
+                            x:Name="backborder"
+                            Grid.Column="2"
+                            Background="{TemplateBinding Background}"
+                            Opacity="0" />
+                        <Border
+                            x:Name="foreborder"
+                            Grid.Column="2"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" />
+                        <Grid
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <ui:FontIcon
+                                Grid.Column="0"
+                                FocusVisualStyle="{TemplateBinding FocusVisualStyle}"
+                                Glyph="{TemplateBinding Icon,
+                                                        Converter={x:Static convert:IconConverter.Instance}}" />
+                            <ContentPresenter
+                                Grid.Column="1"
+                                Margin="3,0,0,0"
+                                VerticalAlignment="Center"
+                                Content="{TemplateBinding Header}" />
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelect" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="backborder"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="1"
+                                            Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="backborder"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="0"
+                                            Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

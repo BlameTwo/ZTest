@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChatGPT_GUI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace ChatGPT_GUI
     /// </summary>
     public partial class BingPage : Page
     {
-        public BingPage()
+        public BingPage(BingPageViewModel vm)
         {
             InitializeComponent();
+            this.DataContext = vm;
         }
+
+        
     }
 }

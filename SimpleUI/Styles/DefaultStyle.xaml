@@ -29,6 +29,7 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/SimpleUIImage.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/NavigationViewLine.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/NavigationViewHeader.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/TabSelects.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type ui:FontIcon}">
@@ -54,6 +55,8 @@
         </Setter>
     </Style>
 
+
+    <Style BasedOn="{StaticResource DefaultTabSelectItemBase}" TargetType="{x:Type ui:TabSelectItem}" />
 
     <Style BasedOn="{StaticResource DefaultTreeViewItem}" TargetType="ui:TreeViewItem" />
 
@@ -88,6 +91,8 @@
     <Style BasedOn="{StaticResource BaseComboBox}" TargetType="{x:Type ComboBox}" />
 
     <Style BasedOn="{StaticResource BaseProgressBar}" TargetType="{x:Type ProgressBar}" />
+
+    <Style BasedOn="{StaticResource DefaultTabSelectBase}" TargetType="{x:Type ui:TabSelect}" />
 
     <Style BasedOn="{StaticResource BaseSimpleUIImage}" TargetType="{x:Type ui:SimpleUIImage}" />
 

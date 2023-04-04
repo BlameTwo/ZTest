@@ -12,6 +12,8 @@
 
     <Color x:Key="Default.Accent.Color">#189AA7</Color>
 
+    <Color x:Key="Default.Accent.Second.Color">#1FDFEB</Color>
+
     <SolidColorBrush x:Key="DefaultAppFillBrush" Color="black" />
 
     <Color x:Key="Navigation.LineColor">#6F6F6F</Color>
@@ -50,6 +52,8 @@
     <SolidColorBrush x:Key="Default.Control.Background.Brush" Color="#D7D7D7" />
 
     <SolidColorBrush x:Key="Default.Accent.Brush" Color="{DynamicResource Default.Accent.Color}" />
+
+    <SolidColorBrush x:Key="Default.Accent.Second.Brush" Color="{DynamicResource Default.Accent.Second.Color}" />
 
 
     <SolidColorBrush x:Key="Default.Dialog.Background.Brush" Color="{DynamicResource Default.Dialog.Background.Color}" />

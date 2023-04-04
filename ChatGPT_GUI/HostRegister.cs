@@ -2,6 +2,7 @@
 using ChatGPT_GUI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using OpenAI.GPT3.Extensions;
 using OpenAI.GPT3.Interfaces;
 using SimpleUI.Interface;
@@ -10,8 +11,11 @@ using SimpleUI.Interface.AppInterfaces.Services;
 using SimpleUI.Services;
 using SimpleUI.Themes;
 using SimpleUI.Utils;
+using System.Net.Http;
+using System.Net;
 using ZTest.Tools.Interfaces;
 using ZTest.Tools.Services;
+using System;
 
 namespace ChatGPT_GUI;
 public static class HostRegister 
@@ -22,6 +26,7 @@ public static class HostRegister
             services.AddOpenAIService((setting) => {
                 setting.ApiKey = "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";
             });
+            services.AddHttpClient("bing");
             services.AddSingleton<IToastLitterMessage, ToastLitterMessage>();
             services.AddSingleton<IShowDialogService, ShowDialogService>();
             services.AddSingleton<IThemeApply<App>, ThemeApply<App>>();

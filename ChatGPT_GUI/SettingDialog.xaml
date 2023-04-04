@@ -12,6 +12,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+
     <Border
         Width="300"
         Height="300"
@@ -34,6 +35,9 @@
             <StackPanel Grid.Row="1" Margin="10,0">
                 <ui:Expander Header="API钥匙">
                     <TextBox Margin="10" Text="{Binding Keywrold, Mode=TwoWay}" />
+                </ui:Expander>
+                <ui:Expander Header="Bing Cookie">
+                    <TextBox Margin="10" Text="{Binding Bingcookie, Mode=TwoWay}" />
                 </ui:Expander>
                 <ui:Expander Header="主题颜色" Icon="Color">
                     <ComboBox
