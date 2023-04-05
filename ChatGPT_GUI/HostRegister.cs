@@ -16,6 +16,7 @@ using System.Net;
 using ZTest.Tools.Interfaces;
 using ZTest.Tools.Services;
 using System;
+using ChatGPT_GUI.Bing_Bot;
 
 namespace ChatGPT_GUI;
 public static class HostRegister 
@@ -33,6 +34,7 @@ public static class HostRegister
             services.AddSingleton<ILocalSetting, LocalSetting>();
             services.AddSingleton<IAppNavigationViewService, AppNavigationViewService>();
             services.AddSingleton<IVITSService, VITSService>();
+            services.AddTransient<BingChatClient>();
         });
         return host;
     }

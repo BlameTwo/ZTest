@@ -23,23 +23,69 @@
             <RowDefinition />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <ui:TabSelect
-            x:Name="tabselect"
-            Grid.Row="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            HorizontalContentAlignment="Center"
-            VerticalContentAlignment="Center">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="SelectChanged">
-                    <i:InvokeCommandAction Command="{Binding SelectBingCommand}" CommandParameter="{Binding ElementName=tabselect, Path=SelectItem.Header}" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-            <ui:TabSelect.Items>
-                <ui:TabSelectItem Header="创造力" Icon="AdjustHologram" />
-                <ui:TabSelectItem Header="平衡感" Icon="ToggleFilled" />
-                <ui:TabSelectItem Header="精准感" Icon="StatusTriangleOuter" />
-            </ui:TabSelect.Items>
-        </ui:TabSelect>
+        <ui:Card Visibility="{Binding CardVisibility, Mode=OneWay}" />
+        <ItemsControl ItemsSource="{Binding ListChat, Mode=OneWay}" Visibility="{Binding}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="5,0,0,0"
+                        Padding="5"
+                        VerticalAlignment="Top"
+                        Background="{DynamicResource Default.Control.Background.Brush}"
+                        BorderBrush="{DynamicResource Default.Control.Border.Brush}"
+                        BorderThickness="1"
+                        CornerRadius="5">
+                        <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <ui:TabSelect
+                x:Name="tabselect"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectChanged">
+                        <i:InvokeCommandAction Command="{Binding SelectBingCommand}" CommandParameter="{Binding ElementName=tabselect, Path=SelectItem.Header}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <ui:TabSelect.Items>
+                    <ui:TabSelectItem Header="创造力" Icon="AdjustHologram" />
+                    <ui:TabSelectItem Header="平衡感" Icon="ToggleFilled" />
+                    <ui:TabSelectItem Header="精准感" Icon="StatusTriangleOuter" />
+                </ui:TabSelect.Items>
+            </ui:TabSelect>
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <ui:Button
+                    Margin="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    ContentVisiblity="Collapsed"
+                    CornerRadius="50"
+                    Icon="Clear"
+                    ToolTipService.ToolTip="新主题" />
+                <TextBox
+                    x:Name="MessageBox"
+                    Grid.Column="1"
+                    Margin="3,0,0,0" />
+                <ui:Button
+                    Grid.Column="2"
+                    Margin="3,0,5,0"
+                    Command="{Binding AskCommand}"
+                    CommandParameter="{Binding ElementName=MessageBox, Path=Text, Mode=TwoWay}"
+                    ContentVisiblity="Collapsed"
+                    Icon="Send" />
+            </Grid>
+        </StackPanel>
     </Grid>
 </Page>

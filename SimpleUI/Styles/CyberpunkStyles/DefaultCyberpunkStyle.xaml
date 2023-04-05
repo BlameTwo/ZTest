@@ -63,7 +63,9 @@
 
     <Style BasedOn="{StaticResource DefaultTabSelectBase}" TargetType="{x:Type ui:TabSelect}" />
 
-    <Style BasedOn="{StaticResource DefaultTabSelectItemBase}" TargetType="{x:Type ui:TabSelectItem}" />
+    <Style BasedOn="{StaticResource DefaultTabSelectItemBase}" TargetType="{x:Type ui:TabSelectItem}">
+        <Setter Property="CornerRadius" Value="0" />
+    </Style>
 
     <Style BasedOn="{StaticResource UIButtonCyberpunkBase}" TargetType="{x:Type ui:Button}" />
 
