@@ -1,36 +1,46 @@
 ﻿
-using ChatGPT_GUI.Bing.Models;
-using ChatGPT_GUI.Bing_Bot;
-using ChatGPT_GUI.Bing_Bot.Models;
+using Bing_BOT.Enum;
+using Bing_BOT.Models;
+using Bing_BOT.Models.VM;
+using Bing_BOT.Services;
+using Bing_BOT.Services.Contract;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using System.Collections.ObjectModel;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Documents;
 using ZTest.Tools.Interfaces;
-using static ChatGPT_GUI.Bing_Bot.BingChatSettings;
 
 namespace ChatGPT_GUI.ViewModels;
 
-public partial class BingPageViewModel:ObservableObject
+public partial class BingPageViewModel : ObservableRecipient, IRecipient<BingChatEvent>
 {
 
     public BingPageViewModel(ILocalSetting localSetting)
     {
+        IsActive = true;
         LocalSetting = localSetting;
-        BingChatClient = new(_option);
+        IsSend = true;
+
     }
 
     private object? bingcookie;
 
 
     [ObservableProperty]
-    ObservableCollection<string> _ListChat=new();
+    ObservableCollection<Bing_BOT.Models.VM.BingBotModel> _ListChat=new();
 
-    private CancellationTokenSource? chatCts;
+    private CancellationTokenSource? chatCts=new();
 
-    BingChatSettings _option { get; set; } = new();
+    private ICreateBingBot CreateBot { get; set; }
+    private IBingChatClient Client { get; set; }
+
+    private BingConversation Conversation { get; set; } = null;
+    BingChatOption _option { get; set; }
+
+    int NowId = 0;
 
     [RelayCommand]
     async void Loaded()
@@ -46,12 +56,10 @@ public partial class BingPageViewModel:ObservableObject
             this.CardVisibility = Visibility.Collapsed;
             this.ContentVisibility = Visibility.Visible;
         }
-        _option = new BingChatSettings()
-        {
-            Style = BingChatSettings.CharStyle.Creative,
-            Token = bingcookie!.ToString()!
-        };
-        BingChatClient = new(_option);
+        CreateBot = new CreateBingBot();
+        _option = new BingChatOption( Bing_BOT.Enum.CharStyle.Creative,bingcookie.ToString()!,1000);
+        Client = new BingChatClient();
+        Client.Init(_option);
     }
 
     [RelayCommand]
@@ -70,23 +78,36 @@ public partial class BingPageViewModel:ObservableObject
                 style = CharStyle.Precise;
                 break;
         }
-        _option = new BingChatSettings()
-        {
-            Style = style,
-            Token = bingcookie!.ToString()!
-        };
+        _option = new BingChatOption(style, bingcookie.ToString()!, 1000);
+        Conversation = await CreateBot.CreateBingConversation(bingcookie.ToString(), chatCts.Token);
     }
 
     ConversationSession _oldrequest;
 
-    [RelayCommand]
+    [RelayCommand(CanExecute =nameof(IsSend))]
     async void Ask(string text)
     {
-        chatCts = new();
-        BingRequest request = new BingRequest(text) { Session = _oldrequest };
-        var result = await BingChatClient.ChatAsync(request, chatCts.Token);
-        _oldrequest = result.Session;
-        ListChat.Add(result.Text);
+        IsSend = false;
+        ListChat.Add(new(chatCts.Token,text,null,null, BingChatType.User));
+        await Task.Delay(500);
+        ListChat.Add(new Bing_BOT.Models.VM.BingBotModel(chatCts.Token,text,new(NowId, Conversation.conversationId, Conversation.clientId, Conversation.conversationSignature),this.Client, BingChatType.Bing));
+        NowId++;
+    }
+
+    void IRecipient<BingChatEvent>.Receive(BingChatEvent message)
+    {
+        IsSend = message.IsOpen;
+    }
+
+
+    [ObservableProperty]
+    bool _IsSend;
+
+    bool CheckSend() => IsSend;
+
+    partial void OnIsSendChanged(bool value)
+    {
+        AskCommand.NotifyCanExecuteChanged();
     }
 
     [ObservableProperty]

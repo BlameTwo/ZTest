@@ -6,6 +6,7 @@
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:local="clr-namespace:ChatGPT_GUI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:selecter="clr-namespace:ChatGPT_GUI.Selecter"
     xmlns:ui="clr-namespace:SimpleUI.Controls;assembly=SimpleUI"
     xmlns:viewmodels="clr-namespace:ChatGPT_GUI.ViewModels"
     Title="BingPage"
@@ -13,6 +14,12 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+    <Page.Resources>
+        <selecter:BingChatSelecter
+            x:Key="BingSelecter"
+            Bing="{StaticResource BingDateTemplate}"
+            User="{StaticResource BingUserDataTemplate}" />
+    </Page.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
@@ -24,24 +31,10 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <ui:Card Visibility="{Binding CardVisibility, Mode=OneWay}" />
-        <ItemsControl ItemsSource="{Binding ListChat, Mode=OneWay}" Visibility="{Binding}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Border
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        Margin="5,0,0,0"
-                        Padding="5"
-                        VerticalAlignment="Top"
-                        Background="{DynamicResource Default.Control.Background.Brush}"
-                        BorderBrush="{DynamicResource Default.Control.Border.Brush}"
-                        BorderThickness="1"
-                        CornerRadius="5">
-                        <TextBlock Text="{Binding}" TextWrapping="Wrap" />
-                    </Border>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+        <ItemsControl
+            ItemTemplateSelector="{StaticResource BingSelecter}"
+            ItemsSource="{Binding ListChat, Mode=OneWay}"
+            Visibility="{Binding}" />
         <StackPanel Grid.Row="1" Orientation="Vertical">
             <ui:TabSelect
                 x:Name="tabselect"

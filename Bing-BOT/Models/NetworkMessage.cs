@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ChatGPT_GUI.Bing_Bot.Models;
+﻿namespace Bing_BOT.Models;
 
 public class NetworkMessage
 {
@@ -14,5 +12,10 @@ public class NetworkMessage
 
     public DateTimeOffset timestamp { get; set; }
 
-    public string region { get; set; }= "AU";
+    public string region { get; set; } = "AU";
+}
+
+public class ParticipantModel
+{
+    public string id { get; set; }
 }

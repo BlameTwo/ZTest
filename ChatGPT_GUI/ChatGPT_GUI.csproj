@@ -33,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Bing-BOT\Bing-BOT.csproj" />
     <ProjectReference Include="..\SimpleUI\SimpleUI.csproj" />
     <ProjectReference Include="..\ZTest.Tools\ZTest.Tools.csproj" />
   </ItemGroup>
@@ -40,10 +41,6 @@
   <ItemGroup>
     <Resource Include="Resources\user.png" />
     <Resource Include="Resources\ying.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Bing-Bot\" />
   </ItemGroup>
 
 </Project>

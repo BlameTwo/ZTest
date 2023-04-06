@@ -1,4 +1,4 @@
-﻿using ChatGPT_GUI.Bing_Bot.Models;
+﻿using Bing_BOT.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace ChatGPT_GUI.Models;
