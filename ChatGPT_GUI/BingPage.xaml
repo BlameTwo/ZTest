@@ -70,7 +70,8 @@
                 <TextBox
                     x:Name="MessageBox"
                     Grid.Column="1"
-                    Margin="3,0,0,0" />
+                    Margin="3,0,0,0"
+                    TextWrapping="Wrap" />
                 <ui:Button
                     Grid.Column="2"
                     Margin="3,0,5,0"
