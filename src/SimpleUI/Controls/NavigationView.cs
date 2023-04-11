@@ -287,7 +287,7 @@ public partial class NavigationView:ContentControl,INavigationViewService
     }
 
     public static readonly DependencyProperty MenuStateProperty =
-        DependencyProperty.Register("MenuState", typeof(MenuOpenState), typeof(NavigationView), new PropertyMetadata(null));
+        DependencyProperty.Register("MenuState", typeof(MenuOpenState), typeof(NavigationView), new FrameworkPropertyMetadata(null));
 
 
 

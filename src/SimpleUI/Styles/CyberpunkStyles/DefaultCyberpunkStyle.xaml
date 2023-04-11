@@ -32,6 +32,7 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/NavigationViewLine.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/NavigationViewHeader.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/TabSelects.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/ToolTip.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type ui:FontIcon}">
@@ -181,6 +182,7 @@
 
     <Style BasedOn="{StaticResource BaseScrollViewer}" TargetType="{x:Type ScrollViewer}" />
 
+    <Style BasedOn="{StaticResource ToolTipBase}" TargetType="{x:Type ToolTip}" />
 
     <Style BasedOn="{StaticResource NavigationViewItemBase}" TargetType="{x:Type ui:NavigationViewLine}" />
 

@@ -12,57 +12,59 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+    <ScrollViewer>
+        <Border
+            Width="300"
+            Height="350"
+            Background="{DynamicResource Default.Dialog.Background.Brush}"
+            BorderBrush="{DynamicResource Default.Dialog.BorderBrush.Brush}"
+            BorderThickness="1"
+            CornerRadius="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Margin="10,10,0,0"
+                    HorizontalAlignment="Left"
+                    FontSize="25"
+                    FontWeight="Bold"
+                    Text="应用设置" />
+                <StackPanel Grid.Row="1" Margin="10,0">
+                    <ui:Expander Header="API钥匙">
+                        <TextBox Margin="10" Text="{Binding Keywrold, Mode=TwoWay}" />
+                    </ui:Expander>
+                    <ui:Expander Header="Bing Cookie">
+                        <TextBox Margin="10" Text="{Binding Bingcookie, Mode=TwoWay}" />
+                    </ui:Expander>
+                    <ui:Expander Header="主题颜色" Icon="Color">
+                        <ComboBox
+                            x:Name="themecombox"
+                            Margin="10"
+                            Padding="5"
+                            Text="{Binding Themestr, Mode=TwoWay}">
+                            <ComboBoxItem Content="浅色" />
+                            <ComboBoxItem Content="深色" />
+                            <ComboBoxItem Content="自动" />
+                            <ComboBoxItem Content="深红色" />
+                        </ComboBox>
+                    </ui:Expander>
+                </StackPanel>
+                <StackPanel
+                    Grid.Row="2"
+                    Margin="10"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <ui:Button
+                        Margin="5,0,0,0"
+                        Click="Button_Click"
+                        Content="关闭"
+                        Icon="Clear" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </ScrollViewer>
 
-    <Border
-        Width="300"
-        Height="300"
-        Background="{DynamicResource Default.Dialog.Background.Brush}"
-        BorderBrush="{DynamicResource Default.Dialog.BorderBrush.Brush}"
-        BorderThickness="1"
-        CornerRadius="3">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-            <TextBlock
-                Margin="10,10,0,0"
-                HorizontalAlignment="Left"
-                FontSize="25"
-                FontWeight="Bold"
-                Text="应用设置" />
-            <StackPanel Grid.Row="1" Margin="10,0">
-                <ui:Expander Header="API钥匙">
-                    <TextBox Margin="10" Text="{Binding Keywrold, Mode=TwoWay}" />
-                </ui:Expander>
-                <ui:Expander Header="Bing Cookie">
-                    <TextBox Margin="10" Text="{Binding Bingcookie, Mode=TwoWay}" />
-                </ui:Expander>
-                <ui:Expander Header="主题颜色" Icon="Color">
-                    <ComboBox
-                        x:Name="themecombox"
-                        Margin="10"
-                        Padding="5"
-                        Text="{Binding Themestr, Mode=TwoWay}">
-                        <ComboBoxItem Content="浅色" />
-                        <ComboBoxItem Content="深色" />
-                        <ComboBoxItem Content="自动" />
-                        <ComboBoxItem Content="深红色" />
-                    </ComboBox>
-                </ui:Expander>
-            </StackPanel>
-            <StackPanel
-                Grid.Row="2"
-                Margin="10"
-                HorizontalAlignment="Center"
-                Orientation="Horizontal">
-                <ui:Button
-                    Margin="5,0,0,0"
-                    Click="Button_Click"
-                    Content="关闭"
-                    Icon="Clear" />
-            </StackPanel>
-        </Grid>
-    </Border>
 </ui:DialogHost>

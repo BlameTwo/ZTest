@@ -8,5 +8,7 @@ namespace SimpleUI.Interface
         /// Unicode字符
         /// </summary>
         string Glyph { get; set; }
+
+        object IconImage { get; set; }
     }
 }

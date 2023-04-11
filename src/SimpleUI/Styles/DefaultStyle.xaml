@@ -30,6 +30,7 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/NavigationViewLine.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/NavigationViewHeader.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/TabSelects.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/ToolTip.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type ui:FontIcon}">
@@ -101,6 +102,8 @@
     <Style BasedOn="{StaticResource NavigationViewItemBase}" TargetType="{x:Type ui:NavigationViewLine}" />
 
     <Style BasedOn="{StaticResource BaseNavigationViewItem}" TargetType="{x:Type ui:NavigationViewItem}" />
+
+    <Style BasedOn="{StaticResource ToolTipBase}" TargetType="{x:Type ToolTip}" />
 
     <Style TargetType="{x:Type ItemsControl}">
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />

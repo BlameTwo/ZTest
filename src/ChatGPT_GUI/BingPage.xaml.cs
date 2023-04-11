@@ -25,6 +25,8 @@ namespace ChatGPT_GUI
         {
             InitializeComponent();
             this.DataContext = vm;
+
+            
         }
 
         

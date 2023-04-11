@@ -78,7 +78,8 @@
                     Command="{Binding AskCommand}"
                     CommandParameter="{Binding ElementName=MessageBox, Path=Text, Mode=TwoWay}"
                     ContentVisiblity="Collapsed"
-                    Icon="Send" />
+                    Icon="Send"
+                    ToolTipService.ToolTip="发送" />
             </Grid>
         </StackPanel>
     </Grid>

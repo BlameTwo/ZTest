@@ -28,8 +28,6 @@ namespace SimpleUI.Controls
         public static readonly DependencyProperty ContentVisiblityProperty =
             DependencyProperty.Register("ContentVisiblity", typeof(Visibility), typeof(SimpleUI.Controls.Button), new PropertyMetadata(Visibility.Visible));
 
-
-
         public FontIconEnum Icon
         {
             get { return (FontIconEnum)GetValue(IconProperty); }
