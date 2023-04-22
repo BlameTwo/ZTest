@@ -11,7 +11,7 @@
             </Setter.Value>
         </Setter>
         <Setter Property="BorderBrush" Value="{DynamicResource Default.Control.Border.Brush}" />
-        <Setter Property="Padding" Value="15" />
+        <Setter Property="Padding" Value="3" />
         <Setter Property="CornerRadius" Value="3" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="ItemStyle" Value="{DynamicResource DefaultTabSelectItemBase}" />
@@ -55,11 +55,12 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ui:TabSelectItem}">
-                    <Grid Margin="5">
+                    <Grid Margin="5,0,0,0">
                         <Border
                             x:Name="backborder"
                             Grid.Column="2"
-                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding Background}"
+                            BorderThickness="2"
                             Opacity="0" />
                         <Border
                             x:Name="foreborder"
@@ -85,6 +86,19 @@
                                 VerticalAlignment="Center"
                                 Content="{TemplateBinding Header}" />
                         </Grid>
+                        <Path
+                            x:Name="MyLine"
+                            VerticalAlignment="Bottom"
+                            Data="M 10,10 L 50,10"
+                            RenderTransformOrigin="0.5,0.5"
+                            Stroke="{DynamicResource Default.Accent.Brush}"
+                            StrokeEndLineCap="Round"
+                            StrokeStartLineCap="Round"
+                            StrokeThickness="5">
+                            <Path.RenderTransform>
+                                <ScaleTransform x:Name="MyScaleTransform" ScaleX="0" />
+                            </Path.RenderTransform>
+                        </Path>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelect" Value="True">
@@ -96,6 +110,11 @@
                                             Storyboard.TargetProperty="Opacity"
                                             To="1"
                                             Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="MyScaleTransform"
+                                            Storyboard.TargetProperty="ScaleX"
+                                            To="1"
+                                            Duration="0:0:0.3" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
@@ -105,6 +124,11 @@
                                         <DoubleAnimation
                                             Storyboard.TargetName="backborder"
                                             Storyboard.TargetProperty="Opacity"
+                                            To="0"
+                                            Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="MyScaleTransform"
+                                            Storyboard.TargetProperty="ScaleX"
                                             To="0"
                                             Duration="0:0:0.3" />
                                     </Storyboard>

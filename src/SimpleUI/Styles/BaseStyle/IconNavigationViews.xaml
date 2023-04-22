@@ -33,19 +33,21 @@
                                 ItemsSource="{TemplateBinding MenuItems}"
                                 ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                                 ScrollViewer.VerticalScrollBarVisibility="Hidden" />
+                            <StackPanel Grid.Row="2">
+                                <Rectangle Height="1" Fill="{DynamicResource Navigation.LineBrush}" />
+                                <ItemsControl
+                                    VerticalAlignment="Bottom"
+                                    ItemContainerStyle="{TemplateBinding ItemContainerStyle}"
+                                    ItemsSource="{TemplateBinding FooterMenuItems}"
+                                    ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                                    ScrollViewer.VerticalScrollBarVisibility="Hidden" />
+                            </StackPanel>
 
-                            <ItemsControl
-                                Grid.Row="2"
-                                VerticalAlignment="Bottom"
-                                ItemContainerStyle="{TemplateBinding ItemContainerStyle}"
-                                ItemsSource="{TemplateBinding FooterMenuItems}"
-                                ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                                ScrollViewer.VerticalScrollBarVisibility="Hidden" />
                         </Grid>
                         <Border
                             x:Name="MenuDockPanel"
                             Grid.Column="1"
-                            Margin="10,10,10,10"
+                            Margin="0,10,10,10"
                             Padding="5"
                             Background="{TemplateBinding ContentBackground}"
                             BorderBrush="{DynamicResource Navigation.LineBrush}"

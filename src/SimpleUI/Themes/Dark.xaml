@@ -54,6 +54,7 @@
     <Color x:Key="Default.Control.Background.Color">#26F1F1F1</Color>
     <SolidColorBrush x:Key="Default.Control.Background.Brush" Color="{DynamicResource Default.Control.Background.Color}" />
 
+
     <SolidColorBrush x:Key="Default.Accent.Brush" Color="{DynamicResource Default.Accent.Color}" />
     <SolidColorBrush x:Key="Default.Accent.Second.Brush" Color="{DynamicResource Default.Accent.Second.Color}" />
 

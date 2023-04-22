@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Hardware.Net (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Hardware.Net (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

@@ -108,8 +108,14 @@ public partial class ThemeApply<T> : IThemeApply<T>
             }
             else
             {
-                var theme = App.Resources.MergedDictionaries[0] as Theme;
-                theme.Type = type;
+                foreach (var item in App.Resources.MergedDictionaries)
+                {
+                    var themetype = item as Theme;
+                    if(themetype != null)
+                    {
+                        themetype.Type = type;
+                    }
+                }
             }
             if (color != null)
             {
