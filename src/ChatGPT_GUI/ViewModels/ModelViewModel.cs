@@ -64,6 +64,9 @@ public partial class ModelViewModel:ObservableRecipient
                 await action(App.YingText,
                     true, false);
                 break;
+            case ModelType.ChatGpt:
+                await action("你好,Gpt", true, false);
+                break;
         }
     }
 
@@ -154,6 +157,9 @@ public partial class ModelViewModel:ObservableRecipient
             case ModelType.Ying:
                 messagelist.Add(OpenAI.GPT3.ObjectModels.RequestModels.ChatMessage.FromSystem(App.YingText));
                 break;
+            case ModelType.ChatGpt:
+                messagelist.Add(OpenAI.GPT3.ObjectModels.RequestModels.ChatMessage.FromSystem(message));
+                    break;
         }
         foreach (var chat in ChatList)
         {
@@ -226,6 +232,6 @@ public partial class ModelViewModel:ObservableRecipient
 
     public enum ModelType
     {
-        HuTao, AiLi, Ying
+        HuTao, AiLi, Ying, ChatGpt
     }
 }

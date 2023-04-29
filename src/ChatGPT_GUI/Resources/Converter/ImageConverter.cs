@@ -20,6 +20,8 @@ public class ImageConverter : IValueConverter
                     return new BitmapImage(new Uri("pack://application:,,,/ChatGPT_GUI;component/Resources/ying.png"));
                 case ModelType.AiLi:
                     return new BitmapImage(new Uri("pack://application:,,,/ChatGPT_GUI;component/Resources/aili.png"));
+                case ModelType.ChatGpt:
+                    return new BitmapImage(new Uri("pack://application:,,,/ChatGPT_GUI;component/Resources/chatlogo.png"));
             }
         }
 

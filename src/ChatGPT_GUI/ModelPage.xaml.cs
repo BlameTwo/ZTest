@@ -47,6 +47,10 @@ namespace ChatGPT_GUI
                         vm.ChatType = ModelViewModel.ModelType.Ying;
                         vm.refershtoken();
                         break;
+                    case "ChatGpt":
+                        vm.ChatType = ModelViewModel.ModelType.ChatGpt;
+                        vm.refershtoken();
+                        break;
                 }
             }
            
