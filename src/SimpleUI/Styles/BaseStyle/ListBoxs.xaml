@@ -32,7 +32,10 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                    <Grid Margin="2">
+                    <Grid
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        Margin="2">
                         <!--  边框颜色  -->
                         <Border
                             x:Name="PRPA_BorderBack"

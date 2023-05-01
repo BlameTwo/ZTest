@@ -31,6 +31,7 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/NavigationViewHeader.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/TabSelects.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/ToolTip.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/FlyoutButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type ui:FontIcon}">
@@ -104,6 +105,12 @@
     <Style BasedOn="{StaticResource BaseNavigationViewItem}" TargetType="{x:Type ui:NavigationViewItem}" />
 
     <Style BasedOn="{StaticResource ToolTipBase}" TargetType="{x:Type ToolTip}" />
+
+    <Style BasedOn="{StaticResource BaseFlyoutButtonStyle}" TargetType="{x:Type ui:FlyoutButton}" />
+
+    <Style BasedOn="{StaticResource BaseListBox}" TargetType="{x:Type ListBox}" />
+
+    <Style BasedOn="{StaticResource BaseListBoxItem}" TargetType="{x:Type ListBoxItem}" />
 
     <Style TargetType="{x:Type ItemsControl}">
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
