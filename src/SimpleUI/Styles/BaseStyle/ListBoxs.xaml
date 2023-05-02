@@ -17,8 +17,12 @@
                         BorderBrush="Transparent"
                         BorderThickness="0"
                         SnapsToDevicePixels="True">
-                        <ScrollViewer FontSize="{TemplateBinding FontSize}">
-                            <ItemsPresenter SnapsToDevicePixels="True" />
+                        <ScrollViewer
+                            x:Name="PART_ContentHost"
+                            CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}"
+                            HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                            VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                            <ItemsPresenter />
                         </ScrollViewer>
                     </Border>
                 </ControlTemplate>
@@ -44,7 +48,7 @@
                             BorderThickness="0"
                             CornerRadius="{DynamicResource DefaultCornerRadius}"
                             Opacity="0" />
-                        <Grid Margin="8">
+                        <Grid Margin="5">
                             <ContentPresenter
                                 ContentTemplate="{TemplateBinding ContentTemplate}"
                                 FocusVisualStyle="{x:Null}"

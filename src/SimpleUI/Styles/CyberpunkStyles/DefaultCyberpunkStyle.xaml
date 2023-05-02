@@ -33,6 +33,7 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/NavigationViewHeader.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/TabSelects.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/ToolTip.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/FlyoutButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type ui:FontIcon}">
@@ -89,6 +90,8 @@
     <Style BasedOn="{StaticResource BaseNavigationView}" TargetType="{x:Type ui:NavigationView}" />
 
     <Style BasedOn="{StaticResource NavigationViewHeaderBase}" TargetType="{x:Type ui:NavigationViewHeader}" />
+
+    <Style BasedOn="{StaticResource BaseFlyoutButtonStyle}" TargetType="{x:Type ui:FlyoutButton}" />
 
     <Style BasedOn="{StaticResource BaseNumberBox}" TargetType="{x:Type ui:NumberBox}">
         <Setter Property="CornerRadius" Value="0" />
