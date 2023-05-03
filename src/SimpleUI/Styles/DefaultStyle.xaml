@@ -112,6 +112,7 @@
 
     <Style BasedOn="{StaticResource BaseListBoxItem}" TargetType="{x:Type ListBoxItem}" />
 
+
     <Style TargetType="{x:Type ItemsControl}">
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />

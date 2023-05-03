@@ -6,7 +6,7 @@ using System.Windows.Input;
 
 namespace SimpleUI.Controls;
 
-public class TabSelectItem:Control,ITabSelectItem,IControl
+public class TabSelectItem:ContentControl,ITabSelectItem,IControl
 {
     public bool IsSelect
     {
@@ -45,15 +45,6 @@ public class TabSelectItem:Control,ITabSelectItem,IControl
         DependencyProperty.Register("Icon", typeof(FontIconEnum), typeof(TabSelectItem), new PropertyMetadata(null));
 
 
-    public string Header
-    {
-        get { return (string)GetValue(HeaderProperty); }
-        set { SetValue(HeaderProperty, value); }
-    }
-
-    // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
-    public static readonly DependencyProperty HeaderProperty =
-        DependencyProperty.Register("Header", typeof(string), typeof(TabSelectItem), new PropertyMetadata(""));
 
 
 

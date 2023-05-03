@@ -6,7 +6,6 @@ public interface ITabSelect
 {
     ITabSelectItem SelectItem { get; set; }
 
-    List<ITabSelectItem> Items { get; set; }
 
 
 }

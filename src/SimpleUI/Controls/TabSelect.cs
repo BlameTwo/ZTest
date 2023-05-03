@@ -7,12 +7,11 @@ using SimpleUI.Interface;
 namespace SimpleUI.Controls;
 
 
-public partial class TabSelect : Control, ITabSelect,IControl
+public partial class TabSelect : ItemsControl, ITabSelect,IControl
 {
     public TabSelect()
     {
         TabSelectParent = this;
-        Items = new();
     }
 
     
@@ -28,6 +27,19 @@ public partial class TabSelect : Control, ITabSelect,IControl
     // Using a DependencyProperty as the backing store for ItemStyle.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty ItemStyleProperty =
         DependencyProperty.Register("ItemStyle", typeof(Style), typeof(TabSelect), new PropertyMetadata(null));
+
+
+
+
+    public DataTemplate ItemTemplate
+    {
+        get { return (DataTemplate)GetValue(ItemTemplateProperty); }
+        set { SetValue(ItemTemplateProperty, value); }
+    }
+
+    // Using a DependencyProperty as the backing store for ItemTemplate.  This enables animation, styling, binding, etc...
+    public static readonly DependencyProperty ItemTemplateProperty =
+        DependencyProperty.Register("ItemTemplate", typeof(DataTemplate), typeof(TabSelect), new PropertyMetadata(null));
 
 
 
@@ -74,14 +86,7 @@ public partial class TabSelect : Control, ITabSelect,IControl
 
 
 
-    public List<ITabSelectItem> Items
-    {
-        get { return (List<ITabSelectItem>)GetValue(ItemsProperty); }
-        set { SetValue(ItemsProperty, value); }
-    }
-
-    public static readonly DependencyProperty ItemsProperty =
-        DependencyProperty.Register("Items", typeof(List<ITabSelectItem>), typeof(TabSelect), new PropertyMetadata(default(ITabSelectItem)));
+    
 
     internal void Select(ITabSelectItem item)
     {

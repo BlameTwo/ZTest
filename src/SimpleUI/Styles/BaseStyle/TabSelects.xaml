@@ -13,8 +13,15 @@
         <Setter Property="BorderBrush" Value="{DynamicResource Default.Control.Border.Brush}" />
         <Setter Property="Padding" Value="3" />
         <Setter Property="CornerRadius" Value="3" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <!--  虚拟化可变子项大小Panel  -->
+                    <VirtualizingStackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="ItemStyle" Value="{DynamicResource DefaultTabSelectItemBase}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ui:TabSelect}">
@@ -27,19 +34,9 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{TemplateBinding CornerRadius}" />
-                        <ItemsControl
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            ItemsSource="{TemplateBinding Items}"
-                            ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                            ScrollViewer.VerticalScrollBarVisibility="Hidden">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <!--  虚拟化可变子项大小Panel  -->
-                                    <VirtualizingStackPanel Orientation="Horizontal" />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
+                        <ScrollViewer>
+                            <ItemsPresenter Margin="10" SnapsToDevicePixels="True" />
+                        </ScrollViewer>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -84,7 +81,7 @@
                                 Grid.Column="1"
                                 Margin="3,0,0,0"
                                 VerticalAlignment="Center"
-                                Content="{TemplateBinding Header}" />
+                                ContentSource="Content" />
                         </Grid>
                         <Path
                             x:Name="MyLine"
