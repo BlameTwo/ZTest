@@ -108,6 +108,12 @@
                             <Setter TargetName="MinBth" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="MaxBth" Property="Visibility" Value="Collapsed" />
                         </Trigger>
+                        <Trigger Property="ExitButton" Value="True">
+                            <Setter TargetName="ExitBth" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="ExitButton" Value="False">
+                            <Setter TargetName="ExitBth" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

@@ -185,6 +185,18 @@ namespace SimpleUI.Controls
 
 
 
+        public bool ExitButton
+        {
+            get { return (bool)GetValue(ExitButtonProperty); }
+            set { SetValue(ExitButtonProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ExitButton.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ExitButtonProperty =
+            DependencyProperty.Register("ExitButton", typeof(bool), typeof(WindowBase), new PropertyMetadata(true));
+
+
+
 
         public string MaxContent
         {
