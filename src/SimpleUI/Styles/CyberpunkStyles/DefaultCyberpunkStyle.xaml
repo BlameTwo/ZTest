@@ -34,6 +34,7 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/TabSelects.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/ToolTip.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/FlyoutButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/Slider.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type ui:FontIcon}">
@@ -96,6 +97,9 @@
     <Style BasedOn="{StaticResource BaseNumberBox}" TargetType="{x:Type ui:NumberBox}">
         <Setter Property="CornerRadius" Value="0" />
     </Style>
+
+
+    <Style BasedOn="{StaticResource BaseSliderStyle}" TargetType="{x:Type Slider}" />
 
     <Style BasedOn="{StaticResource ListBoxBase}" TargetType="{x:Type ListBox}" />
 

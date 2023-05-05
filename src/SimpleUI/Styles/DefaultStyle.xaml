@@ -32,6 +32,7 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/TabSelects.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/ToolTip.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/FlyoutButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/Slider.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type ui:FontIcon}">
@@ -112,6 +113,7 @@
 
     <Style BasedOn="{StaticResource BaseListBoxItem}" TargetType="{x:Type ListBoxItem}" />
 
+    <Style BasedOn="{StaticResource BaseSliderStyle}" TargetType="{x:Type Slider}" />
 
     <Style TargetType="{x:Type ItemsControl}">
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
