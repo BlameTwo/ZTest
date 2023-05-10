@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Thickness x:Key="ButtonBase.Thickness">0.3</Thickness>
+    <Thickness x:Key="ButtonBase.Thickness">0.5</Thickness>
     <Thickness x:Key="Expander.Thickness">0.5</Thickness>
+    <Thickness x:Key="ActionCard.Thickness">0.5</Thickness>
     <Thickness x:Key="Expander.Content.Thickness">0.3,0,0.3,0.3</Thickness>
 </ResourceDictionary>

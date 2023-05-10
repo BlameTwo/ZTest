@@ -3,15 +3,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:convert="clr-namespace:SimpleUI.Styles.Converter"
     xmlns:ui="clr-namespace:SimpleUI.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/Sources/Thickess.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/Sources/CornerRadius.xaml" />
+    </ResourceDictionary.MergedDictionaries>
     <Style x:Key="BaseActionCard" TargetType="{x:Type ui:ActionCard}">
         <Setter Property="CornerRadius" Value="{DynamicResource ExpanderCornerRadius}" />
         <Setter Property="BorderBrush" Value="{DynamicResource Default.Control.Border.Brush}" />
-        <Setter Property="BorderThickness" Value="{DynamicResource ButtonBase.Thickness}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource ActionCard.Thickness}" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="Foreground" Value="{DynamicResource DefaultAppFillBrush}" />
         <Setter Property="Padding" Value="30" />
-        <Setter Property="Background" Value="{DynamicResource DefaultAppBackgroundBrush}" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Opacity="0.8" Color="{DynamicResource DefaultAppBackgroundBrushColor}" />
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ui:ActionCard}">

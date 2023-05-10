@@ -13,7 +13,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource Default.Control.Border.Brush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource ButtonBase.Thickness}" />
         <Setter Property="Foreground" Value="{DynamicResource DefaultAppFillBrush}" />
-        <Setter Property="Background" Value="{DynamicResource Default.Control.Background.Brush}" />
+        <Setter Property="Background" Value="{DynamicResource NavigationItem.Background}" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Bottom" />
         <Setter Property="FontSize" Value="15" />

@@ -49,7 +49,7 @@
 
     <SolidColorBrush x:Key="Default.Control.Border.Brush" Color="#000000" />
 
-    <SolidColorBrush x:Key="Default.Control.Background.Brush" Color="#D7D7D7" />
+    <SolidColorBrush x:Key="Default.Control.Background.Brush" Color="#EDEDED" />
 
     <SolidColorBrush x:Key="Default.Accent.Brush" Color="{DynamicResource Default.Accent.Color}" />
 

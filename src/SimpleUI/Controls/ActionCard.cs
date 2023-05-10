@@ -8,6 +8,12 @@ namespace SimpleUI.Controls
     [TemplatePart(Name ="PRPA_ActionBth",Type =typeof(System.Windows.Controls.Button))]
     public class ActionCard:Control,IControl
     {
+
+        static ActionCard()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(ActionCard), new FrameworkPropertyMetadata(typeof(ActionCard)));
+        }
+
         public FontIconEnum Icon
         {
             get { return (FontIconEnum)GetValue(IconProperty); }
