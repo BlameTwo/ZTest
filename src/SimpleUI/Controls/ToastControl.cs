@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using System.Windows;
 using SimpleUI.Services;
+using System.Windows.Media;
 
 namespace SimpleUI.Controls;
 
@@ -66,11 +67,10 @@ public class ToastControl : Control, IToastService
             open.Begin();
             await Task.Delay(time);
             Storyboard close = GetBoard(1);
+            close.FillBehavior = FillBehavior.Stop;
             close.Begin();
-            close.Completed += (s, e) =>
-            {
-                OwnerPanel.Children.Remove(this);
-            };
+            await Task.Delay(TimeSpan.FromSeconds(2));
+            OwnerPanel.Children.Remove(this);
         }));
     }
 
@@ -81,30 +81,35 @@ public class ToastControl : Control, IToastService
     /// <returns></returns>
     private Storyboard GetBoard(int state)
     {
-        Storyboard board = new Storyboard();
-        DoubleAnimation animation = null;
-        if (state == 0)
+        TransformGroup group = new TransformGroup();
+        TranslateTransform translate = new TranslateTransform() { Y=this.ActualHeight };
+        group.Children.Add(translate);
+        this.RenderTransform = group;
+        Storyboard story = new();
+        if (state == 1)
         {
-            animation = new DoubleAnimation()
-            {
-                From = 0,
-                To = 1,
-                Duration = new Duration(TimeSpan.FromSeconds(0.5))
-            };
+            DoubleAnimation opac = new DoubleAnimation() { From = 1,To = 0,Duration = TimeSpan.FromSeconds(0.5) };
+            Storyboard.SetTarget(opac, this);
+            Storyboard.SetTargetProperty(opac, new("Opacity"));
+
+            DoubleAnimation trananimation = new() { EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut },From=-5,To=-100 , Duration = TimeSpan.FromSeconds(0.8) };
+            Storyboard.SetTargetProperty(trananimation, new("RenderTransform.(TransformGroup.Children)[0].(TranslateTransform.Y)"));
+            Storyboard.SetTarget(trananimation, this);
+            story.Children.Add(opac);
+            story.Children.Add(trananimation);
         }
-        else if (state == 1)
+        else  if(state ==0)
         {
-            animation = new DoubleAnimation()
-            {
-                From = 1,
-                To = 0,
-                Duration = new Duration(TimeSpan.FromSeconds(0.5))
-            };
+            DoubleAnimation opac = new DoubleAnimation() { From = 0, To = 1, Duration = TimeSpan.FromSeconds(0.5) };
+            Storyboard.SetTarget(opac, this);
+            Storyboard.SetTargetProperty(opac, new("Opacity"));
+            DoubleAnimation trananimation = new() { EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut }, From = -100, To = -5,Duration = TimeSpan.FromSeconds(0.8) };
+            Storyboard.SetTargetProperty(trananimation, new("RenderTransform.(TransformGroup.Children)[0].(TranslateTransform.Y)"));
+            Storyboard.SetTarget(trananimation, this);
+            story.Children.Add(opac);
+            story.Children.Add(trananimation);
         }
-        Storyboard.SetTarget(board, this);
-        Storyboard.SetTargetProperty(board, new PropertyPath("Opacity"));
-        board.Children.Add(animation);
-        return board;
+        return story;
     }
 
 }
