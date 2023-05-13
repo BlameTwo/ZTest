@@ -35,6 +35,7 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/ToolTip.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/FlyoutButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/Slider.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/ToggleButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type ui:FontIcon}">
@@ -60,6 +61,7 @@
         </Setter>
     </Style>
 
+    <Style BasedOn="{StaticResource BaseToggleButtonStyle}" TargetType="{x:Type ToggleButton}" />
 
     <Style BasedOn="{StaticResource DefaultTreeViewItem}" TargetType="ui:TreeViewItem" />
 

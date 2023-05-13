@@ -7,7 +7,7 @@
     <Style x:Key="BaseListBox" TargetType="{x:Type ListBox}">
         <Setter Property="Background">
             <Setter.Value>
-                <SolidColorBrush Opacity="0.3" Color="{DynamicResource Card.Background.Color}" />
+                <SolidColorBrush Opacity="0.2" Color="{DynamicResource Card.Background.Color}" />
             </Setter.Value>
         </Setter>
         <Setter Property="BorderBrush" Value="Transparent" />
