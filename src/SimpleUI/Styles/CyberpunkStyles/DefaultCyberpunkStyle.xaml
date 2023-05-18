@@ -36,6 +36,7 @@
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/FlyoutButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/Slider.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/ToggleButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SimpleUI;component/Styles/BaseStyle/HyperLinkButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type ui:FontIcon}">
@@ -60,6 +61,9 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+
+    <Style BasedOn="{StaticResource BaseHyperlinkButton}" TargetType="{x:Type ui:HyperlinkButton}" />
 
     <Style BasedOn="{StaticResource BaseToggleButtonStyle}" TargetType="{x:Type ToggleButton}" />
 

@@ -3,4 +3,5 @@
     <Thickness x:Key="Expander.Thickness">0.5</Thickness>
     <Thickness x:Key="ActionCard.Thickness">0.5</Thickness>
     <Thickness x:Key="Expander.Content.Thickness">0.3,0,0.3,0.3</Thickness>
+    <Thickness x:Key="HyperLinkButton.Thickness">0,0,0,1</Thickness>
 </ResourceDictionary>
