@@ -24,7 +24,19 @@ public class ShowDialogService : IShowDialogService
         }
     }
 
-   
+    public bool Close()
+    {
+        if(_nowdialogHost != null)
+        {
+            _nowdialogHost.Close();
+            _nowdialogHost = null;
+            return true;
+        }
+        return false;
+    }
+
+
+    private IDialogHost _nowdialogHost;
 
     public bool Show<T,T1>(T arg,T1 data) 
         where T : IDialogHost
@@ -34,6 +46,7 @@ public class ShowDialogService : IShowDialogService
             //显示出对话框
             arg.Show();
             arg.ShowExDate<T1>(data);
+            this._nowdialogHost = arg;
             return true;
         }
         else

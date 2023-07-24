@@ -7,6 +7,10 @@ public class LocalSetting : ILocalSetting {
 
     string filedir = System.AppDomain.CurrentDomain.BaseDirectory;
 
+    public LocalSetting()
+    {
+    }
+
     string file {
         get {
             return Path.Combine(filedir, LocalSettingFileName);
@@ -35,20 +39,29 @@ public class LocalSetting : ILocalSetting {
     }
 
     async Task refresh() {
-        await Task.Run(async () =>
+        try
         {
-            StreamReader reader
-             = new(file);
-            var str = reader.ReadToEnd();
-            reader.Close();
-            reader.Dispose();
-            if (!string.IsNullOrWhiteSpace(str))
+            await Task.Run(async () =>
             {
-                Config = JsonSerializer.Deserialize<Dictionary<string, object>>(str)!;
-            }
-            else
-                Config = new();
-        });
+                StreamReader reader
+                 = new(file);
+                var str = reader.ReadToEnd();
+                reader.Close();
+                reader.Dispose();
+                if (!string.IsNullOrWhiteSpace(str))
+                {
+                    Config = JsonSerializer.Deserialize<Dictionary<string, object>>(str)!;
+                }
+                else
+                    Config = new();
+            });
+        }
+        catch (Exception)
+        {
+
+            this.Config = new();
+        }
+       
     }
 
     public async Task<Object> ReadConfig(string key) {

@@ -60,6 +60,8 @@
         </Setter>
     </Style>
 
+    <Style BasedOn="{StaticResource BasePersonPicture}" TargetType="{x:Type ui:PersonPicture}" />
+
     <Style BasedOn="{StaticResource BaseHyperlinkButton}" TargetType="{x:Type ui:HyperlinkButton}" />
     <Style BasedOn="{StaticResource BaseToggleButtonStyle}" TargetType="{x:Type ToggleButton}" />
 

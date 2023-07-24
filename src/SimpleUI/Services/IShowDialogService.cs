@@ -19,5 +19,5 @@ public interface IShowDialogService
     /// </summary>
     bool IsShow { get; }
 
-    
+    bool Close();
 }

@@ -46,9 +46,8 @@ public class PersonPicture : ContentControl
         set { SetValue(SourceProperty, value); }
     }
 
-    // Using a DependencyProperty as the backing store for Source.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty SourceProperty =
-        DependencyProperty.Register("Source", typeof(ImageSource), typeof(PersonPicture), new FrameworkPropertyMetadata(default(ImageSource)));
+        DependencyProperty.Register("Source", typeof(ImageSource), typeof(PersonPicture), new FrameworkPropertyMetadata(null));
 
 
 
